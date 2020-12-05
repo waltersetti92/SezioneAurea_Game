@@ -30,10 +30,10 @@
         {
             this.star1 = new System.Windows.Forms.PictureBox();
             this.star2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pezzo0 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.star1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.star2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pezzo0)).BeginInit();
             this.SuspendLayout();
             // 
             // star1
@@ -59,16 +59,16 @@
             this.star2.TabStop = false;
             this.star2.Click += new System.EventHandler(this.star2_Click);
             // 
-            // pictureBox1
+            // pezzo0
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::Sezione_Aureawe.Properties.Resources.Pezzo_0;
-            this.pictureBox1.Location = new System.Drawing.Point(141, 399);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(218, 186);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
+            this.pezzo0.BackColor = System.Drawing.Color.Transparent;
+            this.pezzo0.Image = global::Sezione_Aureawe.Properties.Resources.Pezzo_0;
+            this.pezzo0.Location = new System.Drawing.Point(141, 399);
+            this.pezzo0.Name = "pezzo0";
+            this.pezzo0.Size = new System.Drawing.Size(218, 186);
+            this.pezzo0.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pezzo0.TabIndex = 2;
+            this.pezzo0.TabStop = false;
             // 
             // Interaction
             // 
@@ -76,14 +76,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Sezione_Aureawe.Properties.Resources.Transparency_background;
             this.Controls.Add(this.star2);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pezzo0);
             this.Controls.Add(this.star1);
             this.Name = "Interaction";
             this.Size = new System.Drawing.Size(767, 696);
             this.Load += new System.EventHandler(this.Interaction_Load);
             ((System.ComponentModel.ISupportInitialize)(this.star1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.star2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pezzo0)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -92,6 +92,6 @@
 
         private System.Windows.Forms.PictureBox star1;
         private System.Windows.Forms.PictureBox star2;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pezzo0;
     }
 }

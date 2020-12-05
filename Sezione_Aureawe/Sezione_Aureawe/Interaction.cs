@@ -16,6 +16,9 @@ namespace Sezione_Aureawe
         public Interaction()
         {
             InitializeComponent();
+            star1.Visible = false;
+            star2.Visible = false;
+            pezzo0.Visible = false;
         }
         public void setPos(int w, int h)
         {
