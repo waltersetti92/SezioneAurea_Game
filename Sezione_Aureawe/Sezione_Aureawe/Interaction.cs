@@ -20,16 +20,9 @@ namespace Sezione_Aureawe
             star1.Visible = false;
             star2.Visible = false;
             pezzo0.Visible = false;
-            home_first_scene();
         }
 
-        public void home_first_scene()
-        {
-            Thread.Sleep(1000);
-            star1.Visible = true;
-            this.Update();
-            
-        }
+
         public void setPos(int w, int h)
         {
 
@@ -47,6 +40,32 @@ namespace Sezione_Aureawe
         private void star2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (parentForm.step == 1)
+            {
+                star1.Visible = false;
+                this.Update();
+                star2.Visible = false;
+                this.Update();
+             //   Thread.Sleep(700);
+                star2.Visible = true;
+                this.Update();
+                parentForm.playbackResourceAudio("Suono1_True");
+                Thread.Sleep(3500);
+                star2.Visible = false;
+                this.Update();
+                star1.Visible = true;
+                this.Update();
+                parentForm.playbackResourceAudio("Suono2_True");
+                Thread.Sleep(3500);
+                star2.Visible = true;
+                this.Update();
+                gioca_btn.Visible = true;
+                this.Update();
+            }
         }
     }
 }

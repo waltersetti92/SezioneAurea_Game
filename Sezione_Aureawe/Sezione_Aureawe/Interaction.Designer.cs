@@ -31,6 +31,8 @@
             this.star1 = new System.Windows.Forms.PictureBox();
             this.star2 = new System.Windows.Forms.PictureBox();
             this.pezzo0 = new System.Windows.Forms.PictureBox();
+            this.Listen = new System.Windows.Forms.Button();
+            this.gioca_btn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.star1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.star2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pezzo0)).BeginInit();
@@ -70,11 +72,37 @@
             this.pezzo0.TabIndex = 2;
             this.pezzo0.TabStop = false;
             // 
+            // Listen
+            // 
+            this.Listen.Font = new System.Drawing.Font("Snap ITC", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Listen.ForeColor = System.Drawing.Color.Blue;
+            this.Listen.Location = new System.Drawing.Point(27, 651);
+            this.Listen.Name = "Listen";
+            this.Listen.Size = new System.Drawing.Size(332, 30);
+            this.Listen.TabIndex = 3;
+            this.Listen.Text = "ASCOLTA LA SEQUENZA";
+            this.Listen.UseVisualStyleBackColor = true;
+            this.Listen.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // gioca_btn
+            // 
+            this.gioca_btn.Font = new System.Drawing.Font("Snap ITC", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gioca_btn.ForeColor = System.Drawing.Color.Blue;
+            this.gioca_btn.Location = new System.Drawing.Point(374, 651);
+            this.gioca_btn.Name = "gioca_btn";
+            this.gioca_btn.Size = new System.Drawing.Size(105, 30);
+            this.gioca_btn.TabIndex = 4;
+            this.gioca_btn.Text = "GIOCA!";
+            this.gioca_btn.UseVisualStyleBackColor = true;
+            this.gioca_btn.Visible = false;
+            // 
             // Interaction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Sezione_Aureawe.Properties.Resources.Transparency_background;
+            this.Controls.Add(this.gioca_btn);
+            this.Controls.Add(this.Listen);
             this.Controls.Add(this.star2);
             this.Controls.Add(this.pezzo0);
             this.Controls.Add(this.star1);
@@ -93,5 +121,7 @@
         private System.Windows.Forms.PictureBox star1;
         private System.Windows.Forms.PictureBox star2;
         private System.Windows.Forms.PictureBox pezzo0;
+        private System.Windows.Forms.Button Listen;
+        private System.Windows.Forms.Button gioca_btn;
     }
 }
