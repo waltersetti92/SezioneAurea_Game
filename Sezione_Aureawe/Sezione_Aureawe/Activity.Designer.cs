@@ -41,9 +41,9 @@
             // 
             this.pbOne.BackColor = System.Drawing.Color.Transparent;
             this.pbOne.Image = global::Sezione_Aureawe.Properties.Resources.group1;
-            this.pbOne.Location = new System.Drawing.Point(528, 217);
+            this.pbOne.Location = new System.Drawing.Point(435, 174);
             this.pbOne.Name = "pbOne";
-            this.pbOne.Size = new System.Drawing.Size(125, 125);
+            this.pbOne.Size = new System.Drawing.Size(214, 179);
             this.pbOne.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbOne.TabIndex = 22;
             this.pbOne.TabStop = false;
@@ -51,9 +51,9 @@
             // pbTwo
             // 
             this.pbTwo.BackColor = System.Drawing.Color.Transparent;
-            this.pbTwo.Location = new System.Drawing.Point(741, 217);
+            this.pbTwo.Location = new System.Drawing.Point(702, 174);
             this.pbTwo.Name = "pbTwo";
-            this.pbTwo.Size = new System.Drawing.Size(125, 125);
+            this.pbTwo.Size = new System.Drawing.Size(219, 179);
             this.pbTwo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbTwo.TabIndex = 23;
             this.pbTwo.TabStop = false;

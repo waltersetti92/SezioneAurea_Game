@@ -14,6 +14,10 @@ namespace Sezione_Aureawe
     {
         public Main parentForm { get; set; }
         public int trial = 0;
+        private static readonly string[] operations_texts = new string[] { "TeoremaPitagora", "circle" };
+        private readonly List<string> currOperationsLabels = new List<string>(); // displayed labels of the operations
+        private readonly List<PictureBox> currOperationsIcons = new List<PictureBox>();
+        private readonly List<string> currOperationsTexts = new List<string>();
         public Activity()
         {
             InitializeComponent();
@@ -34,6 +38,20 @@ namespace Sezione_Aureawe
             Height = h - 1 * offset;
 
         }
+        public void setOperationsIcons(int i)
+        {
+           
+
+            pbOne.WaitOnLoad = true;
+            if(i==1)
+            pbOne.ImageLocation = Main.resourcesPath + "\\" + "TeoremaPitagora" + ".png";
+        
+
+            pbTwo.WaitOnLoad = true;
+            if (i == 1)
+            pbTwo.ImageLocation = Main.resourcesPath + "\\" + "circle" + ".png";
+        }
+
         private void Activity_Load(object sender, EventArgs e)
         {
 

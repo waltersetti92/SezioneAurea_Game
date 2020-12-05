@@ -49,6 +49,7 @@ namespace Sezione_Aureawe
             interaction1.Visible = false;
             activity1.Visible = true;
             activity1.trial++;
+            activity1.setOperationsIcons(activity1.trial);
             currUC = activity1;
         }
         public void playbackResourceAudio(string audioname)
