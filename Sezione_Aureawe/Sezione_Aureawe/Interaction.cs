@@ -54,13 +54,13 @@ namespace Sezione_Aureawe
                 star2.Visible = true;
                 this.Update();
                 parentForm.playbackResourceAudio("Suono1_True");
-                Thread.Sleep(3500);
+                Thread.Sleep(3000);
                 star2.Visible = false;
                 this.Update();
                 star1.Visible = true;
                 this.Update();
                 parentForm.playbackResourceAudio("Suono2_True");
-                Thread.Sleep(3500);
+                Thread.Sleep(3000);
                 star2.Visible = true;
                 this.Update();
                // gioca_btn.Visible = true;

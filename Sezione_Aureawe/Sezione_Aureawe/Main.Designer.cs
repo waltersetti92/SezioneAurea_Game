@@ -55,7 +55,7 @@
             // 
             // activity1
             // 
-            this.activity1.BackColor = System.Drawing.SystemColors.Control;
+            this.activity1.BackColor = System.Drawing.SystemColors.Info;
             this.activity1.Location = new System.Drawing.Point(54, 33);
             this.activity1.Name = "activity1";
             this.activity1.parentForm = null;

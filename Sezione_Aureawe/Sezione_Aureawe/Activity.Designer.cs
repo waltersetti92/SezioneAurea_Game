@@ -28,11 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pbOne = new System.Windows.Forms.PictureBox();
             this.pbTwo = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_UNO = new System.Windows.Forms.Button();
             this.btn_DUE = new System.Windows.Forms.Button();
+            this.timerLabel = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbOne)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTwo)).BeginInit();
             this.SuspendLayout();
@@ -92,10 +95,26 @@
             this.btn_DUE.Text = "DUE";
             this.btn_DUE.UseVisualStyleBackColor = true;
             // 
+            // timerLabel
+            // 
+            this.timerLabel.AutoSize = true;
+            this.timerLabel.Font = new System.Drawing.Font("SimSun", 24.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.timerLabel.Location = new System.Drawing.Point(302, 413);
+            this.timerLabel.Name = "timerLabel";
+            this.timerLabel.Size = new System.Drawing.Size(33, 33);
+            this.timerLabel.TabIndex = 27;
+            this.timerLabel.Text = "0";
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Activity
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.timerLabel);
             this.Controls.Add(this.btn_DUE);
             this.Controls.Add(this.btn_UNO);
             this.Controls.Add(this.label1);
@@ -118,5 +137,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_UNO;
         private System.Windows.Forms.Button btn_DUE;
+        private System.Windows.Forms.Label timerLabel;
+        private System.Windows.Forms.Timer timer1;
     }
 }

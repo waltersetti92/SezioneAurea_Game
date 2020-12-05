@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace Sezione_Aureawe
 {
@@ -14,10 +15,7 @@ namespace Sezione_Aureawe
     {
         public Main parentForm { get; set; }
         public int trial = 0;
-        private static readonly string[] operations_texts = new string[] { "TeoremaPitagora", "circle" };
-        private readonly List<string> currOperationsLabels = new List<string>(); // displayed labels of the operations
-        private readonly List<PictureBox> currOperationsIcons = new List<PictureBox>();
-        private readonly List<string> currOperationsTexts = new List<string>();
+        public int timeleft=5;
         public Activity()
         {
             InitializeComponent();
@@ -28,6 +26,9 @@ namespace Sezione_Aureawe
             label1.Visible = false;
             btn_UNO.Visible = false;
             btn_DUE.Visible = false;
+            pbOne.Visible = false;
+            pbTwo.Visible = false;
+            timerLabel.Visible = false;
         }
         public void setPos(int w, int h)
         {
@@ -39,27 +40,49 @@ namespace Sezione_Aureawe
 
         }
         public void setOperationsIcons(int i)
-        {
-           
-
+        {         
             pbOne.WaitOnLoad = true;
-            if(i==1)
-            pbOne.ImageLocation = Main.resourcesPath + "\\" + "TeoremaPitagora" + ".png";
-        
-
             pbTwo.WaitOnLoad = true;
             if (i == 1)
-            pbTwo.ImageLocation = Main.resourcesPath + "\\" + "circle" + ".png";
+            {
+                pbOne.ImageLocation = Main.resourcesPath + "\\" + "TeoremaPitagora" + ".png";
+                pbOne.Visible = true;
+                this.Update();
+                parentForm.playbackResourceAudio("Suono3_True");
+                Thread.Sleep(3200);
+                pbTwo.ImageLocation = Main.resourcesPath + "\\" + "circle" + ".png";
+                pbTwo.Visible = true;
+                this.Update();
+                parentForm.playbackResourceAudio("Suono3_False");
+                Thread.Sleep(3200);
+                label1.Visible = true;
+                this.Update();
+                btn_UNO.Visible = true;
+                this.Update();
+                btn_DUE.Visible = true;
+                this.Update();
+                timerLabel.Visible = true;
+                this.Update();
+            }
+            timer1.Start();
         }
-
+        
         private void Activity_Load(object sender, EventArgs e)
         {
-
+            timer1.Enabled = true;
+            timer1.Stop();
+           
         }
 
         private void btn_UNO_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            timeleft--;
+            timerLabel.Text = timeleft.ToString();
         }
     }
 }
