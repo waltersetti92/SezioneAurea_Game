@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace Sezione_Aureawe
 {
@@ -19,6 +20,15 @@ namespace Sezione_Aureawe
             star1.Visible = false;
             star2.Visible = false;
             pezzo0.Visible = false;
+            home_first_scene();
+        }
+
+        public void home_first_scene()
+        {
+            Thread.Sleep(1000);
+            star1.Visible = true;
+            this.Update();
+            
         }
         public void setPos(int w, int h)
         {
