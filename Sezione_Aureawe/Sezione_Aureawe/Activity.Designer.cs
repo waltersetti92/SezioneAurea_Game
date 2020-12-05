@@ -36,6 +36,7 @@
             this.btn_DUE = new System.Windows.Forms.Button();
             this.timerLabel = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.Feedback = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbOne)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTwo)).BeginInit();
             this.SuspendLayout();
@@ -64,11 +65,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Snap ITC", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Snap ITC", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Blue;
-            this.label1.Location = new System.Drawing.Point(523, 369);
+            this.label1.Location = new System.Drawing.Point(429, 375);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(378, 27);
+            this.label1.Size = new System.Drawing.Size(503, 35);
             this.label1.TabIndex = 24;
             this.label1.Text = "QUALE IMMAGINE SCEGLI?";
             // 
@@ -76,7 +77,7 @@
             // 
             this.btn_UNO.Font = new System.Drawing.Font("Snap ITC", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_UNO.ForeColor = System.Drawing.Color.Blue;
-            this.btn_UNO.Location = new System.Drawing.Point(558, 413);
+            this.btn_UNO.Location = new System.Drawing.Point(521, 435);
             this.btn_UNO.Name = "btn_UNO";
             this.btn_UNO.Size = new System.Drawing.Size(76, 40);
             this.btn_UNO.TabIndex = 25;
@@ -88,7 +89,7 @@
             // 
             this.btn_DUE.Font = new System.Drawing.Font("Snap ITC", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_DUE.ForeColor = System.Drawing.Color.Blue;
-            this.btn_DUE.Location = new System.Drawing.Point(767, 413);
+            this.btn_DUE.Location = new System.Drawing.Point(770, 435);
             this.btn_DUE.Name = "btn_DUE";
             this.btn_DUE.Size = new System.Drawing.Size(76, 40);
             this.btn_DUE.TabIndex = 26;
@@ -110,10 +111,21 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // Feedback
+            // 
+            this.Feedback.AutoSize = true;
+            this.Feedback.Font = new System.Drawing.Font("Snap ITC", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Feedback.Location = new System.Drawing.Point(212, 523);
+            this.Feedback.Name = "Feedback";
+            this.Feedback.Size = new System.Drawing.Size(112, 35);
+            this.Feedback.TabIndex = 28;
+            this.Feedback.Text = "label2";
+            // 
             // Activity
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.Feedback);
             this.Controls.Add(this.timerLabel);
             this.Controls.Add(this.btn_DUE);
             this.Controls.Add(this.btn_UNO);
@@ -139,5 +151,6 @@
         private System.Windows.Forms.Button btn_DUE;
         private System.Windows.Forms.Label timerLabel;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label Feedback;
     }
 }

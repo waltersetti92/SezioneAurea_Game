@@ -29,6 +29,7 @@ namespace Sezione_Aureawe
             pbOne.Visible = false;
             pbTwo.Visible = false;
             timerLabel.Visible = false;
+            Feedback.Visible = false;
         }
         public void setPos(int w, int h)
         {
@@ -92,6 +93,13 @@ namespace Sezione_Aureawe
                 btn_DUE.Enabled = false;
                 timer1.Stop();
                 timerLabel.Text = "";
+                parentForm.playbackResourceAudio("failure");
+                Feedback.ForeColor = Color.Red;
+                Feedback.Visible = true;
+                if (trial == 1)
+                {
+                    Feedback.Text = "HAI FINITO IL TEMPO! L'IMMAGINE GIUSTA ERA LA UNO";
+                }
             }
            
         }
