@@ -95,11 +95,13 @@
             this.gioca_btn.Text = "GIOCA!";
             this.gioca_btn.UseVisualStyleBackColor = true;
             this.gioca_btn.Visible = false;
+            this.gioca_btn.Click += new System.EventHandler(this.gioca_btn_Click);
             // 
             // Interaction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Transparent;
             this.BackgroundImage = global::Sezione_Aureawe.Properties.Resources.Transparency_background;
             this.Controls.Add(this.gioca_btn);
             this.Controls.Add(this.Listen);

@@ -17,6 +17,7 @@ namespace Sezione_Aureawe
         public Interaction()
         {
             InitializeComponent();
+            gioca_btn.Visible = true;
             star1.Visible = false;
             star2.Visible = false;
             pezzo0.Visible = false;
@@ -50,7 +51,6 @@ namespace Sezione_Aureawe
                 this.Update();
                 star2.Visible = false;
                 this.Update();
-             //   Thread.Sleep(700);
                 star2.Visible = true;
                 this.Update();
                 parentForm.playbackResourceAudio("Suono1_True");
@@ -63,9 +63,14 @@ namespace Sezione_Aureawe
                 Thread.Sleep(3500);
                 star2.Visible = true;
                 this.Update();
-                gioca_btn.Visible = true;
-                this.Update();
+               // gioca_btn.Visible = true;
+               // this.Update();
             }
+        }
+
+        private void gioca_btn_Click(object sender, EventArgs e)
+        {
+            parentForm.activity();
         }
     }
 }

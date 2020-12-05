@@ -22,3 +22,4 @@ C:\Users\Luigi\Source\Repos\SezioneAurea_Game2\Sezione_Aureawe\Sezione_Aureawe\o
 C:\Users\Luigi\Source\Repos\SezioneAurea_Game2\Sezione_Aureawe\Sezione_Aureawe\obj\Debug\Sezione_Aureawe.csproj.CoreCompileInputs.cache
 C:\Users\Luigi\Source\Repos\SezioneAurea_Game2\Sezione_Aureawe\Sezione_Aureawe\obj\Debug\Sezione_Aureawe.exe
 C:\Users\Luigi\Source\Repos\SezioneAurea_Game2\Sezione_Aureawe\Sezione_Aureawe\obj\Debug\Sezione_Aureawe.pdb
+C:\Users\Luigi\Source\Repos\SezioneAurea_Game2\Sezione_Aureawe\Sezione_Aureawe\obj\Debug\Sezione_Aureawe.Activity.resources
