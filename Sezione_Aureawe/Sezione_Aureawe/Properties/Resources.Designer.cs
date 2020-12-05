@@ -83,6 +83,26 @@ namespace Sezione_Aureawe.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Pezzo_0 {
+            get {
+                object obj = ResourceManager.GetObject("Pezzo_0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap stella {
+            get {
+                object obj = ResourceManager.GetObject("stella", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Transparency_background {
             get {
                 object obj = ResourceManager.GetObject("Transparency_background", resourceCulture);

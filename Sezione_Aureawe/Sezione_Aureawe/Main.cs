@@ -14,10 +14,11 @@ namespace Sezione_Aureawe
         public static readonly string resourcesPath = Path.GetDirectoryName(Application.ExecutablePath) + "\\resources";
         private const string background_image = "galaxy.jpg";
         private UserControl currUC = null;
-        public int interaction;
+        public int step;
         public SoundPlayer player = null;
         public Main()
         {
+            step = 1;
             InitializeComponent();
             initial1.parentForm = this;
             interaction1.parentForm = this;

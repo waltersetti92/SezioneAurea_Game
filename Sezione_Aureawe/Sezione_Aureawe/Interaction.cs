@@ -30,5 +30,10 @@ namespace Sezione_Aureawe
         {
 
         }
+
+        private void star2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
