@@ -40,6 +40,47 @@ namespace Sezione_Aureawe
             Height = h - 1 * offset;
 
         }
+        public void Correct_Answer()
+        {
+            parentForm.playbackResourceAudio("success");
+            Feedback.ForeColor = Color.Green;
+            Feedback.Visible = true;
+            this.Feedback.Location = new Point(485, 518);
+            btn_DUE.Enabled = false;
+            btn_DUE.BackColor = Color.Green;
+            btn_UNO.Enabled = false;
+            btn_UNO.BackColor = Color.Green;
+            Feedback.Text = "RISPOSTA CORRETTA";
+        }
+        public void Wrong_Answer()
+        {
+
+            parentForm.playbackResourceAudio("failure");
+            Feedback.ForeColor = Color.Red;
+            Feedback.Visible = true;
+            this.Feedback.Location = new Point(485, 518);
+            btn_DUE.Enabled = false;
+            btn_DUE.BackColor = Color.Red;
+            btn_UNO.Enabled = false;
+            btn_UNO.BackColor = Color.Red;
+            Feedback.Text = "RISPOSTA SBAGLIATA";
+
+        }
+        public void Out_of_time()
+        {
+
+            btn_UNO.Enabled = false;
+            btn_DUE.Enabled = false;
+            timer1.Stop();
+            timerLabel.Text = "";
+            parentForm.playbackResourceAudio("failure");
+            Feedback.ForeColor = Color.Red;
+            btn_DUE.BackColor = Color.Red;
+            btn_UNO.BackColor = Color.Red;
+            this.Feedback.Location = new Point(171, 518);
+            Feedback.Visible = true;
+
+        }
         public void setOperationsIcons(int i)
         {         
             pbOne.WaitOnLoad = true;
@@ -78,6 +119,11 @@ namespace Sezione_Aureawe
         private void btn_UNO_Click(object sender, EventArgs e)
         {
             timer1.Stop();
+            timerLabel.Visible = false;
+            if (trial == 1)
+            {
+                Correct_Answer();
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -89,13 +135,7 @@ namespace Sezione_Aureawe
             }
             if (timeleft == 0)
             {
-                btn_UNO.Enabled = false;
-                btn_DUE.Enabled = false;
-                timer1.Stop();
-                timerLabel.Text = "";
-                parentForm.playbackResourceAudio("failure");
-                Feedback.ForeColor = Color.Red;
-                Feedback.Visible = true;
+                Out_of_time();
                 if (trial == 1)
                 {
                     Feedback.Text = "HAI FINITO IL TEMPO! L'IMMAGINE GIUSTA ERA LA UNO";
@@ -107,6 +147,11 @@ namespace Sezione_Aureawe
         private void btn_DUE_Click(object sender, EventArgs e)
         {
             timer1.Stop();
+            timerLabel.Visible = false;
+            if (trial == 1)
+            {
+                Wrong_Answer();
+            }
         }
     }
 }

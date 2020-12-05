@@ -115,7 +115,7 @@
             // 
             this.Feedback.AutoSize = true;
             this.Feedback.Font = new System.Drawing.Font("Snap ITC", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Feedback.Location = new System.Drawing.Point(212, 523);
+            this.Feedback.Location = new System.Drawing.Point(171, 521);
             this.Feedback.Name = "Feedback";
             this.Feedback.Size = new System.Drawing.Size(112, 35);
             this.Feedback.TabIndex = 28;
