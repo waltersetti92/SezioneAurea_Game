@@ -37,6 +37,7 @@
             this.timerLabel = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.Feedback = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbOne)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTwo)).BeginInit();
             this.SuspendLayout();
@@ -121,10 +122,23 @@
             this.Feedback.TabIndex = 28;
             this.Feedback.Text = "label2";
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Snap ITC", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Blue;
+            this.button1.Location = new System.Drawing.Point(569, 639);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(237, 29);
+            this.button1.TabIndex = 29;
+            this.button1.Text = "TORNA INDIETRO";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Activity
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.Feedback);
             this.Controls.Add(this.timerLabel);
             this.Controls.Add(this.btn_DUE);
@@ -133,7 +147,7 @@
             this.Controls.Add(this.pbTwo);
             this.Controls.Add(this.pbOne);
             this.Name = "Activity";
-            this.Size = new System.Drawing.Size(985, 592);
+            this.Size = new System.Drawing.Size(985, 760);
             this.Load += new System.EventHandler(this.Activity_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbOne)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTwo)).EndInit();
@@ -152,5 +166,6 @@
         private System.Windows.Forms.Label timerLabel;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label Feedback;
+        private System.Windows.Forms.Button button1;
     }
 }

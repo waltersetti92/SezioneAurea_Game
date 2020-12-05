@@ -30,6 +30,7 @@ namespace Sezione_Aureawe
             pbTwo.Visible = false;
             timerLabel.Visible = false;
             Feedback.Visible = false;
+            button1.Visible = false;
         }
         public void setPos(int w, int h)
         {
@@ -81,6 +82,20 @@ namespace Sezione_Aureawe
             Feedback.Visible = true;
 
         }
+        public void Appear_Button()
+        {
+            timerLabel.Text = "6";
+            timerLabel.Visible = true;
+            this.Update();
+            label1.Visible = true;
+            this.Update();
+            btn_UNO.Visible = true;
+            this.Update();
+            btn_DUE.Visible = true;
+            timer1.Start();
+            this.Update();
+
+        }
         public void setOperationsIcons(int i)
         {         
             pbOne.WaitOnLoad = true;
@@ -91,28 +106,22 @@ namespace Sezione_Aureawe
                 pbOne.Visible = true;
                 this.Update();
                 parentForm.playbackResourceAudio("Suono3_True");
-                Thread.Sleep(3200);
+                Thread.Sleep(3000);
                 pbTwo.ImageLocation = Main.resourcesPath + "\\" + "circle" + ".png";
                 pbTwo.Visible = true;
                 this.Update();
                 parentForm.playbackResourceAudio("Suono3_False");
-                Thread.Sleep(3200);
-                label1.Visible = true;
-                this.Update();
-                btn_UNO.Visible = true;
-                this.Update();
-                btn_DUE.Visible = true;
-                this.Update();
-                timerLabel.Visible = true;
-                this.Update();
+                Thread.Sleep(3000);                
             }
-            timer1.Start();
+            Appear_Button();
+           
         }
         
         private void Activity_Load(object sender, EventArgs e)
         {
             timer1.Enabled = true;
             timer1.Stop();
+           
            
         }
 
@@ -124,6 +133,7 @@ namespace Sezione_Aureawe
             {
                 Correct_Answer();
             }
+            button1.Visible = true;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -135,12 +145,12 @@ namespace Sezione_Aureawe
             }
             if (timeleft == 0)
             {
-                Out_of_time();
-                if (trial == 1)
-                {
-                    Feedback.Text = "HAI FINITO IL TEMPO! L'IMMAGINE GIUSTA ERA LA UNO";
-                }
+                Out_of_time();    
+                Feedback.Text = "HAI FINITO IL TEMPO! L'IMMAGINE GIUSTA ERA LA UNO";
+                button1.Visible = true;
             }
+           
+            
            
         }
 
@@ -152,6 +162,17 @@ namespace Sezione_Aureawe
             {
                 Wrong_Answer();
             }
+            button1.Visible = true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+            parentForm.step++;
+            this.Hide();
+            parentForm.onStart();
+
+
         }
     }
 }

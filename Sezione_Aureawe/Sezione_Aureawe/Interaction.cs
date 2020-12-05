@@ -17,12 +17,19 @@ namespace Sezione_Aureawe
         public Interaction()
         {
             InitializeComponent();
-            gioca_btn.Visible = true;
+            resetOperations();
+           // gioca_btn.Visible = true;
+           
+        }
+        private void resetOperations()
+        {
             star1.Visible = false;
             star2.Visible = false;
             pezzo0.Visible = false;
+            gioca_btn.Visible = false;
+            star3.Visible = false;
+            pezzo1.Visible = false;
         }
-
 
         public void setPos(int w, int h)
         {
@@ -33,9 +40,27 @@ namespace Sezione_Aureawe
             Height = h - 1 * offset;
 
         }
+        public void First_Sequence()
+        {
+            star1.Visible = false;
+            this.Update();
+            star2.Visible = false;
+            this.Update();
+            star2.Visible = true;
+            this.Update();
+            parentForm.playbackResourceAudio("Suono1_True");
+            Thread.Sleep(3000);
+            star2.Visible = false;
+            this.Update();
+            star1.Visible = true;
+            this.Update();
+            parentForm.playbackResourceAudio("Suono2_True");
+            Thread.Sleep(3000);
+          
+        }
         private void Interaction_Load(object sender, EventArgs e)
         {
-
+           
         }
 
         private void star2_Click(object sender, EventArgs e)
@@ -45,31 +70,37 @@ namespace Sezione_Aureawe
 
         private void button1_Click(object sender, EventArgs e)
         {
+            resetOperations();
             if (parentForm.step == 1)
             {
+                First_Sequence();               
+            }
+            else if (parentForm.step == 2)
+            {
+                
+                this.Update();
+                First_Sequence();
                 star1.Visible = false;
                 this.Update();
-                star2.Visible = false;
+                star3.Visible = true;
                 this.Update();
-                star2.Visible = true;
-                this.Update();
-                parentForm.playbackResourceAudio("Suono1_True");
+                parentForm.playbackResourceAudio("Suono3_True");
                 Thread.Sleep(3000);
-                star2.Visible = false;
-                this.Update();
-                star1.Visible = true;
-                this.Update();
-                parentForm.playbackResourceAudio("Suono2_True");
-                Thread.Sleep(3000);
-                star2.Visible = true;
-                this.Update();
-               // gioca_btn.Visible = true;
-               // this.Update();
             }
+            star2.Visible = true;
+            this.Update();
+            star1.Visible = true;
+            this.Update();
+            gioca_btn.Visible = true;
+            this.Update();
+            gioca_btn.Visible = true;
         }
+               
+        
 
         private void gioca_btn_Click(object sender, EventArgs e)
         {
+            resetOperations();
             parentForm.activity();
         }
     }
