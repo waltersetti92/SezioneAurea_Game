@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.initial1 = new Sezione_Aureawe.Initial();
+            this.interaction1 = new Sezione_Aureawe.Interaction();
             this.SuspendLayout();
             // 
             // initial1
@@ -41,12 +42,23 @@
             this.initial1.TabIndex = 0;
             this.initial1.Load += new System.EventHandler(this.initial1_Load);
             // 
+            // interaction1
+            // 
+            this.interaction1.BackColor = System.Drawing.SystemColors.Control;
+            this.interaction1.BackgroundImage = global::Sezione_Aureawe.Properties.Resources.Transparency_background;
+            this.interaction1.Location = new System.Drawing.Point(8, 11);
+            this.interaction1.Name = "interaction1";
+            this.interaction1.parentForm = null;
+            this.interaction1.Size = new System.Drawing.Size(767, 365);
+            this.interaction1.TabIndex = 1;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.interaction1);
             this.Controls.Add(this.initial1);
             this.Name = "Main";
             this.Text = "Golden_Section";
@@ -59,6 +71,7 @@
         #endregion
 
         private Initial initial1;
+        private Interaction interaction1;
     }
 }
 

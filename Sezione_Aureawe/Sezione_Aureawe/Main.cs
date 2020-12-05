@@ -20,7 +20,9 @@ namespace Sezione_Aureawe
         {
             InitializeComponent();
             initial1.parentForm = this;
+            interaction1.parentForm = this;
             initial1.Visible = false;
+            interaction1.Visible = false;
             home();
             BackgroundImageLayout = ImageLayout.Stretch;
             BackgroundImage = Image.FromFile(resourcesPath + "\\" + background_image);
@@ -33,14 +35,31 @@ namespace Sezione_Aureawe
             initial1.Show();
             currUC = initial1;
         }
+        public void onStart()
+        {
+            initial1.Visible = false;
+            interaction1.Visible = true;
+            currUC = interaction1;
+        }
+        public void playbackResourceAudio(string audioname)
+        {
+
+            string s = resourcesPath + "\\" + audioname + ".wav";
+            player = new SoundPlayer(s);
+            player.Play();
+        }
 
         private void Main_Load(object sender, EventArgs e)
         {
             Size size = this.Size; 
             initial1.setPos(size.Width, size.Height);
+            interaction1.setPos(size.Width, size.Height);
         }
+        public void closeMessage()
+        {
 
-        private void initial1_Load(object sender, EventArgs e)
+        }
+            private void initial1_Load(object sender, EventArgs e)
         {
 
         }

@@ -1,7 +1,6 @@
 C:\Users\Luigi\source\repos\SezioneAurea_Game\Sezione_Aureawe\Sezione_Aureawe\bin\Debug\Sezione_Aureawe.exe.config
 C:\Users\Luigi\source\repos\SezioneAurea_Game\Sezione_Aureawe\Sezione_Aureawe\bin\Debug\Sezione_Aureawe.exe
 C:\Users\Luigi\source\repos\SezioneAurea_Game\Sezione_Aureawe\Sezione_Aureawe\bin\Debug\Sezione_Aureawe.pdb
-C:\Users\Luigi\source\repos\SezioneAurea_Game\Sezione_Aureawe\Sezione_Aureawe\obj\Debug\Sezione_Aureawe.csprojAssemblyReference.cache
 C:\Users\Luigi\source\repos\SezioneAurea_Game\Sezione_Aureawe\Sezione_Aureawe\obj\Debug\Sezione_Aureawe.Initial.resources
 C:\Users\Luigi\source\repos\SezioneAurea_Game\Sezione_Aureawe\Sezione_Aureawe\obj\Debug\Sezione_Aureawe.Main.resources
 C:\Users\Luigi\source\repos\SezioneAurea_Game\Sezione_Aureawe\Sezione_Aureawe\obj\Debug\Sezione_Aureawe.Properties.Resources.resources
@@ -9,3 +8,5 @@ C:\Users\Luigi\source\repos\SezioneAurea_Game\Sezione_Aureawe\Sezione_Aureawe\ob
 C:\Users\Luigi\source\repos\SezioneAurea_Game\Sezione_Aureawe\Sezione_Aureawe\obj\Debug\Sezione_Aureawe.csproj.CoreCompileInputs.cache
 C:\Users\Luigi\source\repos\SezioneAurea_Game\Sezione_Aureawe\Sezione_Aureawe\obj\Debug\Sezione_Aureawe.exe
 C:\Users\Luigi\source\repos\SezioneAurea_Game\Sezione_Aureawe\Sezione_Aureawe\obj\Debug\Sezione_Aureawe.pdb
+C:\Users\Luigi\source\repos\SezioneAurea_Game\Sezione_Aureawe\Sezione_Aureawe\obj\Debug\Sezione_Aureawe.Interaction.resources
+C:\Users\Luigi\source\repos\SezioneAurea_Game\Sezione_Aureawe\Sezione_Aureawe\obj\Debug\Sezione_Aureawe.csprojAssemblyReference.cache
