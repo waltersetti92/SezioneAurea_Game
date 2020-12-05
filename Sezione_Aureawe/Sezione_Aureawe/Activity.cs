@@ -15,7 +15,7 @@ namespace Sezione_Aureawe
     {
         public Main parentForm { get; set; }
         public int trial = 0;
-        public int timeleft=5;
+        public int timeleft=6;
         public Activity()
         {
             InitializeComponent();
@@ -76,13 +76,29 @@ namespace Sezione_Aureawe
 
         private void btn_UNO_Click(object sender, EventArgs e)
         {
-
+            timer1.Stop();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            timeleft--;
-            timerLabel.Text = timeleft.ToString();
+            if (timeleft > 0)
+            {
+                timeleft--;
+                timerLabel.Text = timeleft.ToString();
+            }
+            if (timeleft == 0)
+            {
+                btn_UNO.Enabled = false;
+                btn_DUE.Enabled = false;
+                timer1.Stop();
+                timerLabel.Text = "";
+            }
+           
+        }
+
+        private void btn_DUE_Click(object sender, EventArgs e)
+        {
+            timer1.Stop();
         }
     }
 }

@@ -94,6 +94,7 @@
             this.btn_DUE.TabIndex = 26;
             this.btn_DUE.Text = "DUE";
             this.btn_DUE.UseVisualStyleBackColor = true;
+            this.btn_DUE.Click += new System.EventHandler(this.btn_DUE_Click);
             // 
             // timerLabel
             // 
@@ -101,9 +102,8 @@
             this.timerLabel.Font = new System.Drawing.Font("SimSun", 24.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.timerLabel.Location = new System.Drawing.Point(302, 413);
             this.timerLabel.Name = "timerLabel";
-            this.timerLabel.Size = new System.Drawing.Size(33, 33);
+            this.timerLabel.Size = new System.Drawing.Size(0, 33);
             this.timerLabel.TabIndex = 27;
-            this.timerLabel.Text = "0";
             // 
             // timer1
             // 
