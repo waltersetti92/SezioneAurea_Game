@@ -128,6 +128,10 @@ namespace Sezione_Aureawe
             {
                 Images_Sounds("numberlines", "fibonacci", "Suono4_False", "Suono4_True");            
             }
+            else if (i == 3)
+            {
+                Images_Sounds("Polygon", "Pentagon", "Suono5_False", "Suono5_True");
+            }
             Appear_Button();
            
         }
@@ -147,7 +151,7 @@ namespace Sezione_Aureawe
             {
                 Correct_Answer();
             }
-            else if (trial == 2)
+            else if (trial == 2 || trial==3)
             {
                 Wrong_Answer();
             }
@@ -180,7 +184,7 @@ namespace Sezione_Aureawe
             {
                 Wrong_Answer();
             }
-            else if (trial==2)
+            else if (trial==2 || trial==3)
             {
                 Correct_Answer();
             }
