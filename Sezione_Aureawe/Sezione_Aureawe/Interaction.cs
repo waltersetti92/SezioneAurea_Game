@@ -29,8 +29,10 @@ namespace Sezione_Aureawe
             gioca_btn.Visible = false;
             star3.Visible = false;
             star4.Visible = false;
+            star5.Visible = false;
             pezzo1.Visible = false;
             pezzo2.Visible = false;
+            pezzo3.Visible = false;
         }
 
         public void setPos(int w, int h)
@@ -62,7 +64,7 @@ namespace Sezione_Aureawe
         }
         private void Interaction_Load(object sender, EventArgs e)
         {
-           
+            resetOperations();
         }
 
         private void star2_Click(object sender, EventArgs e)
@@ -90,7 +92,17 @@ namespace Sezione_Aureawe
             parentForm.playbackResourceAudio("Suono4_True");
             Thread.Sleep(3000);
         }
-       
+        private void Sequence_3()
+        {
+            Sequence_2();
+            star4.Visible = false;
+            this.Update();
+            star5.Visible = true;
+            this.Update();
+            parentForm.playbackResourceAudio("Suono5_True");
+            Thread.Sleep(3000);
+        }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -112,6 +124,14 @@ namespace Sezione_Aureawe
                 star3.Visible = true;
                 this.Update();
             }
+            else if (parentForm.step == 4)
+            {
+                Sequence_3();
+                star3.Visible = true;
+                this.Update();
+                star4.Visible = true;
+                this.Update();
+            }
             star2.Visible = true;
             this.Update();
             star1.Visible = true;
@@ -125,8 +145,9 @@ namespace Sezione_Aureawe
 
         private void gioca_btn_Click(object sender, EventArgs e)
         {
-            resetOperations();
+           
             parentForm.activity();
+            resetOperations();
         }
 
         private void star4_Click(object sender, EventArgs e)
@@ -135,6 +156,11 @@ namespace Sezione_Aureawe
         }
 
         private void star3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void star5_Click(object sender, EventArgs e)
         {
 
         }

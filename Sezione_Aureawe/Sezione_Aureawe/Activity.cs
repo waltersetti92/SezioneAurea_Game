@@ -132,6 +132,10 @@ namespace Sezione_Aureawe
             {
                 Images_Sounds("Polygon", "Pentagon", "Suono5_False", "Suono5_True");
             }
+            else if (i == 4)
+            {
+                Images_Sounds("phi", "pigreco", "Suono6_True", "Suono6_False");
+            }
             Appear_Button();
            
         }
@@ -147,7 +151,7 @@ namespace Sezione_Aureawe
         {
             timer1.Stop();
             timerLabel.Visible = false;
-            if (trial == 1)
+            if (trial == 1 || trial==4)
             {
                 Correct_Answer();
             }
@@ -180,7 +184,7 @@ namespace Sezione_Aureawe
         {
             timer1.Stop();
             timerLabel.Visible = false;
-            if (trial == 1)
+            if (trial == 1 || trial==4)
             {
                 Wrong_Answer();
             }

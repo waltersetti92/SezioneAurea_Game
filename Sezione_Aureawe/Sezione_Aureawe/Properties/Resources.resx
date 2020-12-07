@@ -127,16 +127,19 @@
   <data name="Pezzo_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\resources\Pezzo_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Pezzo_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\resources\Pezzo_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Transparency_background" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\resources\Transparency_background.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="group1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\resources\group1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Pezzo_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\resources\Pezzo_0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Transparency_background" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\resources\Transparency_background.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Pezzo_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\resources\Pezzo_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Pezzo_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\resources\Pezzo_3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
