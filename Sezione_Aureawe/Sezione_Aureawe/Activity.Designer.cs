@@ -76,6 +76,7 @@
             // 
             // btn_UNO
             // 
+            this.btn_UNO.BackColor = System.Drawing.Color.LightGray;
             this.btn_UNO.Font = new System.Drawing.Font("Snap ITC", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_UNO.ForeColor = System.Drawing.Color.Blue;
             this.btn_UNO.Location = new System.Drawing.Point(521, 435);
@@ -83,7 +84,7 @@
             this.btn_UNO.Size = new System.Drawing.Size(76, 40);
             this.btn_UNO.TabIndex = 25;
             this.btn_UNO.Text = "UNO";
-            this.btn_UNO.UseVisualStyleBackColor = true;
+            this.btn_UNO.UseVisualStyleBackColor = false;
             this.btn_UNO.Click += new System.EventHandler(this.btn_UNO_Click);
             // 
             // btn_DUE

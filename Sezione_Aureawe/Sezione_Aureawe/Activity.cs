@@ -31,6 +31,10 @@ namespace Sezione_Aureawe
             timerLabel.Visible = false;
             Feedback.Visible = false;
             button1.Visible = false;
+            btn_UNO.Enabled = true;
+            btn_DUE.Enabled = true;
+            btn_UNO.BackColor = Color.LightGray;
+            btn_DUE.BackColor = Color.LightGray;
         }
         public void setPos(int w, int h)
         {
@@ -96,22 +100,33 @@ namespace Sezione_Aureawe
             this.Update();
 
         }
-        public void setOperationsIcons(int i)
-        {         
+        public void Images_Sounds(string a,string b, string c, string d)
+        {
             pbOne.WaitOnLoad = true;
+            pbOne.ImageLocation = Main.resourcesPath + "\\" + a + ".png";
+            pbOne.Visible = true;
+            this.Update();
+            parentForm.playbackResourceAudio(c);
+            Thread.Sleep(3000);
             pbTwo.WaitOnLoad = true;
+            pbTwo.ImageLocation = Main.resourcesPath + "\\" + b + ".png";
+            pbTwo.Visible = true;
+            this.Update();
+            parentForm.playbackResourceAudio(d);
+            Thread.Sleep(3000);
+
+        }
+        public void setOperationsIcons(int i)
+        {
+            resetOperations();
+          
             if (i == 1)
             {
-                pbOne.ImageLocation = Main.resourcesPath + "\\" + "TeoremaPitagora" + ".png";
-                pbOne.Visible = true;
-                this.Update();
-                parentForm.playbackResourceAudio("Suono3_True");
-                Thread.Sleep(3000);
-                pbTwo.ImageLocation = Main.resourcesPath + "\\" + "circle" + ".png";
-                pbTwo.Visible = true;
-                this.Update();
-                parentForm.playbackResourceAudio("Suono3_False");
-                Thread.Sleep(3000);                
+                Images_Sounds("TeoremaPitagora","circle","Suono3_True","Suono3_False");                            
+            }
+            else if (i==2)
+            {
+                Images_Sounds("numberlines", "fibonacci", "Suono4_False", "Suono4_True");            
             }
             Appear_Button();
            
@@ -121,8 +136,7 @@ namespace Sezione_Aureawe
         {
             timer1.Enabled = true;
             timer1.Stop();
-           
-           
+                   
         }
 
         private void btn_UNO_Click(object sender, EventArgs e)
@@ -132,6 +146,10 @@ namespace Sezione_Aureawe
             if (trial == 1)
             {
                 Correct_Answer();
+            }
+            else if (trial == 2)
+            {
+                Wrong_Answer();
             }
             button1.Visible = true;
         }
@@ -161,6 +179,10 @@ namespace Sezione_Aureawe
             if (trial == 1)
             {
                 Wrong_Answer();
+            }
+            else if (trial==2)
+            {
+                Correct_Answer();
             }
             button1.Visible = true;
         }
