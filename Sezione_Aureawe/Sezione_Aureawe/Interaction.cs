@@ -30,9 +30,15 @@ namespace Sezione_Aureawe
             star3.Visible = false;
             star4.Visible = false;
             star5.Visible = false;
+            star6.Visible = false;
             pezzo1.Visible = false;
             pezzo2.Visible = false;
             pezzo3.Visible = false;
+            pezzo4.Visible = false;
+            pezzo5.Visible = false;
+            lbl_fin1.Visible = false;
+            lbl_fin2.Visible = false;
+            Listen.Enabled = true;
         }
 
         public void setPos(int w, int h)
@@ -102,15 +108,68 @@ namespace Sezione_Aureawe
             parentForm.playbackResourceAudio("Suono5_True");
             Thread.Sleep(3000);
         }
+        private void Sequence_4()
+        {
+            Sequence_3();
+            star5.Visible = false;
+            this.Update();
+            star6.Visible = true;
+            this.Update();
+            parentForm.playbackResourceAudio("Suono6_True");
+            Thread.Sleep(3000);
+        }
 
+        private void final_sequence()
+        {
+            star2.Visible = true;
+            this.Update();
+            parentForm.playbackResourceAudio("Suono1_True");
+            Thread.Sleep(3000);
+            pezzo0.Visible = true;
+            this.Update();
+            star1.Visible = true;
+            this.Update();
+            parentForm.playbackResourceAudio("Suono2_True");
+            Thread.Sleep(3000);
+            pezzo1.Visible=true;
+            star3.Visible = true;
+            this.Update();
+            parentForm.playbackResourceAudio("Suono3_True");
+            Thread.Sleep(3000);
+            pezzo2.Visible = true;
+            star4.Visible = true;
+            this.Update();
+            parentForm.playbackResourceAudio("Suono4_True");
+            Thread.Sleep(3000);
+            pezzo3.Visible = true;
+            star5.Visible = true;
+            this.Update();
+            parentForm.playbackResourceAudio("Suono5_True");
+            Thread.Sleep(3000);
+            pezzo4.Visible = true;
+            star6.Visible = true;
+            this.Update();
+            parentForm.playbackResourceAudio("Suono6_True");
+            Thread.Sleep(3000);
+            pezzo5.Visible = true;
+            this.Update();
+            parentForm.playbackResourceAudio("Suono7_True");
+            Thread.Sleep(3000);
+            parentForm.playbackResourceAudio("success");
+            lbl_fin1.Visible = true;
+            lbl_fin2.Visible = true;
+            gioca_btn.Visible = false;
+            Listen.Visible = false;
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
             resetOperations();
             this.Update();
+            Listen.Enabled = false;
             if (parentForm.step == 1)
             {
-                First_Sequence();
+                First_Sequence();             
             }
             else if (parentForm.step == 2)
             {
@@ -132,13 +191,32 @@ namespace Sezione_Aureawe
                 star4.Visible = true;
                 this.Update();
             }
-            star2.Visible = true;
-            this.Update();
-            star1.Visible = true;
-            this.Update();
-            gioca_btn.Visible = true;
-            this.Update();
-            gioca_btn.Visible = true;
+            else if (parentForm.step == 5)
+            {
+                Sequence_4();
+                star3.Visible = true;
+                this.Update();
+                star4.Visible = true;
+                this.Update();
+                star5.Visible = true;
+                this.Update();
+            }
+            else if (parentForm.step == 6)
+            {
+                final_sequence();
+            }
+        
+            if (parentForm.step < 6)
+            {
+                star2.Visible = true;
+                this.Update();
+                star1.Visible = true;
+                this.Update();
+                gioca_btn.Visible = true;
+                this.Update();
+                gioca_btn.Visible = true;
+            }          
+          
         }
                
         
@@ -161,6 +239,11 @@ namespace Sezione_Aureawe
         }
 
         private void star5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void star7_Click(object sender, EventArgs e)
         {
 
         }

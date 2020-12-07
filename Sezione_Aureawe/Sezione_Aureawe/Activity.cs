@@ -136,8 +136,11 @@ namespace Sezione_Aureawe
             {
                 Images_Sounds("phi", "pigreco", "Suono6_True", "Suono6_False");
             }
-            Appear_Button();
-           
+            else if (i == 5)
+            {
+                Images_Sounds("seahorse", "semaforo", "Suono7_True", "Suono7_False");
+            }
+            Appear_Button();           
         }
         
         private void Activity_Load(object sender, EventArgs e)
@@ -151,7 +154,7 @@ namespace Sezione_Aureawe
         {
             timer1.Stop();
             timerLabel.Visible = false;
-            if (trial == 1 || trial==4)
+            if (trial == 1 || trial==4 || trial==5)
             {
                 Correct_Answer();
             }
@@ -184,7 +187,7 @@ namespace Sezione_Aureawe
         {
             timer1.Stop();
             timerLabel.Visible = false;
-            if (trial == 1 || trial==4)
+            if (trial == 1 || trial==4 || trial==5)
             {
                 Wrong_Answer();
             }
@@ -200,6 +203,7 @@ namespace Sezione_Aureawe
             
             parentForm.step++;
             this.Hide();
+            timeleft = 6;
             parentForm.onStart();
 
 

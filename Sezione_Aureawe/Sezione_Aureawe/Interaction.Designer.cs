@@ -39,6 +39,11 @@
             this.pezzo2 = new System.Windows.Forms.PictureBox();
             this.star5 = new System.Windows.Forms.PictureBox();
             this.pezzo3 = new System.Windows.Forms.PictureBox();
+            this.star6 = new System.Windows.Forms.PictureBox();
+            this.pezzo4 = new System.Windows.Forms.PictureBox();
+            this.pezzo5 = new System.Windows.Forms.PictureBox();
+            this.lbl_fin1 = new System.Windows.Forms.Label();
+            this.lbl_fin2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.star1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.star2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pezzo0)).BeginInit();
@@ -48,6 +53,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pezzo2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.star5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pezzo3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.star6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pezzo4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pezzo5)).BeginInit();
             this.SuspendLayout();
             // 
             // star1
@@ -123,6 +131,7 @@
             // 
             // pezzo1
             // 
+            this.pezzo1.BackColor = System.Drawing.Color.Transparent;
             this.pezzo1.Image = global::Sezione_Aureawe.Properties.Resources.Pezzo_1;
             this.pezzo1.Location = new System.Drawing.Point(234, 175);
             this.pezzo1.Name = "pezzo1";
@@ -145,8 +154,9 @@
             // 
             // pezzo2
             // 
+            this.pezzo2.BackColor = System.Drawing.Color.Transparent;
             this.pezzo2.Image = global::Sezione_Aureawe.Properties.Resources.Pezzo_2;
-            this.pezzo2.Location = new System.Drawing.Point(481, 47);
+            this.pezzo2.Location = new System.Drawing.Point(471, 47);
             this.pezzo2.Name = "pezzo2";
             this.pezzo2.Size = new System.Drawing.Size(276, 186);
             this.pezzo2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -157,7 +167,7 @@
             // 
             this.star5.BackColor = System.Drawing.Color.Transparent;
             this.star5.Image = global::Sezione_Aureawe.Properties.Resources.stella;
-            this.star5.Location = new System.Drawing.Point(827, 352);
+            this.star5.Location = new System.Drawing.Point(825, 358);
             this.star5.Name = "star5";
             this.star5.Size = new System.Drawing.Size(100, 50);
             this.star5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -176,17 +186,79 @@
             this.pezzo3.TabIndex = 10;
             this.pezzo3.TabStop = false;
             // 
+            // star6
+            // 
+            this.star6.BackColor = System.Drawing.Color.Transparent;
+            this.star6.Image = global::Sezione_Aureawe.Properties.Resources.stella;
+            this.star6.Location = new System.Drawing.Point(657, 494);
+            this.star6.Name = "star6";
+            this.star6.Size = new System.Drawing.Size(100, 50);
+            this.star6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.star6.TabIndex = 11;
+            this.star6.TabStop = false;
+            // 
+            // pezzo4
+            // 
+            this.pezzo4.BackColor = System.Drawing.Color.Transparent;
+            this.pezzo4.Image = global::Sezione_Aureawe.Properties.Resources.Pezzo_4;
+            this.pezzo4.Location = new System.Drawing.Point(731, 387);
+            this.pezzo4.Name = "pezzo4";
+            this.pezzo4.Size = new System.Drawing.Size(218, 186);
+            this.pezzo4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pezzo4.TabIndex = 12;
+            this.pezzo4.TabStop = false;
+            // 
+            // pezzo5
+            // 
+            this.pezzo5.BackColor = System.Drawing.Color.Transparent;
+            this.pezzo5.Image = global::Sezione_Aureawe.Properties.Resources.Pezzo_5;
+            this.pezzo5.Location = new System.Drawing.Point(521, 358);
+            this.pezzo5.Name = "pezzo5";
+            this.pezzo5.Size = new System.Drawing.Size(218, 186);
+            this.pezzo5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pezzo5.TabIndex = 14;
+            this.pezzo5.TabStop = false;
+            // 
+            // lbl_fin1
+            // 
+            this.lbl_fin1.AutoSize = true;
+            this.lbl_fin1.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_fin1.Font = new System.Drawing.Font("Snap ITC", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_fin1.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_fin1.Location = new System.Drawing.Point(747, 591);
+            this.lbl_fin1.Name = "lbl_fin1";
+            this.lbl_fin1.Size = new System.Drawing.Size(333, 35);
+            this.lbl_fin1.TabIndex = 15;
+            this.lbl_fin1.Text = "OTTIMO LAVORO! ";
+            // 
+            // lbl_fin2
+            // 
+            this.lbl_fin2.AutoSize = true;
+            this.lbl_fin2.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_fin2.Font = new System.Drawing.Font("Snap ITC", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_fin2.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_fin2.Location = new System.Drawing.Point(515, 645);
+            this.lbl_fin2.Name = "lbl_fin2";
+            this.lbl_fin2.Size = new System.Drawing.Size(719, 35);
+            this.lbl_fin2.TabIndex = 16;
+            this.lbl_fin2.Text = "HAI RICOSTRUITO LA SEZIONE AUREA! ";
+            // 
             // Interaction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
             this.BackgroundImage = global::Sezione_Aureawe.Properties.Resources.Transparency_background;
+            this.Controls.Add(this.star3);
+            this.Controls.Add(this.star5);
+            this.Controls.Add(this.lbl_fin2);
+            this.Controls.Add(this.lbl_fin1);
+            this.Controls.Add(this.star6);
+            this.Controls.Add(this.pezzo5);
+            this.Controls.Add(this.pezzo4);
             this.Controls.Add(this.pezzo2);
             this.Controls.Add(this.star4);
-            this.Controls.Add(this.star5);
             this.Controls.Add(this.pezzo3);
-            this.Controls.Add(this.star3);
             this.Controls.Add(this.star1);
             this.Controls.Add(this.pezzo1);
             this.Controls.Add(this.gioca_btn);
@@ -205,7 +277,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pezzo2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.star5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pezzo3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.star6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pezzo4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pezzo5)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -222,5 +298,10 @@
         private System.Windows.Forms.PictureBox pezzo2;
         private System.Windows.Forms.PictureBox star5;
         private System.Windows.Forms.PictureBox pezzo3;
+        private System.Windows.Forms.PictureBox star6;
+        private System.Windows.Forms.PictureBox pezzo4;
+        private System.Windows.Forms.PictureBox pezzo5;
+        private System.Windows.Forms.Label lbl_fin1;
+        private System.Windows.Forms.Label lbl_fin2;
     }
 }
