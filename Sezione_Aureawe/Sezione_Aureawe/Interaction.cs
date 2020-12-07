@@ -28,7 +28,9 @@ namespace Sezione_Aureawe
             pezzo0.Visible = false;
             gioca_btn.Visible = false;
             star3.Visible = false;
+            star4.Visible = false;
             pezzo1.Visible = false;
+            pezzo2.Visible = false;
         }
 
         public void setPos(int w, int h)
@@ -49,13 +51,13 @@ namespace Sezione_Aureawe
             star2.Visible = true;
             this.Update();
             parentForm.playbackResourceAudio("Suono1_True");
-            Thread.Sleep(3000);
+            Thread.Sleep(3200);
             star2.Visible = false;
             this.Update();
             star1.Visible = true;
             this.Update();
             parentForm.playbackResourceAudio("Suono2_True");
-            Thread.Sleep(3000);
+            Thread.Sleep(3200);
           
         }
         private void Interaction_Load(object sender, EventArgs e)
@@ -67,25 +69,48 @@ namespace Sezione_Aureawe
         {
 
         }
+        private void Sequence_1()
+        {
+            First_Sequence();
+            star1.Visible = false;
+            this.Update();
+            star3.Visible = true;
+            this.Update();
+            parentForm.playbackResourceAudio("Suono3_True");
+            Thread.Sleep(3000);
+        }
+
+        private void Sequence_2()
+        {
+            Sequence_1();
+            star3.Visible = false;
+            this.Update();
+            star4.Visible = true;
+            this.Update();
+            parentForm.playbackResourceAudio("Suono4_True");
+            Thread.Sleep(3000);
+        }
+       
 
         private void button1_Click(object sender, EventArgs e)
         {
             resetOperations();
+            this.Update();
             if (parentForm.step == 1)
             {
-                First_Sequence();               
+                First_Sequence();
             }
             else if (parentForm.step == 2)
             {
-                
-                this.Update();
-                First_Sequence();
-                star1.Visible = false;
-                this.Update();
+
+                Sequence_1();
+               
+            }
+            else if (parentForm.step == 3)
+            {
+                Sequence_2();
                 star3.Visible = true;
                 this.Update();
-                parentForm.playbackResourceAudio("Suono3_True");
-                Thread.Sleep(3000);
             }
             star2.Visible = true;
             this.Update();
@@ -102,6 +127,16 @@ namespace Sezione_Aureawe
         {
             resetOperations();
             parentForm.activity();
+        }
+
+        private void star4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void star3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

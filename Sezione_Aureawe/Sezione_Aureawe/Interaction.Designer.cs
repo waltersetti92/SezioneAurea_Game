@@ -35,11 +35,15 @@
             this.gioca_btn = new System.Windows.Forms.Button();
             this.star3 = new System.Windows.Forms.PictureBox();
             this.pezzo1 = new System.Windows.Forms.PictureBox();
+            this.star4 = new System.Windows.Forms.PictureBox();
+            this.pezzo2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.star1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.star2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pezzo0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.star3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pezzo1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.star4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pezzo2)).BeginInit();
             this.SuspendLayout();
             // 
             // star1
@@ -105,12 +109,13 @@
             // 
             this.star3.BackColor = System.Drawing.Color.Transparent;
             this.star3.Image = global::Sezione_Aureawe.Properties.Resources.stella;
-            this.star3.Location = new System.Drawing.Point(411, 131);
+            this.star3.Location = new System.Drawing.Point(403, 131);
             this.star3.Name = "star3";
             this.star3.Size = new System.Drawing.Size(100, 50);
             this.star3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.star3.TabIndex = 5;
             this.star3.TabStop = false;
+            this.star3.Click += new System.EventHandler(this.star3_Click);
             // 
             // pezzo1
             // 
@@ -122,13 +127,37 @@
             this.pezzo1.TabIndex = 6;
             this.pezzo1.TabStop = false;
             // 
+            // star4
+            // 
+            this.star4.BackColor = System.Drawing.Color.Transparent;
+            this.star4.Image = global::Sezione_Aureawe.Properties.Resources.stella;
+            this.star4.Location = new System.Drawing.Point(731, 131);
+            this.star4.Name = "star4";
+            this.star4.Size = new System.Drawing.Size(100, 50);
+            this.star4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.star4.TabIndex = 7;
+            this.star4.TabStop = false;
+            this.star4.Click += new System.EventHandler(this.star4_Click);
+            // 
+            // pezzo2
+            // 
+            this.pezzo2.Image = global::Sezione_Aureawe.Properties.Resources.Pezzo_2;
+            this.pezzo2.Location = new System.Drawing.Point(481, 47);
+            this.pezzo2.Name = "pezzo2";
+            this.pezzo2.Size = new System.Drawing.Size(276, 186);
+            this.pezzo2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pezzo2.TabIndex = 8;
+            this.pezzo2.TabStop = false;
+            // 
             // Interaction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
             this.BackgroundImage = global::Sezione_Aureawe.Properties.Resources.Transparency_background;
+            this.Controls.Add(this.pezzo2);
             this.Controls.Add(this.star3);
+            this.Controls.Add(this.star4);
             this.Controls.Add(this.star1);
             this.Controls.Add(this.pezzo1);
             this.Controls.Add(this.gioca_btn);
@@ -136,13 +165,15 @@
             this.Controls.Add(this.star2);
             this.Controls.Add(this.pezzo0);
             this.Name = "Interaction";
-            this.Size = new System.Drawing.Size(767, 696);
+            this.Size = new System.Drawing.Size(1102, 696);
             this.Load += new System.EventHandler(this.Interaction_Load);
             ((System.ComponentModel.ISupportInitialize)(this.star1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.star2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pezzo0)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.star3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pezzo1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.star4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pezzo2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -156,5 +187,7 @@
         private System.Windows.Forms.Button gioca_btn;
         private System.Windows.Forms.PictureBox star3;
         private System.Windows.Forms.PictureBox pezzo1;
+        private System.Windows.Forms.PictureBox star4;
+        private System.Windows.Forms.PictureBox pezzo2;
     }
 }
