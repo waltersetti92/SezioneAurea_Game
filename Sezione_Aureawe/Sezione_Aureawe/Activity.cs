@@ -175,7 +175,10 @@ namespace Sezione_Aureawe
             if (timeleft == 0)
             {
                 Out_of_time();    
+                if(trial==1 || trial==4 || trial==5)
                 Feedback.Text = "HAI FINITO IL TEMPO! L'IMMAGINE GIUSTA ERA LA UNO";
+                else if(trial==2||trial==3)
+                Feedback.Text = "HAI FINITO IL TEMPO! L'IMMAGINE GIUSTA ERA LA DUE";
                 button1.Visible = true;
             }
            
