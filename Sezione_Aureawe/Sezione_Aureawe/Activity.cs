@@ -107,13 +107,13 @@ namespace Sezione_Aureawe
             pbOne.Visible = true;
             this.Update();
             parentForm.playbackResourceAudio(c);
-            Thread.Sleep(3000);
+            Thread.Sleep(2000);
             pbTwo.WaitOnLoad = true;
             pbTwo.ImageLocation = Main.resourcesPath + "\\" + b + ".png";
             pbTwo.Visible = true;
             this.Update();
             parentForm.playbackResourceAudio(d);
-            Thread.Sleep(3000);
+            Thread.Sleep(2000);
 
         }
         public void setOperationsIcons(int i)
