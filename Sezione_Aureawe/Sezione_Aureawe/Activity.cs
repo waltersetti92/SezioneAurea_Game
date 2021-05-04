@@ -76,6 +76,7 @@ namespace Sezione_Aureawe
         public void Out_of_time()
         {
 
+
             btn_UNO.Enabled = false;
             btn_DUE.Enabled = false;
             timer1.Stop();
@@ -171,7 +172,7 @@ namespace Sezione_Aureawe
         {
             if (timeleft > 0)
             {
-                timeleft--;
+                timeleft=timeleft -1;
                 timerLabel.Text = timeleft.ToString();
             }
             if (timeleft == 0)
