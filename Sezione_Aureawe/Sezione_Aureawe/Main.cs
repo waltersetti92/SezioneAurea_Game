@@ -38,7 +38,7 @@ namespace Sezione_Aureawe
             this.BeginInvoke((Action)delegate ()
             {
                 int status = int.Parse(k);
-                if (status == 6)
+                if (status == 6 || status==7)
                 {
                     onStart();
                 }
@@ -49,9 +49,8 @@ namespace Sezione_Aureawe
                 }
                 if (status == 13)
                 {
-
-
-                    // home();
+                    Application.Restart();
+                    home();
                 }
 
             });
