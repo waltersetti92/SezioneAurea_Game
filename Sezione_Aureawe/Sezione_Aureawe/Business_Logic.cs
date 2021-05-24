@@ -39,14 +39,14 @@ namespace Sezione_Aureawe
         }
         public async void New_Status_UDA(object source, ElapsedEventArgs e)
         {
-            string get_status_uda = "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/get/?i=1";  // url per ottenere lo stato dell'UDA  
+            string get_status_uda = "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/get/?i=3";  // url per ottenere lo stato dell'UDA  
             try
             {
                 string uda_status = await uda_server_communication.Server_Request(get_status_uda); //stato dell'UDA ottenuto con la classe UDA_server_communication
                 if (counter_timer == 0) // salvo lo stato dell'UDA al tempo t=0 e la prima volta che cambia
                 {
                     save_status = uda_status;
-                    //mn.Status_Changed(uda_status);
+                    mn.Status_Changed(uda_status);
                     string put_server = Url_Put(uda_status); // creo la stringa per il put al server che notifica il cambio di stato dell'UDA
                     await uda_server_communication.Server_Request(put_server); // qui mando al server il comando di put per cambiare il suo stato                  
                     counter_timer++;
@@ -56,7 +56,7 @@ namespace Sezione_Aureawe
                     if (!string.Equals(uda_status, save_status))
                     {
                         counter_timer = 0;
-                        //mn.Status_Changed(uda_status);
+                        mn.Status_Changed(uda_status);
                         string put_server = Url_Put(uda_status);
                         await uda_server_communication.Server_Request(put_server);
 
@@ -72,8 +72,8 @@ namespace Sezione_Aureawe
         public string Url_Put(string k)
         {
             int ik = Int32.Parse(k);
-            if (ik >= 0 && ik < 8)
-                return "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=1" + "&k=" + ik.ToString();
+            if (ik >= 0 && ik < 20)
+                return "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3" + "&k=" + ik.ToString();
             else
                 return "";
         }

@@ -33,6 +33,23 @@ namespace Sezione_Aureawe
            
         }
 
+        public void Status_Changed(string k)
+        {
+            this.BeginInvoke((Action)delegate ()
+            {
+                int status = int.Parse(k);
+                if (status == 6)
+                {
+                    onStart();
+                }
+                if (status == 2)
+                {
+                    home();
+                }
+
+            });
+        }
+
         public void home()
         {
             if (currUC != null) currUC.Visible = false;

@@ -28,16 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.activity1 = new Sezione_Aureawe.Activity();
             this.interaction1 = new Sezione_Aureawe.Interaction();
             this.initial1 = new Sezione_Aureawe.Initial();
-            this.activity1 = new Sezione_Aureawe.Activity();
             this.SuspendLayout();
+            // 
+            // activity1
+            // 
+            this.activity1.BackColor = System.Drawing.SystemColors.Info;
+            this.activity1.Location = new System.Drawing.Point(-27, 33);
+            this.activity1.Name = "activity1";
+            this.activity1.parentForm = null;
+            this.activity1.Size = new System.Drawing.Size(734, 343);
+            this.activity1.TabIndex = 2;
             // 
             // interaction1
             // 
             this.interaction1.BackColor = System.Drawing.SystemColors.Control;
             this.interaction1.BackgroundImage = global::Sezione_Aureawe.Properties.Resources.Transparency_background;
-            this.interaction1.Location = new System.Drawing.Point(8, 11);
+            this.interaction1.Location = new System.Drawing.Point(-117, 33);
             this.interaction1.Name = "interaction1";
             this.interaction1.parentForm = null;
             this.interaction1.Size = new System.Drawing.Size(767, 365);
@@ -53,21 +62,12 @@
             this.initial1.TabIndex = 0;
             this.initial1.Load += new System.EventHandler(this.initial1_Load);
             // 
-            // activity1
-            // 
-            this.activity1.BackColor = System.Drawing.SystemColors.Info;
-            this.activity1.Location = new System.Drawing.Point(54, 33);
-            this.activity1.Name = "activity1";
-            this.activity1.parentForm = null;
-            this.activity1.Size = new System.Drawing.Size(734, 343);
-            this.activity1.TabIndex = 2;
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1078, 674);
             this.Controls.Add(this.activity1);
             this.Controls.Add(this.interaction1);
             this.Controls.Add(this.initial1);
