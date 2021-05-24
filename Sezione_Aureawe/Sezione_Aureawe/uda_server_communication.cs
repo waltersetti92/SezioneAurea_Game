@@ -17,7 +17,7 @@ using System.Diagnostics;
 using System.Text.Json;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-namespace Audiospatial
+namespace Sezione_Aureawe
 {
     class uda_server_communication
     {

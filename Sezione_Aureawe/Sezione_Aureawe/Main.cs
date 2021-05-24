@@ -19,6 +19,7 @@ namespace Sezione_Aureawe
         public Main()
         {
             step = 1;
+            Business_Logic BL = new Business_Logic(this);
             InitializeComponent();
             initial1.parentForm = this;
             interaction1.parentForm = this;

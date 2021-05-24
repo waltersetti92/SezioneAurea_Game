@@ -83,6 +83,7 @@
     <Compile Include="Activity.Designer.cs">
       <DependentUpon>Activity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Business_Logic.cs" />
     <Compile Include="Initial.cs">
       <SubType>UserControl</SubType>
     </Compile>
