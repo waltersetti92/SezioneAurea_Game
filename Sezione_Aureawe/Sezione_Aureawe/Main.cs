@@ -42,9 +42,13 @@ namespace Sezione_Aureawe
                 {
                     onStart();
                 }
-                if (status == 2)
+                if (status == 11)
                 {
-                    home();
+                    Application.Exit();
+                }
+                if (status == 13)
+                {
+                     home();
                 }
 
             });
