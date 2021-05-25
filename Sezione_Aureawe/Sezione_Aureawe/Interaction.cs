@@ -20,7 +20,6 @@ namespace Sezione_Aureawe
             InitializeComponent();
             resetOperations();
             Start_Sequences();
-           
 
         }
         private void resetOperations()
@@ -28,7 +27,7 @@ namespace Sezione_Aureawe
             star1.Visible = false;
             star2.Visible = false;
             pezzo0.Visible = false;
-            gioca_btn.Visible = false;
+            //gioca_btn.Visible = false;
             star3.Visible = false;
             star4.Visible = false;
             star5.Visible = false;
@@ -40,7 +39,7 @@ namespace Sezione_Aureawe
             pezzo5.Visible = false;
             lbl_fin1.Visible = false;
             lbl_fin2.Visible = false;
-            Listen.Enabled = true;
+            //Listen.Enabled = true;
         }
 
         public void setPos(int w, int h)
@@ -70,6 +69,7 @@ namespace Sezione_Aureawe
             Thread.Sleep(3200);
           
         }
+
         private void Interaction_Load(object sender, EventArgs e)
         {
             resetOperations();
@@ -160,29 +160,25 @@ namespace Sezione_Aureawe
             parentForm.playbackResourceAudio("success");
             lbl_fin1.Visible = true;
             lbl_fin2.Visible = true;
-            gioca_btn.Visible = false;
-            Listen.Visible = false;
+            //gioca_btn.Visible = false;
+            //Listen.Visible = false;
         }
 
-        private void Start_Sequences() {
-
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            while (parentForm.ShouldPause)
+        public void Start_Sequences() {
+            while (pause_val)
             {
                 resetOperations();
                 this.Update();
-                Listen.Enabled = false;
+                //Listen.Enabled = false;
                 if (parentForm.step == 1)
                 {
                     First_Sequence();
+                    //parentForm.activity();
                 }
                 else if (parentForm.step == 2)
                 {
                     Sequence_1();
+                    //parentForm.activity();
 
                 }
                 else if (parentForm.step == 3)
@@ -190,6 +186,7 @@ namespace Sezione_Aureawe
                     Sequence_2();
                     star3.Visible = true;
                     this.Update();
+                    //parentForm.activity();
                 }
                 else if (parentForm.step == 4)
                 {
@@ -198,6 +195,7 @@ namespace Sezione_Aureawe
                     this.Update();
                     star4.Visible = true;
                     this.Update();
+                   // parentForm.activity();
                 }
                 else if (parentForm.step == 5)
                 {
@@ -208,11 +206,11 @@ namespace Sezione_Aureawe
                     this.Update();
                     star5.Visible = true;
                     this.Update();
+                   // parentForm.activity();
                 }
                 else if (parentForm.step == 6)
                 {
                     final_sequence();
-                    break;
                 }
 
                 if (parentForm.step < 6)
@@ -221,12 +219,24 @@ namespace Sezione_Aureawe
                     this.Update();
                     star1.Visible = true;
                     this.Update();
-                    gioca_btn.Visible = true;
-                    this.Update();
-                    gioca_btn.Visible = true;
+                    //gioca_btn.Visible = true;
+                    //this.Update();
+                    //gioca_btn.Visible = true;
+                    //if (pause_val)
+                    //{
+                   
+                        //break;
+                    //}
+                  
                 }
                 break;
             }
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
 
         }
                
@@ -234,12 +244,12 @@ namespace Sezione_Aureawe
 
         private void gioca_btn_Click(object sender, EventArgs e)
         {
-            while (parentForm.ShouldPause)
-            {
-                parentForm.activity();
-                resetOperations();
-                break;
-            }
+            //while (parentForm.ShouldPause)
+            //{
+               // parentForm.activity();
+                //resetOperations();
+               // break;
+            //}
             
         }
 

@@ -47,6 +47,7 @@ namespace Sezione_Aureawe
                 {
                     save_status = uda_status;
                     mn.Status_Changed(uda_status);
+                    mn.activity_form = uda_status;
                     string put_server = Url_Put(uda_status); // creo la stringa per il put al server che notifica il cambio di stato dell'UDA
                     await uda_server_communication.Server_Request(put_server); // qui mando al server il comando di put per cambiare il suo stato                  
                     counter_timer++;
@@ -57,6 +58,7 @@ namespace Sezione_Aureawe
                     {
                         counter_timer = 0;
                         mn.Status_Changed(uda_status);
+                        mn.activity_form = uda_status;
                         string put_server = Url_Put(uda_status);
                         await uda_server_communication.Server_Request(put_server);
 
