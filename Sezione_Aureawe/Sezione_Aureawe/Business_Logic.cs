@@ -75,7 +75,7 @@ namespace Sezione_Aureawe
             int ik1 = ik+1;
             if (ik >= 0 && ik < 20)
             {
-                if(ik==6 || ik==11)
+                if(ik==6 || ik==11 || ik==9)
                 return "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3" + "&k="+ik1.ToString();
                 else if (ik==13)
               return "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3" + "&k=7";

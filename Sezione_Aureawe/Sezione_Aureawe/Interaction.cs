@@ -14,12 +14,14 @@ namespace Sezione_Aureawe
     public partial class Interaction : UserControl
     {
         public Main parentForm { get; set; }
+        public bool pause_val;
         public Interaction()
         {
             InitializeComponent();
             resetOperations();
-           // gioca_btn.Visible = true;
+            Start_Sequences();
            
+
         }
         private void resetOperations()
         {
@@ -162,70 +164,83 @@ namespace Sezione_Aureawe
             Listen.Visible = false;
         }
 
+        private void Start_Sequences() {
+
+
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
-            resetOperations();
-            this.Update();
-            Listen.Enabled = false;
-            if (parentForm.step == 1)
+            while (parentForm.ShouldPause)
             {
-                First_Sequence();             
-            }
-            else if (parentForm.step == 2)
-            {
+                resetOperations();
+                this.Update();
+                Listen.Enabled = false;
+                if (parentForm.step == 1)
+                {
+                    First_Sequence();
+                }
+                else if (parentForm.step == 2)
+                {
+                    Sequence_1();
 
-                Sequence_1();
-               
+                }
+                else if (parentForm.step == 3)
+                {
+                    Sequence_2();
+                    star3.Visible = true;
+                    this.Update();
+                }
+                else if (parentForm.step == 4)
+                {
+                    Sequence_3();
+                    star3.Visible = true;
+                    this.Update();
+                    star4.Visible = true;
+                    this.Update();
+                }
+                else if (parentForm.step == 5)
+                {
+                    Sequence_4();
+                    star3.Visible = true;
+                    this.Update();
+                    star4.Visible = true;
+                    this.Update();
+                    star5.Visible = true;
+                    this.Update();
+                }
+                else if (parentForm.step == 6)
+                {
+                    final_sequence();
+                    break;
+                }
+
+                if (parentForm.step < 6)
+                {
+                    star2.Visible = true;
+                    this.Update();
+                    star1.Visible = true;
+                    this.Update();
+                    gioca_btn.Visible = true;
+                    this.Update();
+                    gioca_btn.Visible = true;
+                }
+                break;
             }
-            else if (parentForm.step == 3)
-            {
-                Sequence_2();
-                star3.Visible = true;
-                this.Update();
-            }
-            else if (parentForm.step == 4)
-            {
-                Sequence_3();
-                star3.Visible = true;
-                this.Update();
-                star4.Visible = true;
-                this.Update();
-            }
-            else if (parentForm.step == 5)
-            {
-                Sequence_4();
-                star3.Visible = true;
-                this.Update();
-                star4.Visible = true;
-                this.Update();
-                star5.Visible = true;
-                this.Update();
-            }
-            else if (parentForm.step == 6)
-            {
-                final_sequence();
-            }
-        
-            if (parentForm.step < 6)
-            {
-                star2.Visible = true;
-                this.Update();
-                star1.Visible = true;
-                this.Update();
-                gioca_btn.Visible = true;
-                this.Update();
-                gioca_btn.Visible = true;
-            }          
-          
+
         }
                
         
 
         private void gioca_btn_Click(object sender, EventArgs e)
         {
-           
-            parentForm.activity();
-            resetOperations();
+            while (parentForm.ShouldPause)
+            {
+                parentForm.activity();
+                resetOperations();
+                break;
+            }
+            
         }
 
         private void star4_Click(object sender, EventArgs e)

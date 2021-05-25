@@ -16,6 +16,9 @@ namespace Sezione_Aureawe
         private UserControl currUC = null;
         public int step;
         public SoundPlayer player = null;
+        public  ManualResetEvent resetEvent = new ManualResetEvent(true);
+        public bool ShouldPause=true;
+
         public Main()
         {
             step = 1;
@@ -31,8 +34,8 @@ namespace Sezione_Aureawe
             BackgroundImageLayout = ImageLayout.Stretch;
             BackgroundImage = Image.FromFile(resourcesPath + "\\" + background_image);
            
-        }
 
+        }
         public void Status_Changed(string k)
         {
             this.BeginInvoke((Action)delegate ()
@@ -42,10 +45,20 @@ namespace Sezione_Aureawe
                 {
                     onStart();
                 }
+                if (status == 8)
+                {
+                    ShouldPause = false;
 
+                }
+                if (status == 9)
+                {
+                  
+
+                }
                 if (status == 11)
                 {
                     Application.Exit();
+                    
                 }
                 if (status == 13)
                 {
@@ -66,6 +79,7 @@ namespace Sezione_Aureawe
         {
             initial1.Visible = false;
             interaction1.Visible = true;
+            interaction1.pause_val = ShouldPause;
             currUC = interaction1;
         }
         public void activity()
