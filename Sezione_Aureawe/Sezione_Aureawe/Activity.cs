@@ -107,27 +107,43 @@ namespace Sezione_Aureawe
             this.Update();
             label1.Visible = true;
             this.Update();
-            //btn_UNO.Visible = true;
-            this.Update();
-            //btn_DUE.Visible = true;
             timer1.Start();
             this.Update();
 
         }
         public async void Images_Sounds(string a,string b, string c, string d)
         {
-            pbOne.WaitOnLoad = true;
-            pbOne.ImageLocation = Main.resourcesPath + "\\" + a + ".png";
-            pbOne.Visible = true;
-            this.Update();
-            parentForm.playbackResourceAudio(c);
-            Thread.Sleep(2000);
-            pbTwo.WaitOnLoad = true;
-            pbTwo.ImageLocation = Main.resourcesPath + "\\" + b + ".png";
-            pbTwo.Visible = true;
-            this.Update();
-            parentForm.playbackResourceAudio(d);
-            Thread.Sleep(2000);
+            while (true)
+            {
+                k = parentForm.Status_Changed(parentForm.activity_form);
+                int status = int.Parse(k);
+                if (status != 9)
+                {
+                    pbOne.WaitOnLoad = true;
+                    pbOne.ImageLocation = Main.resourcesPath + "\\" + a + ".png";
+                    pbOne.Visible = true;
+                    this.Update();
+                    parentForm.playbackResourceAudio(c);
+                    Thread.Sleep(2000);
+                    break;
+                }
+            }
+            while (true)
+            {
+                k = parentForm.Status_Changed(parentForm.activity_form);
+                int status = int.Parse(k);
+                if (status != 9)
+                {
+                    pbTwo.WaitOnLoad = true;
+                    pbTwo.ImageLocation = Main.resourcesPath + "\\" + b + ".png";
+                    pbTwo.Visible = true;
+                    this.Update();
+                    parentForm.playbackResourceAudio(d);
+                    Thread.Sleep(2000);
+                    break;
+                }
+            }
+          
             while (true)
             {
                 k = parentForm.Status_Changed(parentForm.activity_form);
