@@ -55,8 +55,9 @@ namespace Sezione_Aureawe
     
 
                 }
-                if (status == 10)
+                if (status == 9)
                 {
+
 
                 }
                 if (status == 11)
@@ -93,14 +94,7 @@ namespace Sezione_Aureawe
             currUC = interaction1;
             interaction1.Start_Sequences();
             interaction_sequences = 1;
-            return interaction_sequences;
-            //while (true) {
-                //if (status != 8)
-                //{
-                   // interaction1.Start_Sequences();
-                   // break;
-                //}
-           // }        
+            return interaction_sequences;      
         }
         public void activity(string k)
         {

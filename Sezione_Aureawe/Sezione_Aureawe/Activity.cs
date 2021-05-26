@@ -65,8 +65,7 @@ namespace Sezione_Aureawe
             btn_UNO.Enabled = false;
             btn_UNO.BackColor = Color.Green;
             Feedback.Text = "RISPOSTA CORRETTA";
-            this.Update();
-          
+            this.Update();        
         }
         public void Wrong_Answer()
         {
@@ -129,7 +128,18 @@ namespace Sezione_Aureawe
             this.Update();
             parentForm.playbackResourceAudio(d);
             Thread.Sleep(2000);
-            await uda_server_communication.Server_Request(put_wait_data);
+            while (true)
+            {
+                k = parentForm.Status_Changed(parentForm.activity_form);
+                int status = int.Parse(k);
+                if (status != 9)
+                {
+                    await uda_server_communication.Server_Request(put_wait_data);
+                    break;
+                }
+               
+            }
+           
         }
         public void setOperationsIcons(int i)
         {
@@ -167,47 +177,6 @@ namespace Sezione_Aureawe
 
         private void btn_UNO_Click(object sender, EventArgs e)
         {
-            //timer1.Stop();
-            //timerLabel.Visible = false;
-            //if (trial == 1 || trial==4 || trial==5)
-            //{
-            //    Correct_Answer();
-            //    Thread.Sleep(4000);
-            //    while (true)
-            //    {
-            //        k = parentForm.Status_Changed(parentForm.activity_form);
-            //        int status = int.Parse(k);
-            //        if (status != 8)
-            //        {
-            //            parentForm.step++;
-            //            this.Hide();
-            //            timeleft = 6;
-            //            parentForm.onStart(parentForm.onstart_form);
-            //            break;
-            //        }
-            //    }
-
-
-            //}
-            //else if (trial == 2 || trial==3)
-            //{
-            //    Wrong_Answer();
-            //    Thread.Sleep(4000);
-            //    while (true)
-            //    {
-            //        k = parentForm.Status_Changed(parentForm.activity_form);
-            //        int status = int.Parse(k);
-            //        if (status != 8)
-            //        {
-            //            parentForm.step++;
-            //            this.Hide();
-            //            timeleft = 6;
-            //            parentForm.onStart(parentForm.onstart_form);
-            //            break;
-            //        }
-            //    }
-               
-            //}
         }
 
         private async void timer1_Tick(object sender, EventArgs e)
@@ -219,7 +188,7 @@ namespace Sezione_Aureawe
                 {
                     k = parentForm.Status_Changed(parentForm.activity_form);
                     int status = int.Parse(k);
-                    if (status != 8)
+                    if (status != 9)
                     {
                         timeleft = timeleft - 1;
                         timerLabel.Text = timeleft.ToString();
@@ -304,7 +273,7 @@ namespace Sezione_Aureawe
                 {
                     k = parentForm.Status_Changed(parentForm.activity_form);
                     int status = int.Parse(k);
-                    if (status != 8)
+                    if (status != 9)
                     {
                         parentForm.step++;
                         this.Hide();
@@ -322,54 +291,13 @@ namespace Sezione_Aureawe
 
         private void btn_DUE_Click(object sender, EventArgs e)
         {
-            //timer1.Stop();
-            //timerLabel.Visible = false;
-            //if (trial == 1 || trial==4 || trial==5)
-            //{
-            //    Wrong_Answer();
-            //    Thread.Sleep(4000);
-            //    while (true)
-            //    {
-            //        k = parentForm.Status_Changed(parentForm.activity_form);
-            //        int status = int.Parse(k);
-            //        if (status != 8)
-            //        {
-            //            parentForm.step++;
-            //            this.Hide();
-            //            timeleft = 6;
-            //            parentForm.onStart(parentForm.onstart_form);
-            //            break;
-            //        }
-            //    }
-            //}
-            //else if (trial==2 || trial==3)
-            //{
-            //    Correct_Answer();
-            //    Thread.Sleep(4000);
-            //    while (true)
-            //    {
-            //        k = parentForm.Status_Changed(parentForm.activity_form);
-            //        int status = int.Parse(k);
-            //        if (status != 8)
-            //        {
-            //            parentForm.step++;
-            //            this.Hide();
-            //            timeleft = 6;
-            //            parentForm.onStart(parentForm.onstart_form);
-            //            break;
-            //        }
-            //    }
-            //}
-            //button1.Visible = true;
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             
-            //parentForm.step++;
-            //this.Hide();
-            //timeleft = 6;
-            //parentForm.onStart(parentForm.onstart_form);
+
         }
     }
 }

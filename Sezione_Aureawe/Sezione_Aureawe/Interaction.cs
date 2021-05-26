@@ -224,7 +224,7 @@ namespace Sezione_Aureawe
                     {
                         k = parentForm.Status_Changed(parentForm.activity_form);
                         int status = int.Parse(k);
-                        if (status != 8)
+                        if (status != 9)
                         {
                             parentForm.activity(parentForm.activity_form);
                             break;

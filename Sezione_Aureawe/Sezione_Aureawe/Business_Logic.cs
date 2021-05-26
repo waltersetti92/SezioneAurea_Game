@@ -59,6 +59,7 @@ namespace Sezione_Aureawe
                         counter_timer = 0;
                         int status = int.Parse(uda_status);
                         mn.Status_Changed(uda_status);
+
                         mn.activity_form = uda_status;
                         mn.onstart_form = uda_status;
                         string put_server = Url_Put(uda_status);
@@ -78,11 +79,12 @@ namespace Sezione_Aureawe
             int ik1 = ik+1;
             if (ik >= 0 && ik < 20)
             {
-                if(ik==6 || ik==11 || ik==9)
+                if(ik==6 || ik==11 || ik==8)
                 return "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3" + "&k="+ik1.ToString();
                 else if (ik==13)
               return "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3" + "&k=7";
-                    else
+     
+                else
                return "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3" + "&k=" + ik.ToString();
             }
 
