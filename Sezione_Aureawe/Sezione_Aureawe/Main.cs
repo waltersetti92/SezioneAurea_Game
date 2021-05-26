@@ -15,6 +15,7 @@ namespace Sezione_Aureawe
         private const string background_image = "galaxy.jpg";
         private UserControl currUC = null;
         public int step;
+        public string get_data_uda;
         public string activity_form;
         public string onstart_form;
         public int interaction_sequences = 0;
@@ -25,6 +26,7 @@ namespace Sezione_Aureawe
         public Main()
         {
             step = 1;
+            get_data_uda = "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/get/?i=3";  // url per ottenere lo stato dell'UDA  
             Business_Logic BL = new Business_Logic(this);
             InitializeComponent();
             initial1.parentForm = this;
@@ -66,6 +68,10 @@ namespace Sezione_Aureawe
                 {
                     Application.Restart();
                     home();
+                }
+                if (status == 15)
+                {
+                   
                 }
 
             });

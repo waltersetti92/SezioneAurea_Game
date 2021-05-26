@@ -26,7 +26,6 @@ namespace Sezione_Aureawe
         private Main mn;
         public string save_status;
         private static System.Timers.Timer aTimer;
-        public string UDA_index1;
         public int counter_timer;
         public Business_Logic(Main form)
         {
@@ -46,8 +45,7 @@ namespace Sezione_Aureawe
                 if (counter_timer == 0) // salvo lo stato dell'UDA al tempo t=0 e la prima volta che cambia
                 {
                     save_status = uda_status;
-                    mn.Status_Changed(uda_status);
-                    
+                    mn.Status_Changed(uda_status);                   
                     mn.activity_form = uda_status;
                     mn.onstart_form = uda_status;
                     string put_server = Url_Put(uda_status); // creo la stringa per il put al server che notifica il cambio di stato dell'UDA
@@ -61,12 +59,10 @@ namespace Sezione_Aureawe
                         counter_timer = 0;
                         int status = int.Parse(uda_status);
                         mn.Status_Changed(uda_status);
-
                         mn.activity_form = uda_status;
                         mn.onstart_form = uda_status;
                         string put_server = Url_Put(uda_status);
                         await uda_server_communication.Server_Request(put_server);
-
                     }
                 }
             }

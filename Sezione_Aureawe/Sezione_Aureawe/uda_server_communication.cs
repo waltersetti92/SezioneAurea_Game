@@ -36,11 +36,26 @@ namespace Sezione_Aureawe
                     var result = await reader.ReadToEndAsync();
                     JObject json_parsed = JObject.Parse(result);
                     string current_status = (string)json_parsed["status"];
-                    //string current_status_k= (string)json_parsed["k"];
-                   // if (String.Equals(current_status, "6"))
                         return current_status;
-                   // else
-                        //return current_status_k;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Error", ex);
+            }
+        }
+        public async static Task<string> Server_Request_datasent(string url)
+        {
+            try
+            {
+                WebRequest server = HttpWebRequest.Create(url);
+                var response = server.GetResponse();
+                using (var reader = new StreamReader(response.GetResponseStream()))
+                {
+                    var result = await reader.ReadToEndAsync();
+                    JObject json_parsed = JObject.Parse(result);
+                    string current_status = (string)json_parsed["data"];
+                    return current_status;
                 }
             }
             catch (Exception ex)

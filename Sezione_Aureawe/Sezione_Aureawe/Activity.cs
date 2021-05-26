@@ -18,12 +18,18 @@ namespace Sezione_Aureawe
     {
         public Main parentForm { get; set; }
         public int trial = 0;
-        public int timeleft=6;
+        public int timeleft=10;
         public string k;
+        public string put_wait_data;
+        public string put_started;
+        public string get_status_uda;
         public Activity()
         {
+            put_wait_data = "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3&k=14";
+            put_started = "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3&k=7";
             InitializeComponent();
             resetOperations();
+            get_status_uda = "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/get/?i=3";
         }
         private void resetOperations()
         {
@@ -34,7 +40,6 @@ namespace Sezione_Aureawe
             pbTwo.Visible = false;
             timerLabel.Visible = false;
             Feedback.Visible = false;
-            //button1.Visible = false;
             btn_UNO.Enabled = true;
             btn_DUE.Enabled = true;
             btn_UNO.BackColor = Color.LightGray;
@@ -62,7 +67,6 @@ namespace Sezione_Aureawe
             Feedback.Text = "RISPOSTA CORRETTA";
             this.Update();
           
-
         }
         public void Wrong_Answer()
         {
@@ -99,19 +103,19 @@ namespace Sezione_Aureawe
         }
         public void Appear_Button()
         {
-            timerLabel.Text = "6";
+            timerLabel.Text = "10";
             timerLabel.Visible = true;
             this.Update();
             label1.Visible = true;
             this.Update();
-            btn_UNO.Visible = true;
+            //btn_UNO.Visible = true;
             this.Update();
-            btn_DUE.Visible = true;
+            //btn_DUE.Visible = true;
             timer1.Start();
             this.Update();
 
         }
-        public void Images_Sounds(string a,string b, string c, string d)
+        public async void Images_Sounds(string a,string b, string c, string d)
         {
             pbOne.WaitOnLoad = true;
             pbOne.ImageLocation = Main.resourcesPath + "\\" + a + ".png";
@@ -125,7 +129,7 @@ namespace Sezione_Aureawe
             this.Update();
             parentForm.playbackResourceAudio(d);
             Thread.Sleep(2000);
-
+            await uda_server_communication.Server_Request(put_wait_data);
         }
         public void setOperationsIcons(int i)
         {
@@ -163,50 +167,50 @@ namespace Sezione_Aureawe
 
         private void btn_UNO_Click(object sender, EventArgs e)
         {
-            timer1.Stop();
-            timerLabel.Visible = false;
-            if (trial == 1 || trial==4 || trial==5)
-            {
-                Correct_Answer();
-                Thread.Sleep(4000);
-                while (true)
-                {
-                    k = parentForm.Status_Changed(parentForm.activity_form);
-                    int status = int.Parse(k);
-                    if (status != 8)
-                    {
-                        parentForm.step++;
-                        this.Hide();
-                        timeleft = 6;
-                        parentForm.onStart(parentForm.onstart_form);
-                        break;
-                    }
-                }
+            //timer1.Stop();
+            //timerLabel.Visible = false;
+            //if (trial == 1 || trial==4 || trial==5)
+            //{
+            //    Correct_Answer();
+            //    Thread.Sleep(4000);
+            //    while (true)
+            //    {
+            //        k = parentForm.Status_Changed(parentForm.activity_form);
+            //        int status = int.Parse(k);
+            //        if (status != 8)
+            //        {
+            //            parentForm.step++;
+            //            this.Hide();
+            //            timeleft = 6;
+            //            parentForm.onStart(parentForm.onstart_form);
+            //            break;
+            //        }
+            //    }
 
 
-            }
-            else if (trial == 2 || trial==3)
-            {
-                Wrong_Answer();
-                Thread.Sleep(4000);
-                while (true)
-                {
-                    k = parentForm.Status_Changed(parentForm.activity_form);
-                    int status = int.Parse(k);
-                    if (status != 8)
-                    {
-                        parentForm.step++;
-                        this.Hide();
-                        timeleft = 6;
-                        parentForm.onStart(parentForm.onstart_form);
-                        break;
-                    }
-                }
+            //}
+            //else if (trial == 2 || trial==3)
+            //{
+            //    Wrong_Answer();
+            //    Thread.Sleep(4000);
+            //    while (true)
+            //    {
+            //        k = parentForm.Status_Changed(parentForm.activity_form);
+            //        int status = int.Parse(k);
+            //        if (status != 8)
+            //        {
+            //            parentForm.step++;
+            //            this.Hide();
+            //            timeleft = 6;
+            //            parentForm.onStart(parentForm.onstart_form);
+            //            break;
+            //        }
+            //    }
                
-            }
+            //}
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private async void timer1_Tick(object sender, EventArgs e)
         {
             if (timeleft > 0)
             {
@@ -219,6 +223,64 @@ namespace Sezione_Aureawe
                     {
                         timeleft = timeleft - 1;
                         timerLabel.Text = timeleft.ToString();
+                        while(true){
+                            if (status == 15)
+                            {
+                                string data = await uda_server_communication.Server_Request_datasent(get_status_uda);
+                                timer1.Stop();
+                                timerLabel.Visible = false;
+                                if (trial == 1 || trial == 4 || trial == 5)
+                                {
+                                    if (String.Equals(data, "1"))
+                                    {
+                                        Correct_Answer();
+                                        Thread.Sleep(4000);
+                                        await uda_server_communication.Server_Request(put_started);
+                                        parentForm.step++;
+                                        this.Hide();
+                                        timeleft = 10;
+                                        parentForm.onStart(parentForm.onstart_form);
+                                    }
+                                    else 
+                                    {
+                                        Wrong_Answer();
+                                        Thread.Sleep(4000);
+                                        await uda_server_communication.Server_Request(put_started);
+                                        parentForm.step++;
+                                        this.Hide();
+                                        timeleft = 10;
+                                        parentForm.onStart(parentForm.onstart_form);
+                                    }
+
+                                }
+                                else if (trial == 2 || trial == 3)
+                                {
+                                    if (String.Equals(data, "2"))
+                                    {
+                                        Correct_Answer();
+                                        Thread.Sleep(4000);
+                                        await uda_server_communication.Server_Request(put_started);
+                                        parentForm.step++;
+                                        this.Hide();
+                                        timeleft = 10;
+                                        parentForm.onStart(parentForm.onstart_form);
+                                    }
+                                    else 
+                                    {
+                                        Wrong_Answer();
+                                        Thread.Sleep(4000);
+                                        await uda_server_communication.Server_Request(put_started);
+                                        parentForm.step++;
+                                        this.Hide();
+                                        timeleft = 10;
+                                        parentForm.onStart(parentForm.onstart_form);
+                                    }
+                                }
+
+                               }
+                        
+                            break;
+                        }
                         break;
                     }
                 }
@@ -246,8 +308,9 @@ namespace Sezione_Aureawe
                     {
                         parentForm.step++;
                         this.Hide();
-                        timeleft = 6;
+                        timeleft = 10;
                         parentForm.onStart(parentForm.onstart_form);
+                        await uda_server_communication.Server_Request(put_started);
                         break;
                     }
                 }
@@ -259,54 +322,54 @@ namespace Sezione_Aureawe
 
         private void btn_DUE_Click(object sender, EventArgs e)
         {
-            timer1.Stop();
-            timerLabel.Visible = false;
-            if (trial == 1 || trial==4 || trial==5)
-            {
-                Wrong_Answer();
-                Thread.Sleep(4000);
-                while (true)
-                {
-                    k = parentForm.Status_Changed(parentForm.activity_form);
-                    int status = int.Parse(k);
-                    if (status != 8)
-                    {
-                        parentForm.step++;
-                        this.Hide();
-                        timeleft = 6;
-                        parentForm.onStart(parentForm.onstart_form);
-                        break;
-                    }
-                }
-            }
-            else if (trial==2 || trial==3)
-            {
-                Correct_Answer();
-                Thread.Sleep(4000);
-                while (true)
-                {
-                    k = parentForm.Status_Changed(parentForm.activity_form);
-                    int status = int.Parse(k);
-                    if (status != 8)
-                    {
-                        parentForm.step++;
-                        this.Hide();
-                        timeleft = 6;
-                        parentForm.onStart(parentForm.onstart_form);
-                        break;
-                    }
-                }
-            }
+            //timer1.Stop();
+            //timerLabel.Visible = false;
+            //if (trial == 1 || trial==4 || trial==5)
+            //{
+            //    Wrong_Answer();
+            //    Thread.Sleep(4000);
+            //    while (true)
+            //    {
+            //        k = parentForm.Status_Changed(parentForm.activity_form);
+            //        int status = int.Parse(k);
+            //        if (status != 8)
+            //        {
+            //            parentForm.step++;
+            //            this.Hide();
+            //            timeleft = 6;
+            //            parentForm.onStart(parentForm.onstart_form);
+            //            break;
+            //        }
+            //    }
+            //}
+            //else if (trial==2 || trial==3)
+            //{
+            //    Correct_Answer();
+            //    Thread.Sleep(4000);
+            //    while (true)
+            //    {
+            //        k = parentForm.Status_Changed(parentForm.activity_form);
+            //        int status = int.Parse(k);
+            //        if (status != 8)
+            //        {
+            //            parentForm.step++;
+            //            this.Hide();
+            //            timeleft = 6;
+            //            parentForm.onStart(parentForm.onstart_form);
+            //            break;
+            //        }
+            //    }
+            //}
             //button1.Visible = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             
-            parentForm.step++;
-            this.Hide();
-            timeleft = 6;
-            parentForm.onStart(parentForm.onstart_form);
+            //parentForm.step++;
+            //this.Hide();
+            //timeleft = 6;
+            //parentForm.onStart(parentForm.onstart_form);
         }
     }
 }
