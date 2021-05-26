@@ -42,8 +42,8 @@ namespace Sezione_Aureawe
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Visible = false;
-            parentForm.onStart();
+            //this.Visible = false;
+            //parentForm.onStart();
         }
     }
 }

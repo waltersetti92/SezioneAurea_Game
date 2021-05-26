@@ -15,6 +15,7 @@ namespace Sezione_Aureawe
     {
         public Main parentForm { get; set; }
         public bool pause_val;
+        public string k;
         public Interaction()
         {
             InitializeComponent();
@@ -219,6 +220,16 @@ namespace Sezione_Aureawe
                     this.Update();
                     star1.Visible = true;
                     this.Update();
+                    while (true)
+                    {
+                        k = parentForm.Status_Changed(parentForm.activity_form);
+                        int status = int.Parse(k);
+                        if (status != 8)
+                        {
+                            parentForm.activity(parentForm.activity_form);
+                            break;
+                        }
+                    }
                     //gioca_btn.Visible = true;
                     //this.Update();
                     //gioca_btn.Visible = true;

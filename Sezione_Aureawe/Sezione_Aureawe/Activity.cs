@@ -13,11 +13,13 @@ using System.IO;
 
 namespace Sezione_Aureawe
 {
+    
     public partial class Activity : UserControl
     {
         public Main parentForm { get; set; }
         public int trial = 0;
         public int timeleft=6;
+        public string k;
         public Activity()
         {
             InitializeComponent();
@@ -32,7 +34,7 @@ namespace Sezione_Aureawe
             pbTwo.Visible = false;
             timerLabel.Visible = false;
             Feedback.Visible = false;
-            button1.Visible = false;
+            //button1.Visible = false;
             btn_UNO.Enabled = true;
             btn_DUE.Enabled = true;
             btn_UNO.BackColor = Color.LightGray;
@@ -58,6 +60,9 @@ namespace Sezione_Aureawe
             btn_UNO.Enabled = false;
             btn_UNO.BackColor = Color.Green;
             Feedback.Text = "RISPOSTA CORRETTA";
+            this.Update();
+          
+
         }
         public void Wrong_Answer()
         {
@@ -71,6 +76,9 @@ namespace Sezione_Aureawe
             btn_UNO.Enabled = false;
             btn_UNO.BackColor = Color.Red;
             Feedback.Text = "RISPOSTA SBAGLIATA";
+            this.Update();
+            
+
 
         }
         public void Out_of_time()
@@ -160,29 +168,89 @@ namespace Sezione_Aureawe
             if (trial == 1 || trial==4 || trial==5)
             {
                 Correct_Answer();
+                Thread.Sleep(4000);
+                while (true)
+                {
+                    k = parentForm.Status_Changed(parentForm.activity_form);
+                    int status = int.Parse(k);
+                    if (status != 8)
+                    {
+                        parentForm.step++;
+                        this.Hide();
+                        timeleft = 6;
+                        parentForm.onStart(parentForm.onstart_form);
+                        break;
+                    }
+                }
+
+
             }
             else if (trial == 2 || trial==3)
             {
                 Wrong_Answer();
+                Thread.Sleep(4000);
+                while (true)
+                {
+                    k = parentForm.Status_Changed(parentForm.activity_form);
+                    int status = int.Parse(k);
+                    if (status != 8)
+                    {
+                        parentForm.step++;
+                        this.Hide();
+                        timeleft = 6;
+                        parentForm.onStart(parentForm.onstart_form);
+                        break;
+                    }
+                }
+               
             }
-            button1.Visible = true;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             if (timeleft > 0)
             {
-                timeleft=timeleft -1;
-                timerLabel.Text = timeleft.ToString();
+  
+                while (true)
+                {
+                    k = parentForm.Status_Changed(parentForm.activity_form);
+                    int status = int.Parse(k);
+                    if (status != 8)
+                    {
+                        timeleft = timeleft - 1;
+                        timerLabel.Text = timeleft.ToString();
+                        break;
+                    }
+                }
+                
             }
             if (timeleft == 0)
             {
-                Out_of_time();    
-                if(trial==1 || trial==4 || trial==5)
-                Feedback.Text = "HAI FINITO IL TEMPO! L'IMMAGINE GIUSTA ERA LA UNO";
-                else if(trial==2||trial==3)
+                Out_of_time();
+                if (trial == 1 || trial == 4 || trial == 5) 
+                { 
+                    Feedback.Text = "HAI FINITO IL TEMPO! L'IMMAGINE GIUSTA ERA LA UNO";
+                this.Update();
+            }
+            else if (trial == 2 || trial == 3)
+            {
                 Feedback.Text = "HAI FINITO IL TEMPO! L'IMMAGINE GIUSTA ERA LA DUE";
-                button1.Visible = true;
+                this.Update();
+            }
+                Thread.Sleep(4000);
+                while (true)
+                {
+                    k = parentForm.Status_Changed(parentForm.activity_form);
+                    int status = int.Parse(k);
+                    if (status != 8)
+                    {
+                        parentForm.step++;
+                        this.Hide();
+                        timeleft = 6;
+                        parentForm.onStart(parentForm.onstart_form);
+                        break;
+                    }
+                }
             }
            
             
@@ -196,12 +264,40 @@ namespace Sezione_Aureawe
             if (trial == 1 || trial==4 || trial==5)
             {
                 Wrong_Answer();
+                Thread.Sleep(4000);
+                while (true)
+                {
+                    k = parentForm.Status_Changed(parentForm.activity_form);
+                    int status = int.Parse(k);
+                    if (status != 8)
+                    {
+                        parentForm.step++;
+                        this.Hide();
+                        timeleft = 6;
+                        parentForm.onStart(parentForm.onstart_form);
+                        break;
+                    }
+                }
             }
             else if (trial==2 || trial==3)
             {
                 Correct_Answer();
+                Thread.Sleep(4000);
+                while (true)
+                {
+                    k = parentForm.Status_Changed(parentForm.activity_form);
+                    int status = int.Parse(k);
+                    if (status != 8)
+                    {
+                        parentForm.step++;
+                        this.Hide();
+                        timeleft = 6;
+                        parentForm.onStart(parentForm.onstart_form);
+                        break;
+                    }
+                }
             }
-            button1.Visible = true;
+            //button1.Visible = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -210,9 +306,7 @@ namespace Sezione_Aureawe
             parentForm.step++;
             this.Hide();
             timeleft = 6;
-            parentForm.onStart();
-
-
+            parentForm.onStart(parentForm.onstart_form);
         }
     }
 }

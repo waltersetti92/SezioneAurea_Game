@@ -16,6 +16,8 @@ namespace Sezione_Aureawe
         private UserControl currUC = null;
         public int step;
         public string activity_form;
+        public string onstart_form;
+        public int interaction_sequences = 0;
         public SoundPlayer player = null;
         public  ManualResetEvent resetEvent = new ManualResetEvent(true);
         public bool ShouldPause=true;
@@ -37,23 +39,22 @@ namespace Sezione_Aureawe
            
 
         }
-        public void Status_Changed(string k)
+        public string Status_Changed(string k)
         {
             this.BeginInvoke((Action)delegate ()
             {
                 int status = int.Parse(k);
                 if (status == 6) 
                 {
-                    onStart();
+                    onStart(onstart_form);
                 }
                 if (status == 8)
                 {
-                    ShouldPause = false;
+    
 
                 }
-                if (status == 9)
+                if (status == 10)
                 {
-                  
 
                 }
                 if (status == 11)
@@ -68,6 +69,7 @@ namespace Sezione_Aureawe
                 }
 
             });
+            return k;
         }
 
         public void home()
@@ -76,30 +78,34 @@ namespace Sezione_Aureawe
             initial1.Show();
             currUC = initial1;
         }
-        public void onStart()
+        public int onStart(string k)
         {
+            int status = int.Parse(k);
             initial1.Visible = false;
             interaction1.Visible = true;
             interaction1.pause_val = ShouldPause;
             currUC = interaction1;
-            while (ShouldPause) { 
-                interaction1.Start_Sequences();
-            break;
-            }
-            activity(activity_form);
+            interaction1.Start_Sequences();
+            interaction_sequences = 1;
+            return interaction_sequences;
+            //while (true) {
+                //if (status != 8)
+                //{
+                   // interaction1.Start_Sequences();
+                   // break;
+                //}
+           // }        
         }
         public void activity(string k)
-
         {
             int status = int.Parse(k);
-            if (status!=8) { 
-            Thread.Sleep(4000);
-            interaction1.Visible = false;
-            activity1.Visible = true;
-            activity1.trial++;
-            activity1.setOperationsIcons(activity1.trial);
-            currUC = activity1;
-            }
+
+                    Thread.Sleep(3000);
+                    interaction1.Visible = false;
+                    activity1.Visible = true;
+                    activity1.trial++;
+                    activity1.setOperationsIcons(activity1.trial);
+                    currUC = activity1;
         }
         public void playbackResourceAudio(string audioname)
         {
