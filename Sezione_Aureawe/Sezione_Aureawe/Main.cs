@@ -18,6 +18,7 @@ namespace Sezione_Aureawe
         public string get_data_uda;
         public string activity_form;
         public string onstart_form;
+        public string started_uda;
         public int interaction_sequences = 0;
         public SoundPlayer player = null;
         public  ManualResetEvent resetEvent = new ManualResetEvent(true);
@@ -26,6 +27,7 @@ namespace Sezione_Aureawe
         public Main()
         {
             step = 1;
+            started_uda = "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3&k=7";
             get_data_uda = "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/get/?i=3";  // url per ottenere lo stato dell'UDA  
             Business_Logic BL = new Business_Logic(this);
             InitializeComponent();
@@ -67,8 +69,12 @@ namespace Sezione_Aureawe
                 }
                 if (status == 13)
                 {
-                    Application.Restart();
-                    home();
+             
+                    activity1.trial = 0;
+                    activity1.timeleft = 10;
+                    step = 1;
+                    onStart(onstart_form);
+
                 }
                 if (status == 15)
                 {
@@ -79,6 +85,11 @@ namespace Sezione_Aureawe
             return k;
         }
 
+        public async void Restart_UDA()
+        {
+           await uda_server_communication.Server_Request(started_uda);
+        }
+
         public void home()
         {
             if (currUC != null) currUC.Visible = false;
@@ -87,7 +98,6 @@ namespace Sezione_Aureawe
         }
         public int onStart(string k)
         {
-            int status = int.Parse(k);
             initial1.Visible = false;
             interaction1.Visible = true;
             interaction1.pause_val = ShouldPause;
@@ -98,9 +108,7 @@ namespace Sezione_Aureawe
         }
         public void activity(string k)
         {
-            int status = int.Parse(k);
-
-                    Thread.Sleep(3000);
+            Thread.Sleep(2000);
                     interaction1.Visible = false;
                     activity1.Visible = true;
                     activity1.trial++;

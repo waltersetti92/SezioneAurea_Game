@@ -28,6 +28,7 @@ namespace Sezione_Aureawe
             put_wait_data = "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3&k=14";
             put_started = "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3&k=7";
             InitializeComponent();
+            timeleft = 10;
             resetOperations();
             get_status_uda = "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/get/?i=3";
         }
@@ -69,7 +70,6 @@ namespace Sezione_Aureawe
         }
         public void Wrong_Answer()
         {
-
             parentForm.playbackResourceAudio("failure");
             Feedback.ForeColor = Color.Red;
             Feedback.Visible = true;
@@ -80,14 +80,9 @@ namespace Sezione_Aureawe
             btn_UNO.BackColor = Color.Red;
             Feedback.Text = "RISPOSTA SBAGLIATA";
             this.Update();
-            
-
-
         }
         public void Out_of_time()
         {
-
-
             btn_UNO.Enabled = false;
             btn_DUE.Enabled = false;
             timer1.Stop();
@@ -98,7 +93,6 @@ namespace Sezione_Aureawe
             btn_UNO.BackColor = Color.Red;
             this.Feedback.Location = new Point(171, 518);
             Feedback.Visible = true;
-
         }
         public void Appear_Button()
         {
@@ -109,7 +103,6 @@ namespace Sezione_Aureawe
             this.Update();
             timer1.Start();
             this.Update();
-
         }
         public async void Images_Sounds(string a,string b, string c, string d)
         {
@@ -142,20 +135,10 @@ namespace Sezione_Aureawe
                     Thread.Sleep(2000);
                     break;
                 }
-            }
-          
-            while (true)
-            {
-                k = parentForm.Status_Changed(parentForm.activity_form);
-                int status = int.Parse(k);
-                if (status != 9)
-                {
+            }         
                     await uda_server_communication.Server_Request(put_wait_data);
-                    break;
-                }
-               
-            }
-           
+                    Thread.Sleep(1000);
+                         
         }
         public void setOperationsIcons(int i)
         {
@@ -186,8 +169,9 @@ namespace Sezione_Aureawe
         
         private void Activity_Load(object sender, EventArgs e)
         {
-            timer1.Enabled = true;
             timer1.Stop();
+            timer1.Enabled = true;
+         
                    
         }
 
@@ -199,11 +183,11 @@ namespace Sezione_Aureawe
         {
             if (timeleft > 0)
             {
-  
                 while (true)
                 {
                     k = parentForm.Status_Changed(parentForm.activity_form);
                     int status = int.Parse(k);
+                   
                     if (status != 9)
                     {
                         timeleft = timeleft - 1;
@@ -264,6 +248,13 @@ namespace Sezione_Aureawe
 
                                }
                         
+                            break;
+                        }
+                        if (status == 13)
+
+                        {
+                            timer1.Stop();
+                            timeleft = 10;
                             break;
                         }
                         break;
