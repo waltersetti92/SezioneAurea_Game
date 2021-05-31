@@ -140,6 +140,7 @@ namespace Sezione_Aureawe
             }
             Thread.Sleep(3000);
             await uda_server_communication.Server_Request(put_wait_data);
+            Thread.Sleep(900);
  
         }
         public void setOperationsIcons(int i)
