@@ -13,12 +13,12 @@ using System.IO;
 
 namespace Sezione_Aureawe
 {
-    
+
     public partial class Activity : UserControl
     {
         public Main parentForm { get; set; }
         public int trial = 0;
-        public int timeleft=10;
+        public int timeleft = 10;
         public string k;
         public string put_wait_data;
         public string put_started;
@@ -66,7 +66,7 @@ namespace Sezione_Aureawe
             btn_UNO.Enabled = false;
             btn_UNO.BackColor = Color.Green;
             Feedback.Text = "RISPOSTA CORRETTA";
-            this.Update();        
+            this.Update();
         }
         public void Wrong_Answer()
         {
@@ -104,7 +104,7 @@ namespace Sezione_Aureawe
             timer1.Start();
             this.Update();
         }
-        public async void Images_Sounds(string a,string b, string c, string d)
+        public async void Images_Sounds(string a, string b, string c, string d)
         {
             while (true)
             {
@@ -135,22 +135,22 @@ namespace Sezione_Aureawe
                     Thread.Sleep(2000);
                     break;
                 }
-            }         
-                    await uda_server_communication.Server_Request(put_wait_data);
-                    Thread.Sleep(1000);
-                         
+            }
+            await uda_server_communication.Server_Request(put_wait_data);
+            Thread.Sleep(1000);
+
         }
         public void setOperationsIcons(int i)
         {
             resetOperations();
-          
+
             if (i == 1)
             {
-                Images_Sounds("TeoremaPitagora","circle","Suono3_True","Suono3_False");                            
+                Images_Sounds("TeoremaPitagora", "circle", "Suono3_True", "Suono3_False");
             }
-            else if (i==2)
+            else if (i == 2)
             {
-                Images_Sounds("numberlines", "fibonacci", "Suono4_False", "Suono4_True");            
+                Images_Sounds("numberlines", "fibonacci", "Suono4_False", "Suono4_True");
             }
             else if (i == 3)
             {
@@ -164,15 +164,15 @@ namespace Sezione_Aureawe
             {
                 Images_Sounds("seahorse", "semaforo", "Suono7_True", "Suono7_False");
             }
-            Appear_Button();           
+            Appear_Button();
         }
-        
+
         private void Activity_Load(object sender, EventArgs e)
         {
             timer1.Stop();
             timer1.Enabled = true;
-         
-                   
+
+
         }
 
         private void btn_UNO_Click(object sender, EventArgs e)
@@ -187,12 +187,13 @@ namespace Sezione_Aureawe
                 {
                     k = parentForm.Status_Changed(parentForm.activity_form);
                     int status = int.Parse(k);
-                   
+
                     if (status != 9)
                     {
                         timeleft = timeleft - 1;
                         timerLabel.Text = timeleft.ToString();
-                        while(true){
+                        while (true)
+                        {
                             if (status == 15)
                             {
                                 string data = await uda_server_communication.Server_Request_datasent(get_status_uda);
@@ -210,7 +211,7 @@ namespace Sezione_Aureawe
                                         timeleft = 10;
                                         parentForm.onStart(parentForm.onstart_form);
                                     }
-                                    else 
+                                    else
                                     {
                                         Wrong_Answer();
                                         Thread.Sleep(4000);
@@ -234,7 +235,7 @@ namespace Sezione_Aureawe
                                         timeleft = 10;
                                         parentForm.onStart(parentForm.onstart_form);
                                     }
-                                    else 
+                                    else
                                     {
                                         Wrong_Answer();
                                         Thread.Sleep(4000);
@@ -246,8 +247,8 @@ namespace Sezione_Aureawe
                                     }
                                 }
 
-                               }
-                        
+                            }
+
                             break;
                         }
                         if (status == 13)
@@ -260,21 +261,21 @@ namespace Sezione_Aureawe
                         break;
                     }
                 }
-                
+
             }
             if (timeleft == 0)
             {
                 Out_of_time();
-                if (trial == 1 || trial == 4 || trial == 5) 
-                { 
+                if (trial == 1 || trial == 4 || trial == 5)
+                {
                     Feedback.Text = "HAI FINITO IL TEMPO! L'IMMAGINE GIUSTA ERA LA UNO";
-                this.Update();
-            }
-            else if (trial == 2 || trial == 3)
-            {
-                Feedback.Text = "HAI FINITO IL TEMPO! L'IMMAGINE GIUSTA ERA LA DUE";
-                this.Update();
-            }
+                    this.Update();
+                }
+                else if (trial == 2 || trial == 3)
+                {
+                    Feedback.Text = "HAI FINITO IL TEMPO! L'IMMAGINE GIUSTA ERA LA DUE";
+                    this.Update();
+                }
                 Thread.Sleep(4000);
                 while (true)
                 {
@@ -291,10 +292,11 @@ namespace Sezione_Aureawe
                     }
                 }
             }
-           
-            
-           
+
+
+
         }
+
 
         private void btn_DUE_Click(object sender, EventArgs e)
         {

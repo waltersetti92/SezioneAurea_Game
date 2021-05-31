@@ -23,10 +23,12 @@ namespace Sezione_Aureawe
 {
     class Business_Logic
     {
-        private Main mn;
+        public Main mn;
+        public Interaction ac;
         public string save_status;
         private static System.Timers.Timer aTimer;
         public int counter_timer;
+        public string new_status;
         public Business_Logic(Main form)
         {
             mn = form;
@@ -45,12 +47,13 @@ namespace Sezione_Aureawe
                 if (counter_timer == 0) // salvo lo stato dell'UDA al tempo t=0 e la prima volta che cambia
                 {
                     save_status = uda_status;
-                    mn.Status_Changed(uda_status);                   
+                    mn.Status_Changed(uda_status);
                     mn.activity_form = uda_status;
                     mn.onstart_form = uda_status;
                     string put_server = Url_Put(uda_status); // creo la stringa per il put al server che notifica il cambio di stato dell'UDA
                     await uda_server_communication.Server_Request(put_server); // qui mando al server il comando di put per cambiare il suo stato                  
                     counter_timer++;
+              
                 }
                 else //verifico che lo stato corrente sia diverso dallo stato salvato
                 {
@@ -59,8 +62,8 @@ namespace Sezione_Aureawe
                         counter_timer = 0;
                         int status = int.Parse(uda_status);
                         mn.Status_Changed(uda_status);
-
                         mn.activity_form = uda_status;
+                        new_status = uda_status;
                         mn.onstart_form = uda_status;
                         string put_server = Url_Put(uda_status);
                         await uda_server_communication.Server_Request(put_server);

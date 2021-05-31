@@ -63,24 +63,24 @@ namespace Sezione_Aureawe
             //    int status = int.Parse(k);
             //    if (status != 9)
             //    {
-                    star1.Visible = false;
-                    this.Update();
-                    star2.Visible = false;
-                    this.Update();
-                    star2.Visible = true;
-                    this.Update();
-                    parentForm.playbackResourceAudio("Suono1_True");
-                    Thread.Sleep(3200);
-                    star2.Visible = false;
-                    this.Update();
-                    star1.Visible = true;
-                    this.Update();
-                    parentForm.playbackResourceAudio("Suono2_True");
-                    Thread.Sleep(3200);
+            star1.Visible = false;
+            this.Update();
+            star2.Visible = false;
+            this.Update();
+            star2.Visible = true;
+            this.Update();
+            parentForm.playbackResourceAudio("Suono1_True");
+            Thread.Sleep(3200);
+            star2.Visible = false;
+            this.Update();
+            star1.Visible = true;
+            this.Update();
+            parentForm.playbackResourceAudio("Suono2_True");
+            Thread.Sleep(3200);
             //        break;
             //    }
             //}
-                          
+
         }
 
         private void Interaction_Load(object sender, EventArgs e)
@@ -146,7 +146,7 @@ namespace Sezione_Aureawe
             this.Update();
             parentForm.playbackResourceAudio("Suono2_True");
             Thread.Sleep(3000);
-            pezzo1.Visible=true;
+            pezzo1.Visible = true;
             star3.Visible = true;
             this.Update();
             parentForm.playbackResourceAudio("Suono3_True");
@@ -176,37 +176,15 @@ namespace Sezione_Aureawe
             await uda_server_communication.Server_Request(completed);
         }
 
-        public void Start_Sequences() {
+        public void Start_Sequences()
+        {
             while (pause_val)
             {
                 resetOperations();
                 this.Update();
                 if (parentForm.step == 1)
                 {
-                    //while (true)
-                    //{
-                    //    k = parentForm.Status_Changed(parentForm.onstart_form);
-                    //    int status = int.Parse(k);
-                    //    if (status != 9)
-                    //    {
-                    //star1.Visible = false;
-                    //this.Update();
-                    //star2.Visible = false;
-                    //this.Update();
-                    //star2.Visible = true;
-                    //this.Update();
-                    //parentForm.playbackResourceAudio("Suono1_True");
-                    //Thread.Sleep(3200);
-                    //star2.Visible = false;
-                    //this.Update();
-                    //star1.Visible = true;
-                    //this.Update();
-                    //parentForm.playbackResourceAudio("Suono2_True");
-                    //Thread.Sleep(3200);
-                    //        break;
-                    //    }
-                    //}
-                   First_Sequence();
+                    First_Sequence();
                     while (true)
                     {
                         k = parentForm.Status_Changed(parentForm.activity_form);
@@ -233,14 +211,11 @@ namespace Sezione_Aureawe
                         }
                     }
 
-                    //parentForm.activity();
 
                 }
                 else if (parentForm.step == 3)
                 {
                     Sequence_2();
-                    star3.Visible = true;
-                    this.Update();
                     while (true)
                     {
                         k = parentForm.Status_Changed(parentForm.activity_form);
@@ -257,10 +232,6 @@ namespace Sezione_Aureawe
                 else if (parentForm.step == 4)
                 {
                     Sequence_3();
-                    star3.Visible = true;
-                    this.Update();
-                    star4.Visible = true;
-                    this.Update();
                     while (true)
                     {
                         k = parentForm.Status_Changed(parentForm.activity_form);
@@ -276,12 +247,12 @@ namespace Sezione_Aureawe
                 else if (parentForm.step == 5)
                 {
                     Sequence_4();
-                    star3.Visible = true;
-                    this.Update();
-                    star4.Visible = true;
-                    this.Update();
-                    star5.Visible = true;
-                    this.Update();
+                    //star3.Visible = true;
+                    //this.Update();
+                    //star4.Visible = true;
+                    //this.Update();
+                    //star5.Visible = true;
+                    //this.Update();
                     while (true)
                     {
                         k = parentForm.Status_Changed(parentForm.activity_form);
@@ -302,17 +273,17 @@ namespace Sezione_Aureawe
 
                 if (parentForm.step < 6)
                 {
-                    star2.Visible = true;
-                    this.Update();
-                    star1.Visible = true;
-                    this.Update();
-                   
+                    //star2.Visible = true;
+                    //this.Update();
+                    //star1.Visible = true;
+                    //this.Update();
+                    //Thread.Sleep(2000);
+
                 }
                 break;
             }
 
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             

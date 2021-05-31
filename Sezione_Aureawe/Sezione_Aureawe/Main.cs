@@ -21,8 +21,8 @@ namespace Sezione_Aureawe
         public string started_uda;
         public int interaction_sequences = 0;
         public SoundPlayer player = null;
-        public  ManualResetEvent resetEvent = new ManualResetEvent(true);
-        public bool ShouldPause=true;
+        public ManualResetEvent resetEvent = new ManualResetEvent(true);
+        public bool ShouldPause = true;
 
         public Main()
         {
@@ -40,7 +40,7 @@ namespace Sezione_Aureawe
             home();
             BackgroundImageLayout = ImageLayout.Stretch;
             BackgroundImage = Image.FromFile(resourcesPath + "\\" + background_image);
-           
+
 
         }
         public string Status_Changed(string k)
@@ -48,13 +48,13 @@ namespace Sezione_Aureawe
             this.BeginInvoke((Action)delegate ()
             {
                 int status = int.Parse(k);
-                if (status == 6) 
+                if (status == 6)
                 {
                     onStart(onstart_form);
                 }
                 if (status == 8)
                 {
-    
+
 
                 }
                 if (status == 9)
@@ -65,11 +65,11 @@ namespace Sezione_Aureawe
                 if (status == 11)
                 {
                     Application.Exit();
-                    
+
                 }
                 if (status == 13)
                 {
-             
+
                     activity1.trial = 0;
                     activity1.timeleft = 10;
                     step = 1;
@@ -78,7 +78,7 @@ namespace Sezione_Aureawe
                 }
                 if (status == 15)
                 {
-                   
+
                 }
 
             });
@@ -87,7 +87,7 @@ namespace Sezione_Aureawe
 
         public async void Restart_UDA()
         {
-           await uda_server_communication.Server_Request(started_uda);
+            await uda_server_communication.Server_Request(started_uda);
         }
 
         public void home()
@@ -104,16 +104,16 @@ namespace Sezione_Aureawe
             currUC = interaction1;
             interaction1.Start_Sequences();
             interaction_sequences = 1;
-            return interaction_sequences;      
+            return interaction_sequences;
         }
         public void activity(string k)
         {
             Thread.Sleep(2000);
-                    interaction1.Visible = false;
-                    activity1.Visible = true;
-                    activity1.trial++;
-                    activity1.setOperationsIcons(activity1.trial);
-                    currUC = activity1;
+            interaction1.Visible = false;
+            activity1.Visible = true;
+            activity1.trial++;
+            activity1.setOperationsIcons(activity1.trial);
+            currUC = activity1;
         }
         public void playbackResourceAudio(string audioname)
         {
@@ -125,7 +125,7 @@ namespace Sezione_Aureawe
 
         private void Main_Load(object sender, EventArgs e)
         {
-            Size size = this.Size; 
+            Size size = this.Size;
             initial1.setPos(size.Width, size.Height);
             interaction1.setPos(size.Width, size.Height);
             activity1.setPos(size.Width, size.Height);
