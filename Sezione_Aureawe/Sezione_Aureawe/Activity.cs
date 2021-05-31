@@ -139,7 +139,16 @@ namespace Sezione_Aureawe
                 }
             }
             Thread.Sleep(3000);
-            await uda_server_communication.Server_Request(put_wait_data);
+            while (true)
+            {
+                k = parentForm.Status_Changed(parentForm.activity_form);
+                int status1 = int.Parse(k);
+                if (status1 == 7 || status1 == 10)
+                {
+                    await uda_server_communication.Server_Request(put_wait_data);
+                    break;
+                }
+            }
             Thread.Sleep(900);
  
         }
@@ -190,9 +199,10 @@ namespace Sezione_Aureawe
                 {
                     k= parentForm.Status_Changed(parentForm.activity_form);
                     int status = int.Parse(k);
-                    if (status!=9 && status!=8)
-                    {                      
+                    if (status!=9 && status!=8 && status!=15)
+                    {
                         timeleft = timeleft - 1;
+                        Thread.Sleep(300);
                         timerLabel.Text = timeleft.ToString();
                         while (true)
                         {
