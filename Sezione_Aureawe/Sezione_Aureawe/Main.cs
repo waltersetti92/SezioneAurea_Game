@@ -15,6 +15,7 @@ namespace Sezione_Aureawe
         private const string background_image = "galaxy.jpg";
         private UserControl currUC = null;
         public int step;
+        public string new_status;
         public string get_data_uda;
         public string activity_form;
         public string onstart_form;
@@ -50,7 +51,7 @@ namespace Sezione_Aureawe
                 int status = int.Parse(k);
                 if (status == 6)
                 {
-                    onStart(onstart_form);
+                    onStart(activity_form);
                 }
                 if (status == 8)
                 {
@@ -73,7 +74,7 @@ namespace Sezione_Aureawe
                     activity1.trial = 0;
                     activity1.timeleft = 10;
                     step = 1;
-                    onStart(onstart_form);
+                    onStart(activity_form);
 
                 }
                 if (status == 15)
@@ -96,19 +97,17 @@ namespace Sezione_Aureawe
             initial1.Show();
             currUC = initial1;
         }
-        public int onStart(string k)
+        public void onStart(string k)
         {
             initial1.Visible = false;
             interaction1.Visible = true;
             interaction1.pause_val = ShouldPause;
             currUC = interaction1;
             interaction1.Start_Sequences();
-            interaction_sequences = 1;
-            return interaction_sequences;
         }
         public void activity(string k)
         {
-            Thread.Sleep(2000);
+            Thread.Sleep(1500);
             interaction1.Visible = false;
             activity1.Visible = true;
             activity1.trial++;

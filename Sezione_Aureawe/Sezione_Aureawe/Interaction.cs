@@ -189,7 +189,7 @@ namespace Sezione_Aureawe
                     {
                         k = parentForm.Status_Changed(parentForm.activity_form);
                         int status = int.Parse(k);
-                        if (status != 9 && status != 13)
+                        if (status == 7 || status == 10)
                         {
                             parentForm.activity(parentForm.activity_form);
                             break;
@@ -204,7 +204,7 @@ namespace Sezione_Aureawe
                     {
                         k = parentForm.Status_Changed(parentForm.activity_form);
                         int status = int.Parse(k);
-                        if (status != 9 && status != 13)
+                        if (status == 7 || status == 10)
                         {
                             parentForm.activity(parentForm.activity_form);
                             break;
@@ -220,7 +220,7 @@ namespace Sezione_Aureawe
                     {
                         k = parentForm.Status_Changed(parentForm.activity_form);
                         int status = int.Parse(k);
-                        if (status != 9 && status != 13)
+                        if (status == 7 || status == 10)
                         {
                             parentForm.activity(parentForm.activity_form);
                             break;
@@ -236,7 +236,7 @@ namespace Sezione_Aureawe
                     {
                         k = parentForm.Status_Changed(parentForm.activity_form);
                         int status = int.Parse(k);
-                        if (status != 9 && status != 13)
+                        if (status == 7 || status == 10)
                         {
                             parentForm.activity(parentForm.activity_form);
                             break;
@@ -247,17 +247,12 @@ namespace Sezione_Aureawe
                 else if (parentForm.step == 5)
                 {
                     Sequence_4();
-                    //star3.Visible = true;
-                    //this.Update();
-                    //star4.Visible = true;
-                    //this.Update();
-                    //star5.Visible = true;
-                    //this.Update();
+
                     while (true)
                     {
                         k = parentForm.Status_Changed(parentForm.activity_form);
                         int status = int.Parse(k);
-                        if (status != 9 && status != 13)
+                        if (status == 7 || status == 10)
                         {
                             parentForm.activity(parentForm.activity_form);
                             break;
@@ -271,15 +266,6 @@ namespace Sezione_Aureawe
                     final_sequence();
                 }
 
-                if (parentForm.step < 6)
-                {
-                    //star2.Visible = true;
-                    //this.Update();
-                    //star1.Visible = true;
-                    //this.Update();
-                    //Thread.Sleep(2000);
-
-                }
                 break;
             }
 
