@@ -19,7 +19,6 @@ namespace Sezione_Aureawe
         public Main parentForm { get; set; }
         public int trial = 0;
         public int timeleft = 10;
-        public string stattus;
         public string k;
         public string put_wait_data;
         public string put_started;
@@ -111,7 +110,7 @@ namespace Sezione_Aureawe
             {
                 k = parentForm.Status_Changed(parentForm.activity_form);
                 int status = int.Parse(k);
-                if (status == 7 || status==10)
+                if (status != 9)
                 {
                     pbOne.WaitOnLoad = true;
                     pbOne.ImageLocation = Main.resourcesPath + "\\" + a + ".png";
@@ -122,12 +121,11 @@ namespace Sezione_Aureawe
                     break;
                 }
             }
-            Thread.Sleep(1100);
             while (true)
             {
                 k = parentForm.Status_Changed(parentForm.activity_form);
-                int status1 = int.Parse(k);
-                if (status1 == 7 || status1 ==10)
+                int status = int.Parse(k);
+                if (status != 9)
                 {
                     pbTwo.WaitOnLoad = true;
                     pbTwo.ImageLocation = Main.resourcesPath + "\\" + b + ".png";
@@ -138,19 +136,9 @@ namespace Sezione_Aureawe
                     break;
                 }
             }
-            Thread.Sleep(3000);
-            while (true)
-            {
-                k = parentForm.Status_Changed(parentForm.activity_form);
-                int status1 = int.Parse(k);
-                if (status1 == 7 || status1 == 10)
-                {
-                    await uda_server_communication.Server_Request(put_wait_data);
-                    break;
-                }
-            }
-            Thread.Sleep(900);
- 
+            await uda_server_communication.Server_Request(put_wait_data);
+            Thread.Sleep(1000);
+
         }
         public void setOperationsIcons(int i)
         {
@@ -197,25 +185,23 @@ namespace Sezione_Aureawe
             {
                 while (true)
                 {
-                    k= parentForm.Status_Changed(parentForm.activity_form);
+                    k = parentForm.Status_Changed(parentForm.activity_form);
                     int status = int.Parse(k);
-                    if (status!=9 && status!=8 && status!=15)
+
+                    if (status != 9)
                     {
                         timeleft = timeleft - 1;
-                        Thread.Sleep(300);
                         timerLabel.Text = timeleft.ToString();
                         while (true)
                         {
-                            k = parentForm.Status_Changed(parentForm.activity_form);
-                            int status1 = int.Parse(k);
-                            if (status1 == 15)
+                            if (status == 15)
                             {
                                 string data = await uda_server_communication.Server_Request_datasent(get_status_uda);
                                 timer1.Stop();
                                 timerLabel.Visible = false;
                                 if (trial == 1 || trial == 4 || trial == 5)
                                 {
-                                    if (data.Equals("1"))
+                                    if (String.Equals(data, "1"))
                                     {
                                         Correct_Answer();
                                         Thread.Sleep(4000);
@@ -239,7 +225,7 @@ namespace Sezione_Aureawe
                                 }
                                 else if (trial == 2 || trial == 3)
                                 {
-                                    if (data.Equals("2"))
+                                    if (String.Equals(data, "2"))
                                     {
                                         Correct_Answer();
                                         Thread.Sleep(4000);
@@ -265,13 +251,13 @@ namespace Sezione_Aureawe
 
                             break;
                         }
-                        //if (status == 13)
+                        if (status == 13)
 
-                        //{
-                        //    timer1.Stop();
-                        //    timeleft = 10;
-                        //    break;
-                        //}
+                        {
+                            timer1.Stop();
+                            timeleft = 10;
+                            break;
+                        }
                         break;
                     }
                 }
@@ -284,24 +270,26 @@ namespace Sezione_Aureawe
                 {
                     Feedback.Text = "HAI FINITO IL TEMPO! L'IMMAGINE GIUSTA ERA LA UNO";
                     this.Update();
+                    await uda_server_communication.Server_Request(put_started);
                 }
                 else if (trial == 2 || trial == 3)
                 {
                     Feedback.Text = "HAI FINITO IL TEMPO! L'IMMAGINE GIUSTA ERA LA DUE";
                     this.Update();
+                    await uda_server_communication.Server_Request(put_started);
                 }
                 Thread.Sleep(4000);
                 while (true)
                 {
                     k = parentForm.Status_Changed(parentForm.activity_form);
                     int status = int.Parse(k);
-                    if (status == 7 || status==10 || status==14)
+                    if (status ==7 || status==10)
                     {
                         parentForm.step++;
-                        await uda_server_communication.Server_Request(put_started);
                         this.Hide();
                         timeleft = 10;
-                        parentForm.onStart(parentForm.onstart_form);                     
+                        parentForm.onStart(parentForm.onstart_form);
+                       // await uda_server_communication.Server_Request(put_started);
                         break;
                     }
                 }
@@ -310,7 +298,6 @@ namespace Sezione_Aureawe
 
 
         }
-
 
         private void btn_DUE_Click(object sender, EventArgs e)
         {

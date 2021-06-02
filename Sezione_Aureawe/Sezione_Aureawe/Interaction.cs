@@ -56,13 +56,6 @@ namespace Sezione_Aureawe
         }
         public void First_Sequence()
         {
-
-            //while (true)
-            //{
-            //    k = parentForm.Status_Changed(parentForm.onstart_form);
-            //    int status = int.Parse(k);
-            //    if (status != 9)
-            //    {
             star1.Visible = false;
             this.Update();
             star2.Visible = false;
@@ -77,10 +70,6 @@ namespace Sezione_Aureawe
             this.Update();
             parentForm.playbackResourceAudio("Suono2_True");
             Thread.Sleep(3200);
-            //        break;
-            //    }
-            //}
-
         }
 
         private void Interaction_Load(object sender, EventArgs e)
@@ -194,6 +183,12 @@ namespace Sezione_Aureawe
                             parentForm.activity(parentForm.activity_form);
                             break;
                         }
+                       if (status==11 || status == 12)
+                        {
+                            this.Hide();
+                            parentForm.Abort_UDA();
+                            break;
+                        }
                     }
 
                 }
@@ -207,6 +202,12 @@ namespace Sezione_Aureawe
                         if (status == 7 || status == 10)
                         {
                             parentForm.activity(parentForm.activity_form);
+                            break;
+                        }
+                       else if (status == 11 || status == 12)
+                        {
+                            this.Hide();
+                            parentForm.Abort_UDA();
                             break;
                         }
                     }
@@ -225,9 +226,13 @@ namespace Sezione_Aureawe
                             parentForm.activity(parentForm.activity_form);
                             break;
                         }
+                        if (status == 11 || status == 12)
+                        {
+                            this.Hide();
+                            parentForm.Abort_UDA();
+                            break;
+                        }
                     }
-
-                    //parentForm.activity();
                 }
                 else if (parentForm.step == 4)
                 {
@@ -239,6 +244,12 @@ namespace Sezione_Aureawe
                         if (status == 7 || status == 10)
                         {
                             parentForm.activity(parentForm.activity_form);
+                            break;
+                        }
+                        if (status == 11 || status == 12)
+                        {
+                            this.Hide();
+                            parentForm.Abort_UDA();
                             break;
                         }
                     }
@@ -257,13 +268,32 @@ namespace Sezione_Aureawe
                             parentForm.activity(parentForm.activity_form);
                             break;
                         }
+                        if (status == 11 || status == 12)
+                        {
+                            this.Hide();
+                            parentForm.Abort_UDA();
+                            break;
+                        }
                     }
-
-                    // parentForm.activity();
                 }
                 else if (parentForm.step == 6)
                 {
-                    final_sequence();
+                    while (true)
+                    {
+                        k = parentForm.Status_Changed(parentForm.activity_form);
+                        int status = int.Parse(k);
+                        if (status == 7 || status == 10)
+                        {
+                            final_sequence();
+                            break;
+                        }
+                        if (status == 11 || status == 12)
+                        {
+                            this.Hide();
+                            parentForm.Abort_UDA();
+                            break;
+                        }
+                    }                  
                 }
 
                 break;
