@@ -82,8 +82,7 @@ namespace Sezione_Aureawe
             {
                 if(ik==6 || ik==11 || ik==8)
                 return "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3" + "&k="+ik1.ToString();
-                else if (ik==13)
-              return "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3" + "&k=7";
+                
      
                 else
                return "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3" + "&k=" + ik.ToString();

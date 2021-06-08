@@ -183,7 +183,12 @@ namespace Sezione_Aureawe
                             parentForm.activity(parentForm.activity_form);
                             break;
                         }
-                       if (status==11 || status == 12)
+                        if (status==11|| status == 12)
+                        {
+                            Application.Exit();
+                            Environment.Exit(0);
+                        }
+                       if (status==13)
                         {
                             this.Hide();
                             parentForm.Abort_UDA();
@@ -204,7 +209,12 @@ namespace Sezione_Aureawe
                             parentForm.activity(parentForm.activity_form);
                             break;
                         }
-                       else if (status == 11 || status == 12)
+                        if (status == 11 || status == 12)
+                        {
+                            Application.Exit();
+                            Environment.Exit(0);
+                        }
+                        if (status == 13)
                         {
                             this.Hide();
                             parentForm.Abort_UDA();
@@ -228,10 +238,16 @@ namespace Sezione_Aureawe
                         }
                         if (status == 11 || status == 12)
                         {
+                            Application.Exit();
+                            Environment.Exit(0);
+                        }
+                        if (status == 13)
+                        {
                             this.Hide();
                             parentForm.Abort_UDA();
                             break;
                         }
+                      
                     }
                 }
                 else if (parentForm.step == 4)
@@ -247,6 +263,11 @@ namespace Sezione_Aureawe
                             break;
                         }
                         if (status == 11 || status == 12)
+                        {
+                            Application.Exit();
+                            Environment.Exit(0);
+                        }
+                        if (status == 13)
                         {
                             this.Hide();
                             parentForm.Abort_UDA();
@@ -270,6 +291,11 @@ namespace Sezione_Aureawe
                         }
                         if (status == 11 || status == 12)
                         {
+                            Application.Exit();
+                            Environment.Exit(0);
+                        }
+                        if (status == 13)
+                        {
                             this.Hide();
                             parentForm.Abort_UDA();
                             break;
@@ -288,6 +314,11 @@ namespace Sezione_Aureawe
                             break;
                         }
                         if (status == 11 || status == 12)
+                        {
+                            Application.Exit();
+                            Environment.Exit(0);
+                        }
+                        if (status == 13)
                         {
                             this.Hide();
                             parentForm.Abort_UDA();

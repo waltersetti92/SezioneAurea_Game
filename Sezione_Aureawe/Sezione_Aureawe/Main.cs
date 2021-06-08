@@ -70,16 +70,7 @@ namespace Sezione_Aureawe
                     Application.Exit();
                     Environment.Exit(0);
          
-                }
-                if (status == 13)
-                {
-
-                    activity1.trial = 0;
-                    activity1.timeleft = 10;
-                    step = 1;
-                    onStart(activity_form);
-
-                }
+                }               
                 if (status == 15)
                 {
 

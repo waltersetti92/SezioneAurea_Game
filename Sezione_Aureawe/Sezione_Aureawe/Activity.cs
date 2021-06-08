@@ -23,6 +23,7 @@ namespace Sezione_Aureawe
         public string put_wait_data;
         public string put_started;
         public string get_status_uda;
+        public int wait;
         public Activity()
         {
             put_wait_data = "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3&k=14";
@@ -30,6 +31,7 @@ namespace Sezione_Aureawe
             InitializeComponent();
             timeleft = 10;
             resetOperations();
+            wait = 0;
             get_status_uda = "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/get/?i=3";
         }
         private void resetOperations()
@@ -110,33 +112,62 @@ namespace Sezione_Aureawe
             {
                 k = parentForm.Status_Changed(parentForm.activity_form);
                 int status = int.Parse(k);
-                if (status != 9)
+                if (status != 9 && status != 8)
                 {
-                    pbOne.WaitOnLoad = true;
-                    pbOne.ImageLocation = Main.resourcesPath + "\\" + a + ".png";
-                    pbOne.Visible = true;
-                    this.Update();
-                    parentForm.playbackResourceAudio(c);
-                    Thread.Sleep(2000);
-                    break;
-                }
+                    if (status == 11 || status == 12)
+                    {
+                        Application.Exit();
+                        Environment.Exit(0);
+                    }
+                    if (status == 13)
+                    {
+                        this.Hide();
+                        parentForm.Abort_UDA();
+                        break;
+                    }
+                    else
+                    {
+                        pbOne.WaitOnLoad = true;
+                        pbOne.ImageLocation = Main.resourcesPath + "\\" + a + ".png";
+                        pbOne.Visible = true;
+                        this.Update();
+                        parentForm.playbackResourceAudio(c);
+                        Thread.Sleep(2000);
+                        break;
+                    }
+                }              
             }
             while (true)
             {
                 k = parentForm.Status_Changed(parentForm.activity_form);
                 int status = int.Parse(k);
-                if (status != 9)
+                if (status != 9 && status!=8)
                 {
-                    pbTwo.WaitOnLoad = true;
-                    pbTwo.ImageLocation = Main.resourcesPath + "\\" + b + ".png";
-                    pbTwo.Visible = true;
-                    this.Update();
-                    parentForm.playbackResourceAudio(d);
-                    Thread.Sleep(2000);
-                    break;
+                    if (status == 11 || status == 12)
+                    {
+                        Application.Exit();
+                        Environment.Exit(0);
+                    }
+                    if (status == 13)
+                    {
+                        this.Hide();
+                        parentForm.Abort_UDA();
+                        break;
+                    }
+                    else
+                    {
+                        pbTwo.WaitOnLoad = true;
+                        pbTwo.ImageLocation = Main.resourcesPath + "\\" + b + ".png";
+                        pbTwo.Visible = true;
+                        this.Update();
+                        parentForm.playbackResourceAudio(d);
+                        Thread.Sleep(2000);
+                        wait = 1;
+                        break;
+                    }
                 }
             }
-            await uda_server_communication.Server_Request(put_wait_data);
+           
             Thread.Sleep(1000);
 
         }
@@ -188,8 +219,23 @@ namespace Sezione_Aureawe
                     k = parentForm.Status_Changed(parentForm.activity_form);
                     int status = int.Parse(k);
 
-                    if (status != 9)
+                    if (status != 9 && status!=8)
                     {
+                        if (status == 11 || status == 12)
+                        {
+                            Application.Exit();
+                            Environment.Exit(0);
+                        }
+                        if (status == 13)
+                        {
+                            this.Hide();
+                            parentForm.Abort_UDA();
+                            break;
+                        }
+                        if (status == 7 && wait == 1)
+                        {
+                            await uda_server_communication.Server_Request(put_wait_data);
+                        }
                         timeleft = timeleft - 1;
                         timerLabel.Text = timeleft.ToString();
                         while (true)
@@ -251,13 +297,7 @@ namespace Sezione_Aureawe
 
                             break;
                         }
-                        if (status == 13)
 
-                        {
-                            timer1.Stop();
-                            timeleft = 10;
-                            break;
-                        }
                         break;
                     }
                 }
@@ -283,6 +323,17 @@ namespace Sezione_Aureawe
                 {
                     k = parentForm.Status_Changed(parentForm.activity_form);
                     int status = int.Parse(k);
+                    if (status == 11 || status == 12)
+                    {
+                        Application.Exit();
+                        Environment.Exit(0);
+                    }
+                    if (status == 13)
+                    {
+                        this.Hide();
+                        parentForm.Abort_UDA();
+                        break;
+                    }
                     if (status ==7 || status==10)
                     {
                         parentForm.step++;
