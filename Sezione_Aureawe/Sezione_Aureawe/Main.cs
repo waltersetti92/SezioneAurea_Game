@@ -66,9 +66,9 @@ namespace Sezione_Aureawe
                 }
                 if (status == 11 || status==12)
                 {
-                    //Restart_UDA();
-                    //Application.Restart();
-                    //Environment.Exit(0);
+
+                    Application.Exit();
+                    Environment.Exit(0);
          
                 }
                 if (status == 13)
