@@ -42,6 +42,10 @@ namespace Sezione_Aureawe
             pezzo5.Visible = false;
             lbl_fin1.Visible = false;
             lbl_fin2.Visible = false;
+            star1.Visible = false;
+            this.Update();
+            star2.Visible = false;
+            this.Update();
             //Listen.Enabled = true;
         }
 
@@ -54,22 +58,50 @@ namespace Sezione_Aureawe
             Height = h - 1 * offset;
 
         }
+        public void loop_w()
+        {
+            while (true)
+            {
+                k = parentForm.Status_Changed(parentForm.activity_form);
+                int status = int.Parse(k);
+                if (status == 7 || status == 10)
+                {
+
+                    break;
+                }
+                if (status == 11 || status == 12)
+                {
+                    Application.Exit();
+                    Environment.Exit(0);
+                    break;
+                }
+                if (status == 13)
+                {
+                    this.Hide();
+                    parentForm.Abort_UDA();
+                    break;
+                }
+            }
+        }
         public void First_Sequence()
         {
-            star1.Visible = false;
-            this.Update();
-            star2.Visible = false;
-            this.Update();
-            star2.Visible = true;
+
+            star2.WaitOnLoad = true;
+            star2.Visible = true;          
             this.Update();
             parentForm.playbackResourceAudio("Suono1_True");
-            Thread.Sleep(3200);
+            Thread.Sleep(3000);
+            loop_w();
             star2.Visible = false;
             this.Update();
+            star1.WaitOnLoad = true;
             star1.Visible = true;
             this.Update();
             parentForm.playbackResourceAudio("Suono2_True");
-            Thread.Sleep(3200);
+            Thread.Sleep(3000);
+            loop_w();
+            if(parentForm.step==1)
+            parentForm.activity(parentForm.activity_form);
         }
 
         private void Interaction_Load(object sender, EventArgs e)
@@ -90,6 +122,9 @@ namespace Sezione_Aureawe
             this.Update();
             parentForm.playbackResourceAudio("Suono3_True");
             Thread.Sleep(3000);
+            loop_w();
+            if (parentForm.step == 2)
+                parentForm.activity(parentForm.activity_form);
         }
 
         private void Sequence_2()
@@ -101,6 +136,9 @@ namespace Sezione_Aureawe
             this.Update();
             parentForm.playbackResourceAudio("Suono4_True");
             Thread.Sleep(3000);
+            loop_w();
+            if (parentForm.step == 3)
+                parentForm.activity(parentForm.activity_form);
         }
         private void Sequence_3()
         {
@@ -111,6 +149,9 @@ namespace Sezione_Aureawe
             this.Update();
             parentForm.playbackResourceAudio("Suono5_True");
             Thread.Sleep(3000);
+            loop_w();
+            if (parentForm.step == 4)
+                parentForm.activity(parentForm.activity_form);
         }
         private void Sequence_4()
         {
@@ -121,6 +162,9 @@ namespace Sezione_Aureawe
             this.Update();
             parentForm.playbackResourceAudio("Suono6_True");
             Thread.Sleep(3000);
+            loop_w();
+            if (parentForm.step == 5)
+                parentForm.activity(parentForm.activity_form);
         }
 
         private async void final_sequence()
@@ -171,138 +215,140 @@ namespace Sezione_Aureawe
             {
                 resetOperations();
                 this.Update();
-                if (parentForm.step == 1)
+                k = parentForm.Status_Changed(parentForm.activity_form);
+                int status1 = int.Parse(k);
+                if (parentForm.step == 1 && (status1==7 || status1==10))
                 {
                     First_Sequence();
-                    while (true)
-                    {
-                        k = parentForm.Status_Changed(parentForm.activity_form);
-                        int status = int.Parse(k);
-                        if (status == 7 || status == 10)
-                        {
-                            parentForm.activity(parentForm.activity_form);
-                            break;
-                        }
-                        if (status==11|| status == 12)
-                        {
-                            Application.Exit();
-                            Environment.Exit(0);
-                        }
-                       if (status==13)
-                        {
-                            this.Hide();
-                            parentForm.Abort_UDA();
-                            break;
-                        }
-                    }
+                    //while (true)
+                    //{
+                    //    k = parentForm.Status_Changed(parentForm.activity_form);
+                    //    int status = int.Parse(k);
+                    //    if (status == 7 || status == 10)
+                    //    {
+                    //        parentForm.activity(parentForm.activity_form);
+                    //        break;
+                    //    }
+                    //    if (status==11|| status == 12)
+                    //    {
+                    //        Application.Exit();
+                    //        Environment.Exit(0);
+                    //    }
+                    //   if (status==13)
+                    //    {
+                    //        this.Hide();
+                    //        parentForm.Abort_UDA();
+                    //        break;
+                    //    }
+                    //}
 
                 }
-                else if (parentForm.step == 2)
+                else if (parentForm.step == 2 && (status1 == 7 || status1 == 10))
                 {
                     Sequence_1();
-                    while (true)
-                    {
-                        k = parentForm.Status_Changed(parentForm.activity_form);
-                        int status = int.Parse(k);
-                        if (status == 7 || status == 10)
-                        {
-                            parentForm.activity(parentForm.activity_form);
-                            break;
-                        }
-                        if (status == 11 || status == 12)
-                        {
-                            Application.Exit();
-                            Environment.Exit(0);
-                        }
-                        if (status == 13)
-                        {
-                            this.Hide();
-                            parentForm.Abort_UDA();
-                            break;
-                        }
-                    }
+                    //while (true)
+                    //{
+                    //    k = parentForm.Status_Changed(parentForm.activity_form);
+                    //    int status = int.Parse(k);
+                    //    if (status == 7 || status == 10)
+                    //    {
+                    //        parentForm.activity(parentForm.activity_form);
+                    //        break;
+                    //    }
+                    //    if (status == 11 || status == 12)
+                    //    {
+                    //        Application.Exit();
+                    //        Environment.Exit(0);
+                    //    }
+                    //    if (status == 13)
+                    //    {
+                    //        this.Hide();
+                    //        parentForm.Abort_UDA();
+                    //        break;
+                    //    }
+                    //}
 
 
                 }
-                else if (parentForm.step == 3)
+                else if (parentForm.step == 3 && (status1 == 7 || status1 == 10))
                 {
                     Sequence_2();
-                    while (true)
-                    {
-                        k = parentForm.Status_Changed(parentForm.activity_form);
-                        int status = int.Parse(k);
-                        if (status == 7 || status == 10)
-                        {
-                            parentForm.activity(parentForm.activity_form);
-                            break;
-                        }
-                        if (status == 11 || status == 12)
-                        {
-                            Application.Exit();
-                            Environment.Exit(0);
-                        }
-                        if (status == 13)
-                        {
-                            this.Hide();
-                            parentForm.Abort_UDA();
-                            break;
-                        }
+                    //while (true)
+                    //{
+                    //    k = parentForm.Status_Changed(parentForm.activity_form);
+                    //    int status = int.Parse(k);
+                    //    if (status == 7 || status == 10)
+                    //    {
+                    //        parentForm.activity(parentForm.activity_form);
+                    //        break;
+                    //    }
+                    //    if (status == 11 || status == 12)
+                    //    {
+                    //        Application.Exit();
+                    //        Environment.Exit(0);
+                    //    }
+                    //    if (status == 13)
+                    //    {
+                    //        this.Hide();
+                    //        parentForm.Abort_UDA();
+                    //        break;
+                    //    }
                       
-                    }
+                    //}
                 }
-                else if (parentForm.step == 4)
+                else if (parentForm.step == 4 && (status1 == 7 || status1 == 10))
                 {
                     Sequence_3();
-                    while (true)
-                    {
-                        k = parentForm.Status_Changed(parentForm.activity_form);
-                        int status = int.Parse(k);
-                        if (status == 7 || status == 10)
-                        {
-                            parentForm.activity(parentForm.activity_form);
-                            break;
-                        }
-                        if (status == 11 || status == 12)
-                        {
-                            Application.Exit();
-                            Environment.Exit(0);
-                        }
-                        if (status == 13)
-                        {
-                            this.Hide();
-                            parentForm.Abort_UDA();
-                            break;
-                        }
-                    }
+                   // while (true)
+                    //{
+                    //    k = parentForm.Status_Changed(parentForm.activity_form);
+                    //    int status = int.Parse(k);
+                    //    if (status == 7 || status == 10)
+                    //    {
+                    //        parentForm.activity(parentForm.activity_form);
+                    //        break;
+                    //    }
+                    //    if (status == 11 || status == 12)
+                    //    {
+                    //        Application.Exit();
+                    //        Environment.Exit(0);
+                    //    }
+                    //    if (status == 13)
+                    //    {
+                    //        this.Hide();
+                    //        parentForm.Abort_UDA();
+                    //        break;
+                    //    }
+                    //}
 
                 }
-                else if (parentForm.step == 5)
+                else if (parentForm.step == 5 && (status1 == 7 || status1 == 10))
                 {
                     Sequence_4();
 
-                    while (true)
-                    {
-                        k = parentForm.Status_Changed(parentForm.activity_form);
-                        int status = int.Parse(k);
-                        if (status == 7 || status == 10)
-                        {
-                            parentForm.activity(parentForm.activity_form);
-                            break;
-                        }
-                        if (status == 11 || status == 12)
-                        {
-                            Application.Exit();
-                            Environment.Exit(0);
-                        }
-                        if (status == 13)
-                        {
-                            this.Hide();
-                            parentForm.Abort_UDA();
-                            break;
-                        }
-                    }
+                    //while (true)
+                    //{
+                    //    k = parentForm.Status_Changed(parentForm.activity_form);
+                    //    int status = int.Parse(k);
+                    //    if (status == 7 || status == 10)
+                    //    {
+                    //        parentForm.activity(parentForm.activity_form);
+                    //        break;
+                    //    }
+                    //    if (status == 11 || status == 12)
+                    //    {
+                    //        Application.Exit();
+                    //        Environment.Exit(0);
+                    //    }
+                    //    if (status == 13)
+                    //    {
+                    //        this.Hide();
+                    //        parentForm.Abort_UDA();
+                    //        break;
+                    //    }
+                    //}
                 }
-                else if (parentForm.step == 6)
+                else if (parentForm.step == 6 && (status1 == 7 || status1 == 10))
                 {
                     while (true)
                     {
