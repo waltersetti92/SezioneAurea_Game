@@ -125,7 +125,7 @@ namespace Sezione_Aureawe
                         parentForm.Abort_UDA();
                         break;
                     }
-                    else
+                    else if (status==10 || status==7)
                     {
                         pbOne.WaitOnLoad = true;
                         pbOne.ImageLocation = Main.resourcesPath + "\\" + a + ".png";
@@ -154,7 +154,7 @@ namespace Sezione_Aureawe
                         parentForm.Abort_UDA();
                         break;
                     }
-                    else
+                    else if (status == 10 || status == 7)
                     {
                         pbTwo.WaitOnLoad = true;
                         pbTwo.ImageLocation = Main.resourcesPath + "\\" + b + ".png";
