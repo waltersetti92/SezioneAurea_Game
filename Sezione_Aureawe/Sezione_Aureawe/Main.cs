@@ -105,6 +105,7 @@ namespace Sezione_Aureawe
             interaction1.Visible = true;
             interaction1.pause_val = ShouldPause;
             currUC = interaction1;
+            Thread.Sleep(1000);
             interaction1.Start_Sequences();
         }
         public void activity(string k)

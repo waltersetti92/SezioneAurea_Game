@@ -64,7 +64,7 @@ namespace Sezione_Aureawe
             {
                 k = parentForm.Status_Changed(parentForm.activity_form);
                 int status = int.Parse(k);
-                if (status == 7 || status == 10)
+                if (status == 7 || status == 10 || status==15)
                 {
 
                     break;
@@ -86,7 +86,7 @@ namespace Sezione_Aureawe
         public void First_Sequence()
         {
 
-            star2.WaitOnLoad = true;
+           // star2.WaitOnLoad = true;
             star2.Visible = true;          
             this.Update();
             parentForm.playbackResourceAudio("Suono1_True");
@@ -94,7 +94,7 @@ namespace Sezione_Aureawe
             loop_w();
             star2.Visible = false;
             this.Update();
-            star1.WaitOnLoad = true;
+           // star1.WaitOnLoad = true;
             star1.Visible = true;
             this.Update();
             parentForm.playbackResourceAudio("Suono2_True");
