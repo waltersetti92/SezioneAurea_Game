@@ -17,8 +17,10 @@ namespace Sezione_Aureawe
         public bool pause_val;
         public string k;
         public string completed;
+        public int go_on;
         public Interaction()
         {
+            go_on = 0;
             InitializeComponent();
             resetOperations();
             Start_Sequences();
@@ -62,11 +64,12 @@ namespace Sezione_Aureawe
         {
             while (true)
             {
+                go_on = 0;
                 k = parentForm.Status_Changed(parentForm.activity_form);
                 int status = int.Parse(k);
                 if (status == 7 || status == 10 || status==15)
                 {
-
+                    go_on=1;
                     break;
                 }
                 if (status == 11 || status == 12)
@@ -94,14 +97,20 @@ namespace Sezione_Aureawe
             loop_w();
             star2.Visible = false;
             this.Update();
-           // star1.WaitOnLoad = true;
-            star1.Visible = true;
-            this.Update();
-            parentForm.playbackResourceAudio("Suono2_True");
-            Thread.Sleep(3000);
-            loop_w();
-            if(parentForm.step==1)
-            parentForm.activity(parentForm.activity_form);
+            // star1.WaitOnLoad = true;
+            if (go_on == 1)
+            {
+                star1.Visible = true;
+                this.Update();
+                parentForm.playbackResourceAudio("Suono2_True");
+                Thread.Sleep(3000);
+                loop_w();
+                k = parentForm.Status_Changed(parentForm.activity_form);
+                int status = int.Parse(k);
+                if (parentForm.step == 1 && status!=13)
+                parentForm.activity(parentForm.activity_form);
+            }
+           
         }
 
         private void Interaction_Load(object sender, EventArgs e)
@@ -118,13 +127,19 @@ namespace Sezione_Aureawe
             First_Sequence();
             star1.Visible = false;
             this.Update();
-            star3.Visible = true;
-            this.Update();
-            parentForm.playbackResourceAudio("Suono3_True");
-            Thread.Sleep(3000);
-            loop_w();
-            if (parentForm.step == 2)
-                parentForm.activity(parentForm.activity_form);
+            if (go_on == 1)
+            {
+                star3.Visible = true;
+                this.Update();
+                parentForm.playbackResourceAudio("Suono3_True");
+                Thread.Sleep(3000);
+                loop_w();
+                k = parentForm.Status_Changed(parentForm.activity_form);
+                int status = int.Parse(k);
+                if (parentForm.step == 2 && status!=13)
+                    parentForm.activity(parentForm.activity_form);
+            }
+           
         }
 
         private void Sequence_2()
@@ -132,39 +147,57 @@ namespace Sezione_Aureawe
             Sequence_1();
             star3.Visible = false;
             this.Update();
-            star4.Visible = true;
-            this.Update();
-            parentForm.playbackResourceAudio("Suono4_True");
-            Thread.Sleep(3000);
-            loop_w();
-            if (parentForm.step == 3)
-                parentForm.activity(parentForm.activity_form);
+            if (go_on == 1)
+            {
+                star4.Visible = true;
+                this.Update();
+                parentForm.playbackResourceAudio("Suono4_True");
+                Thread.Sleep(3000);
+                loop_w();
+                k = parentForm.Status_Changed(parentForm.activity_form);
+                int status = int.Parse(k);
+                if (parentForm.step == 3 && status!=13)
+                    parentForm.activity(parentForm.activity_form);
+            }
+
         }
         private void Sequence_3()
         {
             Sequence_2();
             star4.Visible = false;
             this.Update();
-            star5.Visible = true;
-            this.Update();
-            parentForm.playbackResourceAudio("Suono5_True");
-            Thread.Sleep(3000);
-            loop_w();
-            if (parentForm.step == 4)
-                parentForm.activity(parentForm.activity_form);
+            if (go_on == 1)
+            {
+                star5.Visible = true;
+                this.Update();
+                parentForm.playbackResourceAudio("Suono5_True");
+                Thread.Sleep(3000);
+                loop_w();
+                k = parentForm.Status_Changed(parentForm.activity_form);
+                int status = int.Parse(k);
+                if (parentForm.step == 4 && status!=13)
+                    parentForm.activity(parentForm.activity_form);
+            }
+
         }
         private void Sequence_4()
         {
             Sequence_3();
             star5.Visible = false;
             this.Update();
-            star6.Visible = true;
-            this.Update();
-            parentForm.playbackResourceAudio("Suono6_True");
-            Thread.Sleep(3000);
-            loop_w();
-            if (parentForm.step == 5)
-                parentForm.activity(parentForm.activity_form);
+            if (go_on == 1)
+            {
+                star6.Visible = true;
+                this.Update();
+                parentForm.playbackResourceAudio("Suono6_True");
+                Thread.Sleep(3000);
+                loop_w();
+                k = parentForm.Status_Changed(parentForm.activity_form);
+                int status = int.Parse(k);
+                if (parentForm.step == 5 && status!=13)
+                    parentForm.activity(parentForm.activity_form);
+            }
+
         }
 
         private async void final_sequence()
@@ -172,40 +205,73 @@ namespace Sezione_Aureawe
             star2.Visible = true;
             this.Update();
             parentForm.playbackResourceAudio("Suono1_True");
-            Thread.Sleep(3000);
-            pezzo0.Visible = true;
-            this.Update();
-            star1.Visible = true;
-            this.Update();
-            parentForm.playbackResourceAudio("Suono2_True");
-            Thread.Sleep(3000);
-            pezzo1.Visible = true;
-            star3.Visible = true;
-            this.Update();
-            parentForm.playbackResourceAudio("Suono3_True");
-            Thread.Sleep(3000);
-            pezzo2.Visible = true;
-            star4.Visible = true;
-            this.Update();
-            parentForm.playbackResourceAudio("Suono4_True");
-            Thread.Sleep(3000);
-            pezzo3.Visible = true;
-            star5.Visible = true;
-            this.Update();
-            parentForm.playbackResourceAudio("Suono5_True");
-            Thread.Sleep(3000);
-            pezzo4.Visible = true;
-            star6.Visible = true;
-            this.Update();
-            parentForm.playbackResourceAudio("Suono6_True");
-            Thread.Sleep(3000);
-            pezzo5.Visible = true;
-            this.Update();
-            parentForm.playbackResourceAudio("Suono7_True");
-            Thread.Sleep(3000);
-            parentForm.playbackResourceAudio("success");
-            lbl_fin1.Visible = true;
-            lbl_fin2.Visible = true;
+            loop_w();
+            if (go_on == 1)
+            {
+                Thread.Sleep(3000);
+                pezzo0.Visible = true;
+                this.Update();
+                star1.Visible = true;
+                this.Update();
+                parentForm.playbackResourceAudio("Suono2_True");
+            }   
+            loop_w();
+            if (go_on == 1)
+            {
+                Thread.Sleep(3000);
+                pezzo1.Visible = true;
+                star3.Visible = true;
+                this.Update();
+                parentForm.playbackResourceAudio("Suono3_True");
+            }
+            loop_w();
+            if (go_on == 1)
+            {
+                Thread.Sleep(3000);
+                pezzo2.Visible = true;
+                star4.Visible = true;
+                this.Update();
+                parentForm.playbackResourceAudio("Suono4_True");
+            }
+
+            loop_w();
+            if (go_on == 1)
+            {
+                Thread.Sleep(3000);
+                pezzo3.Visible = true;
+                star5.Visible = true;
+                this.Update();
+                parentForm.playbackResourceAudio("Suono5_True");
+            }
+
+            loop_w();
+            if (go_on == 1)
+            {
+                Thread.Sleep(3000);
+                pezzo4.Visible = true;
+                star6.Visible = true;
+                this.Update();
+                parentForm.playbackResourceAudio("Suono6_True");
+            }
+            
+            loop_w();
+            if (go_on == 1)
+            {
+                Thread.Sleep(3000);
+                pezzo5.Visible = true;
+                this.Update();
+                parentForm.playbackResourceAudio("Suono7_True");
+            }
+         
+            loop_w();
+            if (go_on == 1)
+            {
+                Thread.Sleep(3000);
+                parentForm.playbackResourceAudio("success");
+                lbl_fin1.Visible = true;
+                lbl_fin2.Visible = true;
+            }
+           
             await uda_server_communication.Server_Request(completed);
         }
 

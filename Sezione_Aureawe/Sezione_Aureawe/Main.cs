@@ -21,6 +21,7 @@ namespace Sezione_Aureawe
         public string onstart_form;
         public string started_uda;
         public string wait_data;
+        public string idle_status;
         public int interaction_sequences = 0;
         public SoundPlayer player = null;
         public ManualResetEvent resetEvent = new ManualResetEvent(true);
@@ -31,6 +32,7 @@ namespace Sezione_Aureawe
             started_uda = "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3&k=7";
             get_data_uda = "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/get/?i=3";  // url per ottenere lo stato dell'UDA  
             wait_data = "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3&k=14";
+            idle_status = "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3&k=0";
             Business_Logic BL = new Business_Logic(this);
             InitializeComponent();
             initial1.parentForm = this;
@@ -87,11 +89,21 @@ namespace Sezione_Aureawe
 
         public async void Abort_UDA()
         {
+            await uda_server_communication.Server_Request(idle_status);
             activity1.trial = 0;
             step = 1;
-            home();
-            //await uda_server_communication.Server_Request(wait_data);
-
+            if (currUC != null) currUC.Visible = false;
+            initial1.Show();
+            currUC = initial1;
+            while (true)
+            {
+                string k = activity_form;
+                int status = int.Parse(k);
+                if (status == 6 || status == 7)
+                {
+                    break;
+                }
+            }
         }
         public void home()
         {
