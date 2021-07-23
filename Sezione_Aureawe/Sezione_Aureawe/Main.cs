@@ -26,9 +26,11 @@ namespace Sezione_Aureawe
         public SoundPlayer player = null;
         public ManualResetEvent resetEvent = new ManualResetEvent(true);
         public bool ShouldPause = true;
+        public string data_start;
         public Main()
         {
             step = 1;
+            //started_uda = "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3&k=7" + "&data=" + data_start;
             started_uda = "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3&k=7";
             get_data_uda = "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/get/?i=3";  // url per ottenere lo stato dell'UDA  
             wait_data = "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3&k=14";

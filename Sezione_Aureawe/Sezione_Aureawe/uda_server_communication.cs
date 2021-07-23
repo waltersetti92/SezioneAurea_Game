@@ -63,6 +63,25 @@ namespace Sezione_Aureawe
                 throw new ApplicationException("Error", ex);
             }
         }
+        public async static Task<string> Server_Request_started(string url)
+        {
+            try
+            {
+                WebRequest server = HttpWebRequest.Create(url);
+                var response = server.GetResponse();
+                using (var reader = new StreamReader(response.GetResponseStream()))
+                {
+                    var result = await reader.ReadToEndAsync();
+                    JObject json_parsed = JObject.Parse(result);
+                    string current_status = (string)json_parsed["data"];
+                    return current_status;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Error", ex);
+            }
+        }
     }
 
 }
