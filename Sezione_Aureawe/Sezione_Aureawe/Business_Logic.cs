@@ -46,7 +46,10 @@ namespace Sezione_Aureawe
             {
                 string uda_status = await uda_server_communication.Server_Request(get_status_uda); //stato dell'UDA ottenuto con la classe UDA_server_communication
                     if (string.Equals(uda_status, "6"))
+                {
                     mn.data_start = await uda_server_communication.Server_Request_started(get_status_uda);
+                   // mn.activity1.put_started = 1;
+                }
                 if (counter_timer == 0) // salvo lo stato dell'UDA al tempo t=0 e la prima volta che cambia
                 {
                     save_status = uda_status;
@@ -85,9 +88,11 @@ namespace Sezione_Aureawe
                 if(ik==11 || ik==8)
                 return "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3" + "&k="+ik1.ToString();
                 else if(ik==6)
-                    return "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3" + "&k=" + ik1.ToString() + "&data=" + mn.data_start;
+                return "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3" + "&k=" + ik1.ToString() + "&data=" + mn.data_start;
+                //else if (ik==14)
+                //    return "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3" + "&k=" + ik.ToString() + "&data =/ &data ={\"answer\": \"Scegli l'immagine che si lega alla sezione aurea\", \"input_type\":[\"1\",\"2\"]}";
                 else
-               return "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3" + "&k=" + ik.ToString();
+                return "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3" + "&k=" + ik.ToString();
             }
 
             else

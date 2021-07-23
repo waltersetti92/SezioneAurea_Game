@@ -24,10 +24,13 @@ namespace Sezione_Aureawe
         public string put_started;
         public string get_status_uda;
         public int wait;
+        public string data_started1;
+        public async void PutStarted() {
+           await uda_server_communication.Server_Request("https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3&k=7&data=" + parentForm.data_start);
+        }
         public Activity()
         {
-           put_wait_data = "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3&k=14&data=/&data={\"answer\": \"Scegli l'immagine che si lega alla sezione aurea\", \"input_type\":[\"1\",\"2\"]}";
-            put_started = "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3&k=7";
+           put_wait_data = "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3&k=14" + "&data=" + "{\"answer\": \"Scegli l'immagine che si lega alla sezione aurea\", \"input_type\":[\"1\",\"2\"]}";
             InitializeComponent();
             timeleft = 10;
             resetOperations();
@@ -251,7 +254,7 @@ namespace Sezione_Aureawe
                                     {
                                         Correct_Answer();
                                         Thread.Sleep(4000);
-                                        await uda_server_communication.Server_Request(put_started);
+                                        PutStarted();
                                         parentForm.step++;
                                         this.Hide();
                                         timeleft = 10;
@@ -261,7 +264,7 @@ namespace Sezione_Aureawe
                                     {
                                         Wrong_Answer();
                                         Thread.Sleep(4000);
-                                        await uda_server_communication.Server_Request(put_started);
+                                        PutStarted();
                                         parentForm.step++;
                                         this.Hide();
                                         timeleft = 10;
@@ -275,7 +278,7 @@ namespace Sezione_Aureawe
                                     {
                                         Correct_Answer();
                                         Thread.Sleep(4000);
-                                        await uda_server_communication.Server_Request(put_started);
+                                        PutStarted();
                                         parentForm.step++;
                                         this.Hide();
                                         timeleft = 10;
@@ -285,7 +288,7 @@ namespace Sezione_Aureawe
                                     {
                                         Wrong_Answer();
                                         Thread.Sleep(4000);
-                                        await uda_server_communication.Server_Request(put_started);
+                                        PutStarted();
                                         parentForm.step++;
                                         this.Hide();
                                         timeleft = 10;
@@ -310,13 +313,13 @@ namespace Sezione_Aureawe
                 {
                     Feedback.Text = "HAI FINITO IL TEMPO! L'IMMAGINE GIUSTA ERA LA UNO";
                     this.Update();
-                    await uda_server_communication.Server_Request(put_started);
+                    PutStarted();
                 }
                 else if (trial == 2 || trial == 3)
                 {
                     Feedback.Text = "HAI FINITO IL TEMPO! L'IMMAGINE GIUSTA ERA LA DUE";
                     this.Update();
-                    await uda_server_communication.Server_Request(put_started);
+                    PutStarted();
                 }
                 Thread.Sleep(4000);
                 while (true)
