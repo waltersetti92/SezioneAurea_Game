@@ -27,9 +27,11 @@ namespace Sezione_Aureawe
         public ManualResetEvent resetEvent = new ManualResetEvent(true);
         public bool ShouldPause = true;
         public string data_start;
+        public string pause_uda;
         public Main()
         {
             step = 1;
+            pause_uda = "";
             wait_data = "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3&k=14" + "&data=" + "{\"answer\": \"Scegli l'immagine che si lega alla sezione aurea\", \"input_type\":[\"1\",\"2\"]}";
             started_uda = "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3&k=7" + "&data=" + data_start;
             //started_uda = "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3&k=7";
@@ -131,6 +133,7 @@ namespace Sezione_Aureawe
             activity1.setOperationsIcons(activity1.trial);
             currUC = activity1;
         }
+        
         public void playbackResourceAudio(string audioname)
         {
 

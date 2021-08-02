@@ -30,7 +30,7 @@ namespace Sezione_Aureawe
         }
         public Activity()
         {
-           put_wait_data = "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3&k=14" + "&data=" + "{\"answer\": \"Scegli l'immagine che si lega alla sezione aurea\", \"input_type\":[\"1\",\"2\"]}";
+            put_wait_data = "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3&k=14" + "&data=" + "{\"answer\": \"Scegli l'immagine che si lega alla sezione aurea\", \"input_type\":[\"1\",\"2\"]}";
             InitializeComponent();
             timeleft = 10;
             resetOperations();
@@ -235,7 +235,7 @@ namespace Sezione_Aureawe
                             parentForm.Abort_UDA();
                             break;
                         }
-                        if (status == 7 && wait == 1)
+                        if (((status == 7 && wait == 1)) || (status==10 && wait==1))
                         {
                             await uda_server_communication.Server_Request(put_wait_data);
                         }

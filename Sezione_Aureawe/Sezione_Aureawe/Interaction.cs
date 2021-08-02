@@ -18,14 +18,17 @@ namespace Sezione_Aureawe
         public string k;
         public string completed;
         public int go_on;
+        public string started_uda;
+        public string data_st;
         public Interaction()
         {
+
             go_on = 0;
             InitializeComponent();
             resetOperations();
             Start_Sequences();
             completed = "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3&k=16";
-
+            //started_uda = "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3&k=7" + "&data=" + data_st;
         }
         private void resetOperations()
         {
@@ -70,6 +73,8 @@ namespace Sezione_Aureawe
                 if (status == 7 || status == 10 || status==15)
                 {
                     go_on=1;
+                        if (status == 10)
+                            start_after_resume();
                     break;
                 }
                 if (status == 11 || status == 12)
@@ -107,7 +112,7 @@ namespace Sezione_Aureawe
                 loop_w();
                 k = parentForm.Status_Changed(parentForm.activity_form);
                 int status = int.Parse(k);
-                if (parentForm.step == 1 && status!=13)
+                if (parentForm.step == 1 && status != 13)
                 parentForm.activity(parentForm.activity_form);
             }
            
@@ -274,6 +279,10 @@ namespace Sezione_Aureawe
            
             await uda_server_communication.Server_Request(completed);
         }
+        public async void start_after_resume()
+        {
+            await uda_server_communication.Server_Request(parentForm.started_uda);
+        }
 
         public void Start_Sequences()
         {
@@ -311,6 +320,7 @@ namespace Sezione_Aureawe
                 }
                 else if (parentForm.step == 2 && (status1 == 7 || status1 == 10))
                 {
+                   
                     Sequence_1();
                     //while (true)
                     //{

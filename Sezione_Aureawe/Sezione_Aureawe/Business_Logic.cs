@@ -48,7 +48,6 @@ namespace Sezione_Aureawe
                     if (string.Equals(uda_status, "6"))
                 {
                     mn.data_start = await uda_server_communication.Server_Request_started(get_status_uda);
-                   // mn.activity1.put_started = 1;
                 }
                 if (counter_timer == 0) // salvo lo stato dell'UDA al tempo t=0 e la prima volta che cambia
                 {
