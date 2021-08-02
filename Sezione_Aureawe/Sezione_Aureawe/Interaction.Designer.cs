@@ -42,6 +42,7 @@
             this.pezzo5 = new System.Windows.Forms.PictureBox();
             this.lbl_fin1 = new System.Windows.Forms.Label();
             this.lbl_fin2 = new System.Windows.Forms.Label();
+            this.pB_Indizio = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.star1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.star2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pezzo0)).BeginInit();
@@ -54,6 +55,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.star6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pezzo4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pezzo5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pB_Indizio)).BeginInit();
             this.SuspendLayout();
             // 
             // star1
@@ -216,12 +218,22 @@
             this.lbl_fin2.TabIndex = 16;
             this.lbl_fin2.Text = "HAI RICOSTRUITO LA SEZIONE AUREA! ";
             // 
+            // pB_Indizio
+            // 
+            this.pB_Indizio.Location = new System.Drawing.Point(503, 228);
+            this.pB_Indizio.Name = "pB_Indizio";
+            this.pB_Indizio.Size = new System.Drawing.Size(244, 133);
+            this.pB_Indizio.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pB_Indizio.TabIndex = 17;
+            this.pB_Indizio.TabStop = false;
+            // 
             // Interaction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
             this.BackgroundImage = global::Sezione_Aureawe.Properties.Resources.Transparency_background;
+            this.Controls.Add(this.pB_Indizio);
             this.Controls.Add(this.star3);
             this.Controls.Add(this.star5);
             this.Controls.Add(this.lbl_fin2);
@@ -251,6 +263,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.star6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pezzo4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pezzo5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pB_Indizio)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -272,5 +285,6 @@
         private System.Windows.Forms.PictureBox pezzo5;
         private System.Windows.Forms.Label lbl_fin1;
         private System.Windows.Forms.Label lbl_fin2;
+        private System.Windows.Forms.PictureBox pB_Indizio;
     }
 }

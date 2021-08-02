@@ -24,18 +24,18 @@ namespace Sezione_Aureawe
         {
 
             go_on = 0;
+           
             InitializeComponent();
             resetOperations();
             Start_Sequences();
             completed = "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3&k=16";
-            //started_uda = "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3&k=7" + "&data=" + data_st;
+   
         }
         private void resetOperations()
         {
             star1.Visible = false;
             star2.Visible = false;
             pezzo0.Visible = false;
-            //gioca_btn.Visible = false;
             star3.Visible = false;
             star4.Visible = false;
             star5.Visible = false;
@@ -45,7 +45,6 @@ namespace Sezione_Aureawe
             pezzo3.Visible = false;
             pezzo4.Visible = false;
             pezzo5.Visible = false;
-            lbl_fin1.Visible = false;
             lbl_fin2.Visible = false;
             star1.Visible = false;
             this.Update();
@@ -121,6 +120,8 @@ namespace Sezione_Aureawe
         private void Interaction_Load(object sender, EventArgs e)
         {
             resetOperations();
+            pB_Indizio.Visible = false;
+            lbl_fin1.Visible = false;
         }
 
         private void star2_Click(object sender, EventArgs e)
@@ -274,10 +275,59 @@ namespace Sezione_Aureawe
                 Thread.Sleep(3000);
                 parentForm.playbackResourceAudio("success");
                 lbl_fin1.Visible = true;
+                this.Update();
                 lbl_fin2.Visible = true;
+                this.Update();
             }
            
             await uda_server_communication.Server_Request(completed);
+            Thread.Sleep(6000);
+            indizio();
+
+        }
+        public async void Image_Indizio(string a)
+        {
+            while (true)
+            {
+                k = parentForm.Status_Changed(parentForm.activity_form);
+                int status = int.Parse(k);
+                if (status != 9 && status != 8)
+                {
+                    if (status == 11 || status == 12)
+                    {
+                        Application.Exit();
+                        Environment.Exit(0);
+                    }
+                    if (status == 13)
+                    {
+                        this.Hide();
+                        parentForm.Abort_UDA();
+                        break;
+                    }
+                    else if (status==10|| status == 7 || status==16)
+                    {
+
+                        pB_Indizio.WaitOnLoad = true;
+                        pB_Indizio.ImageLocation = Main.resourcesPath + "\\" + a + ".png";
+                        pB_Indizio.Visible = true;
+                        this.Update();
+                        lbl_fin1.Text = "ECCO L'INDIZIO!";
+                        lbl_fin1.Visible = true;
+                        this.Update();
+
+                    }
+                }
+            }
+            
+
+        }
+        public void indizio()
+        {
+            resetOperations();
+            if (String.Equals(parentForm.data_start, "4"))
+            {
+                Image_Indizio("indizio1");
+            }
         }
         public async void start_after_resume()
         {
