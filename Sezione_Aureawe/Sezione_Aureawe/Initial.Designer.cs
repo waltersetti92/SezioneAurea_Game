@@ -39,10 +39,10 @@
             this.labLuda.BackColor = System.Drawing.Color.Transparent;
             this.labLuda.Font = new System.Drawing.Font("Snap ITC", 50.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.labLuda.ForeColor = System.Drawing.Color.Gold;
-            this.labLuda.Location = new System.Drawing.Point(16, -30);
-            this.labLuda.Margin = new System.Windows.Forms.Padding(3);
+            this.labLuda.Location = new System.Drawing.Point(31, 216);
+            this.labLuda.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.labLuda.Name = "labLuda";
-            this.labLuda.Size = new System.Drawing.Size(1194, 86);
+            this.labLuda.Size = new System.Drawing.Size(1788, 130);
             this.labLuda.TabIndex = 2;
             this.labLuda.Text = "UNA SEZIONE TUTTA D\'ORO";
             this.labLuda.Click += new System.EventHandler(this.labLuda_Click);
@@ -50,21 +50,25 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Sezione_Aureawe.Properties.Resources.group1;
-            this.pictureBox1.Location = new System.Drawing.Point(485, 306);
+            this.pictureBox1.Location = new System.Drawing.Point(612, 470);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(365, 196);
+            this.pictureBox1.Size = new System.Drawing.Size(548, 302);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
             // Initial
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.labLuda);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Initial";
-            this.Size = new System.Drawing.Size(1417, 701);
+            this.Size = new System.Drawing.Size(1823, 777);
             this.Load += new System.EventHandler(this.Initial_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

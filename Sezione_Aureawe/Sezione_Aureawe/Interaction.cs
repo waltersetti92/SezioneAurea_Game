@@ -314,6 +314,7 @@ namespace Sezione_Aureawe
                         lbl_fin1.Text = "ECCO L'INDIZIO!";
                         lbl_fin1.Visible = true;
                         this.Update();
+                        break;
 
                     }
                 }
@@ -327,6 +328,8 @@ namespace Sezione_Aureawe
             if (String.Equals(parentForm.data_start, "4"))
             {
                 Image_Indizio("indizio1");
+                Thread.Sleep(2000);
+                parentForm.video_reproduction("C:\\Users\\wsetti\\Documents\\Video_LUDA\\UDA_Inglese_0.mov");
             }
         }
         public async void start_after_resume()

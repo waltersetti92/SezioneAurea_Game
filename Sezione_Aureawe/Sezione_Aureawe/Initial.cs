@@ -23,11 +23,11 @@ namespace Sezione_Aureawe
         }
         public void setPos(int w, int h)
         {
-            int offset = 100;
-            Location = new Point(offset, offset);
-            Width = w - 2 * offset;
-            Height = h - 2 * offset;
-            labLuda.Location = new Point(w / 2 - labLuda.Width / 2 - offset, 200);
+            //int offset = 100;
+            //Location = new Point(offset, offset);
+           // Width = w - 2 * offset;
+            //Height = h - 2 * offset;
+            //labLuda.Location = new Point(w / 2 - labLuda.Width / 2 - offset, 200);
         }
 
         private void Initial_Load(object sender, EventArgs e)

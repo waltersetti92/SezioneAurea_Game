@@ -4,6 +4,12 @@ using System.Windows.Forms;
 using System.Media;
 using System.IO;
 using System.Threading;
+using System.IO.Pipes;
+using System.Text;
+using System.Collections.Generic;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
 
 
 namespace Sezione_Aureawe
@@ -28,6 +34,7 @@ namespace Sezione_Aureawe
         public bool ShouldPause = true;
         public string data_start;
         public string pause_uda;
+        public static System.Diagnostics.Process proc;
         public Main()
         {
             step = 1;
@@ -38,6 +45,7 @@ namespace Sezione_Aureawe
             get_data_uda = "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/get/?i=3";  // url per ottenere lo stato dell'UDA             
             idle_status = "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3&k=0";
             Business_Logic BL = new Business_Logic(this);
+            AppDomain.CurrentDomain.ProcessExit += new EventHandler(OnProcessExit);
             InitializeComponent();
             initial1.parentForm = this;
             interaction1.parentForm = this;
@@ -48,9 +56,79 @@ namespace Sezione_Aureawe
             home();
             BackgroundImageLayout = ImageLayout.Stretch;
             BackgroundImage = Image.FromFile(resourcesPath + "\\" + background_image);
-
-
         }
+        static void OnProcessExit(object sender, EventArgs e)
+        {
+            //System.Diagnostics.Debug.WriteLine("ciao");
+            var Nicolo = new NamedPipeClientStream("mpv-pipe");
+            Nicolo.Connect();
+            StreamWriter writer = new StreamWriter(Nicolo);
+            writer.WriteLine("quit");
+        }
+        public void video_reproduction(string video1)
+        {
+            string video = "C:\\Users\\wsetti\\Documents\\Video_LUDA\\UDA_Inglese_0.mov";
+            var Nicolo = new NamedPipeClientStream("mpv-pipe");
+            Nicolo.Connect();
+            StreamReader reader = new StreamReader(Nicolo);
+            StreamWriter writer = new StreamWriter(Nicolo);
+            writer.WriteLine("set pause yes");
+            // System.Diagnostics.Debug.WriteLine(reader.ReadLine());
+            writer.WriteLine($"loadfile {video}");
+            // System.Diagnostics.Debug.WriteLine(reader.ReadLine());
+            writer.WriteLine("set seek 0 absolute");
+            //System.Diagnostics.Debug.WriteLine(reader.ReadLine());
+            writer.WriteLine("set fullscreen yes");
+            //System.Diagnostics.Debug.WriteLine(reader.ReadLine());
+            writer.WriteLine("set ontop yes");
+            //System.Diagnostics.Debug.WriteLine(reader.ReadLine());
+            writer.WriteLine("set pause no");
+            //System.Diagnostics.Debug.WriteLine(reader.ReadLine());
+            writer.Flush();
+            // while ()
+            Dictionary<string, object> getPos = new Dictionary<string, object>();
+            getPos.Add("command", new List<string> { "get_property", "percent-pos" });
+            getPos.Add("request_id", 88);
+
+
+            writer.WriteLine(JsonConvert.SerializeObject(getPos));
+            System.Diagnostics.Debug.WriteLine(JsonConvert.SerializeObject(getPos));
+            // System.Diagnostics.Debug.WriteLine(reader.ReadLine());
+            writer.Flush();
+            bool started = false;
+            bool wait_video = true;
+            while (wait_video)
+            {
+                writer.WriteLine(JsonConvert.SerializeObject(getPos));
+                System.Diagnostics.Debug.WriteLine(JsonConvert.SerializeObject(getPos));
+                writer.Flush();
+                string response = reader.ReadLine();
+                JObject json_parsed = JObject.Parse(response);
+
+                if (!started)
+                {
+                    var id = json_parsed["request_id"];
+                    if (id != null && (int)id == 88)
+                    {
+                        started = true;
+                    }
+                }
+                if (started)
+                {
+                    var id = json_parsed["request_id"];
+                    var error = json_parsed["error"];
+
+                    if (id != null && (int)id == 88 && error != null && (string)error == "property unavailable")
+                    {
+                        //     System.Diagnostics.Debug.WriteLine(response);
+                        wait_video = false;
+                        // and property not available
+                    }
+                }
+            }
+            System.Diagnostics.Debug.WriteLine(reader.ReadLine());
+        }
+
         public string Status_Changed(string k)
         {
             this.BeginInvoke((Action)delegate ()
@@ -58,6 +136,7 @@ namespace Sezione_Aureawe
                 int status = int.Parse(k);
                 if (status == 6)
                 {
+                    video_reproduction("C:\\Users\\wsetti\\Documents\\Video_LUDA\\UDA_Inglese_0.mov");
                     onStart(activity_form);
                 }
                 if (status == 8)
@@ -70,13 +149,13 @@ namespace Sezione_Aureawe
 
 
                 }
-                if (status == 11 || status==12)
+                if (status == 11 || status == 12)
                 {
 
                     Application.Exit();
                     Environment.Exit(0);
-         
-                }               
+
+                }
                 if (status == 15)
                 {
 
@@ -133,7 +212,7 @@ namespace Sezione_Aureawe
             activity1.setOperationsIcons(activity1.trial);
             currUC = activity1;
         }
-        
+
         public void playbackResourceAudio(string audioname)
         {
 
@@ -144,6 +223,12 @@ namespace Sezione_Aureawe
 
         private void Main_Load(object sender, EventArgs e)
         {
+            string mpvcommand = "--idle --input-ipc-server=\\\\.\\pipe\\mpv-pipe";
+            proc = new System.Diagnostics.Process();
+            proc.StartInfo.FileName = "C:\\Users\\wsetti\\Documents\\Video_LUDA\\mpv";
+            proc.StartInfo.Arguments = mpvcommand;
+            proc.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            proc.Start();
             Size size = this.Size;
             initial1.setPos(size.Width, size.Height);
             interaction1.setPos(size.Width, size.Height);
@@ -153,7 +238,7 @@ namespace Sezione_Aureawe
         {
 
         }
-            private void initial1_Load(object sender, EventArgs e)
+        private void initial1_Load(object sender, EventArgs e)
         {
 
         }
