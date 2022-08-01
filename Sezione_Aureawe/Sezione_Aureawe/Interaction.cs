@@ -28,7 +28,7 @@ namespace Sezione_Aureawe
             InitializeComponent();
             resetOperations();
             Start_Sequences();
-            completed = "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3&k=16";
+            completed = "api/uda/put/?i=3&k=16";
    
         }
         private void resetOperations()

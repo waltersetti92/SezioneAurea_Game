@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Threading;
 using System.Media;
 using System.IO;
+using Newtonsoft.Json.Linq;
 
 namespace Sezione_Aureawe
 {
@@ -20,22 +21,21 @@ namespace Sezione_Aureawe
         public int trial = 0;
         public int timeleft = 10;
         public string k;
-        public string put_wait_data;
         public string put_started;
         public string get_status_uda;
         public int wait;
         public string data_started1;
-        public async void PutStarted() {
-           await uda_server_communication.Server_Request("https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3&k=7&data=" + parentForm.data_start);
+        public async void PutStarted()
+        {
+            await uda_server_communication.Server_Request("api/uda/put/?i=3&k=7&data=" + parentForm.data_start);
         }
         public Activity()
         {
-            put_wait_data = "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3&k=14" + "&data=" + "{\"answer\": \"Scegli l'immagine che si lega alla sezione aurea\", \"input_type\":[\"1\",\"2\"]}";
             InitializeComponent();
             timeleft = 10;
             resetOperations();
             wait = 0;
-            get_status_uda = "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/get/?i=3";
+            get_status_uda = "api/uda/get/?i=3";
         }
         private void resetOperations()
         {
@@ -128,7 +128,7 @@ namespace Sezione_Aureawe
                         parentForm.Abort_UDA();
                         break;
                     }
-                    else if (status==10 || status==7)
+                    else if (status == 10 || status == 7)
                     {
                         pbOne.WaitOnLoad = true;
                         pbOne.ImageLocation = Main.resourcesPath + "\\" + a + ".png";
@@ -138,13 +138,13 @@ namespace Sezione_Aureawe
                         Thread.Sleep(2000);
                         break;
                     }
-                }              
+                }
             }
             while (true)
             {
                 k = parentForm.Status_Changed(parentForm.activity_form);
                 int status = int.Parse(k);
-                if (status != 9 && status!=8)
+                if (status != 9 && status != 8)
                 {
                     if (status == 11 || status == 12)
                     {
@@ -170,7 +170,7 @@ namespace Sezione_Aureawe
                     }
                 }
             }
-           
+
             Thread.Sleep(1000);
 
         }
@@ -222,7 +222,7 @@ namespace Sezione_Aureawe
                     k = parentForm.Status_Changed(parentForm.activity_form);
                     int status = int.Parse(k);
 
-                    if (status != 9 && status!=8)
+                    if (status != 9 && status != 8)
                     {
                         if (status == 11 || status == 12)
                         {
@@ -235,133 +235,128 @@ namespace Sezione_Aureawe
                             parentForm.Abort_UDA();
                             break;
                         }
-                        if (((status == 7 && wait == 1)) || (status==10 && wait==1))
+                        if (((status == 7 && wait == 1)) || (status == 10 && wait == 1))
                         {
-                            await uda_server_communication.Server_Request(put_wait_data);
+                            await uda_server_communication.Server_Request(parentForm.wait_data());
                         }
                         timeleft = timeleft - 1;
                         timerLabel.Text = timeleft.ToString();
-                        while (true)
+                        string response = null;
+                        if (status == 14)
                         {
-                            if (status == 15)
+                            JToken data = await uda_server_communication.Server_Request_datasent(get_status_uda);
+                            var explorers = data.ToObject<JArray>();
+                            foreach (var explorer in data)
                             {
-                                string data = await uda_server_communication.Server_Request_datasent(get_status_uda);
-                                timer1.Stop();
-                                timerLabel.Visible = false;
-                                if (trial == 1 || trial == 4 || trial == 5)
+                                Dictionary<string, object> exp = explorer.ToObject<Dictionary<string, object>>();
+                                string timestamp = (string)explorer["timestamp"];
+                                if (timestamp == null || timestamp == "0000-00-00 00:00:00")
                                 {
-                                    if (String.Equals(data, "1"))
-                                    {
-                                        Correct_Answer();
-                                        Thread.Sleep(4000);
-                                        PutStarted();
-                                        parentForm.step++;
-                                        this.Hide();
-                                        timeleft = 10;
-                                        parentForm.onStart(parentForm.onstart_form);
-                                    }
-                                    else
-                                    {
-                                        Wrong_Answer();
-                                        Thread.Sleep(4000);
-                                        PutStarted();
-                                        parentForm.step++;
-                                        this.Hide();
-                                        timeleft = 10;
-                                        parentForm.onStart(parentForm.onstart_form);
-                                    }
-
+                                    continue;
                                 }
-                                else if (trial == 2 || trial == 3)
+                                response = (string)explorer["answer"];
+                                break;
+                            }
+                            if (response == null) { break; }
+
+                            timer1.Stop();
+                            timerLabel.Visible = false;
+                            if (trial == 1 || trial == 4 || trial == 5)
+                            {
+                                if (String.Equals(response, "1"))
                                 {
-                                    if (String.Equals(data, "2"))
-                                    {
-                                        Correct_Answer();
-                                        Thread.Sleep(4000);
-                                        PutStarted();
-                                        parentForm.step++;
-                                        this.Hide();
-                                        timeleft = 10;
-                                        parentForm.onStart(parentForm.onstart_form);
-                                    }
-                                    else
-                                    {
-                                        Wrong_Answer();
-                                        Thread.Sleep(4000);
-                                        PutStarted();
-                                        parentForm.step++;
-                                        this.Hide();
-                                        timeleft = 10;
-                                        parentForm.onStart(parentForm.onstart_form);
-                                    }
+                                    Correct_Answer();
+                                    Thread.Sleep(4000);
+                                    PutStarted();
+                                    parentForm.step++;
+                                    this.Hide();
+                                    timeleft = 10;
+                                    parentForm.onStart(parentForm.onstart_form);
+                                }
+                                else
+                                {
+                                    Wrong_Answer();
+                                    Thread.Sleep(4000);
+                                    PutStarted();
+                                    parentForm.step++;
+                                    this.Hide();
+                                    timeleft = 10;
+                                    parentForm.onStart(parentForm.onstart_form);
                                 }
 
                             }
+                            else if (trial == 2 || trial == 3)
+                            {
+                                if (String.Equals(response, "2"))
+                                {
+                                    Correct_Answer();
+                                    Thread.Sleep(4000);
+                                    PutStarted();
+                                    parentForm.step++;
+                                    this.Hide();
+                                    timeleft = 10;
+                                    parentForm.onStart(parentForm.onstart_form);
+                                }
+                                else
+                                {
+                                    Wrong_Answer();
+                                    Thread.Sleep(4000);
+                                    PutStarted();
+                                    parentForm.step++;
+                                    this.Hide();
+                                    timeleft = 10;
+                                    parentForm.onStart(parentForm.onstart_form);
+                                }
+                            }
 
+                        }
+                        break;
+                    }
+                }
+
+                if (timeleft == 0)
+                {
+                    Out_of_time();
+                    if (trial == 1 || trial == 4 || trial == 5)
+                    {
+                        Feedback.Text = "HAI FINITO IL TEMPO! L'IMMAGINE GIUSTA ERA LA UNO";
+                        this.Update();
+                        PutStarted();
+                    }
+                    else if (trial == 2 || trial == 3)
+                    {
+                        Feedback.Text = "HAI FINITO IL TEMPO! L'IMMAGINE GIUSTA ERA LA DUE";
+                        this.Update();
+                        PutStarted();
+                    }
+                    Thread.Sleep(4000);
+                    while (true)
+                    {
+                        k = parentForm.Status_Changed(parentForm.activity_form);
+                        int status = int.Parse(k);
+                        if (status == 11 || status == 12)
+                        {
+                            Application.Exit();
+                            Environment.Exit(0);
+                        }
+                        if (status == 13)
+                        {
+                            this.Hide();
+                            parentForm.Abort_UDA();
                             break;
                         }
-
-                        break;
-                    }
-                }
-
-            }
-            if (timeleft == 0)
-            {
-                Out_of_time();
-                if (trial == 1 || trial == 4 || trial == 5)
-                {
-                    Feedback.Text = "HAI FINITO IL TEMPO! L'IMMAGINE GIUSTA ERA LA UNO";
-                    this.Update();
-                    PutStarted();
-                }
-                else if (trial == 2 || trial == 3)
-                {
-                    Feedback.Text = "HAI FINITO IL TEMPO! L'IMMAGINE GIUSTA ERA LA DUE";
-                    this.Update();
-                    PutStarted();
-                }
-                Thread.Sleep(4000);
-                while (true)
-                {
-                    k = parentForm.Status_Changed(parentForm.activity_form);
-                    int status = int.Parse(k);
-                    if (status == 11 || status == 12)
-                    {
-                        Application.Exit();
-                        Environment.Exit(0);
-                    }
-                    if (status == 13)
-                    {
-                        this.Hide();
-                        parentForm.Abort_UDA();
-                        break;
-                    }
-                    if (status ==7 || status==10)
-                    {
-                        parentForm.step++;
-                        this.Hide();
-                        timeleft = 10;
-                        parentForm.onStart(parentForm.onstart_form);
-                       // await uda_server_communication.Server_Request(put_started);
-                        break;
+                        if (status == 7 || status == 10)
+                        {
+                            parentForm.step++;
+                            this.Hide();
+                            timeleft = 10;
+                            parentForm.onStart(parentForm.onstart_form);
+                            // await uda_server_communication.Server_Request(put_started);
+                            break;
+                        }
                     }
                 }
             }
-
-
-
-        }
-
-        private void btn_DUE_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
-
         }
     }
 }

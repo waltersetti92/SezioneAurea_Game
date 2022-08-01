@@ -21,20 +21,22 @@ namespace Sezione_Aureawe
 {
     class uda_server_communication
     {
+        public static int[] explorers;
+        public static string server_url = "https://luda.nixo.xyz/";
         public uda_server_communication()
         {
-
         }
         public async static Task<string> Server_Request(string url)
         {
             try
             {
-                WebRequest server = HttpWebRequest.Create(url);
+                WebRequest server = HttpWebRequest.Create(server_url + url);
                 var response = server.GetResponse();
                 using (var reader = new StreamReader(response.GetResponseStream()))
                 {
                     var result = await reader.ReadToEndAsync();
                     JObject json_parsed = JObject.Parse(result);
+                    explorers = json_parsed["explorers"].Values<int>().ToArray();
                     string current_status = (string)json_parsed["status"];
                         return current_status;
                 }
@@ -44,18 +46,17 @@ namespace Sezione_Aureawe
                 throw new ApplicationException("Error", ex);
             }
         }
-        public async static Task<string> Server_Request_datasent(string url)
+        public async static Task<JToken> Server_Request_datasent(string url)
         {
             try
             {
-                WebRequest server = HttpWebRequest.Create(url);
+                WebRequest server = HttpWebRequest.Create(server_url + url);
                 var response = server.GetResponse();
                 using (var reader = new StreamReader(response.GetResponseStream()))
                 {
                     var result = await reader.ReadToEndAsync();
                     JObject json_parsed = JObject.Parse(result);
-                    string current_status = (string)json_parsed["data"];
-                    return current_status;
+                    return json_parsed["data"];
                 }
             }
             catch (Exception ex)
@@ -67,7 +68,7 @@ namespace Sezione_Aureawe
         {
             try
             {
-                WebRequest server = HttpWebRequest.Create(url);
+                WebRequest server = HttpWebRequest.Create(server_url + url);
                 var response = server.GetResponse();
                 using (var reader = new StreamReader(response.GetResponseStream()))
                 {

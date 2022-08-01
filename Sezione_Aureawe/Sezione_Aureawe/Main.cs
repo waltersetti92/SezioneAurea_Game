@@ -26,7 +26,6 @@ namespace Sezione_Aureawe
         public string activity_form;
         public string onstart_form;
         public string started_uda;
-        public string wait_data;
         public string idle_status;
         public int interaction_sequences = 0;
         public SoundPlayer player = null;
@@ -35,15 +34,35 @@ namespace Sezione_Aureawe
         public string data_start;
         public string pause_uda;
         public static System.Diagnostics.Process proc;
+        public int turno = 0;
+        public string wait_data()
+        {
+            int[] can_answer;
+            if (uda_server_communication.explorers.Length == 0)
+            {
+                can_answer = new int[0];
+            } else
+            {
+                can_answer = new int[] { uda_server_communication.explorers[
+                    turno % uda_server_communication.explorers.Length] };
+            }
+            turno += 1;
+            Dictionary<String, object> request = new Dictionary<String, object>();
+            request.Add("question", "Scegli l'immagine che si lega alla sezione aurea");
+            request.Add("input_type", new string[] { "1", "2" });
+            request.Add("can_answer", can_answer);
+
+            string data = JsonConvert.SerializeObject(request);
+            return "api/uda/put/?i=3&k=14&data=" + data;
+        }
         public Main()
         {
             step = 1;
             pause_uda = "";
-            wait_data = "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3&k=14" + "&data=" + "{\"answer\": \"Scegli l'immagine che si lega alla sezione aurea\", \"input_type\":[\"1\",\"2\"]}";
-            started_uda = "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3&k=7" + "&data=" + data_start;
-            //started_uda = "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3&k=7";
-            get_data_uda = "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/get/?i=3";  // url per ottenere lo stato dell'UDA             
-            idle_status = "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3&k=0";
+            started_uda = "api/uda/put/?i=3&k=7" + "&data=" + data_start;
+            //started_uda =  url_luda + "api/uda/put/?i=3&k=7";
+            get_data_uda = "api/uda/get/?i=3";  // url per ottenere lo stato dell'UDA             
+            idle_status = "api/uda/put/?i=3&k=0";
             Business_Logic BL = new Business_Logic(this);
             AppDomain.CurrentDomain.ProcessExit += new EventHandler(OnProcessExit);
             InitializeComponent();
@@ -134,9 +153,13 @@ namespace Sezione_Aureawe
             this.BeginInvoke((Action)delegate ()
             {
                 int status = int.Parse(k);
+                if (status == 0)
+                {
+                    k = "5";
+                }
                 if (status == 6)
                 {
-                    video_reproduction("C:\\Users\\wsetti\\Documents\\Video_LUDA\\UDA_Inglese_0.mov");
+                   // video_reproduction("C:\\Users\\wsetti\\Documents\\Video_LUDA\\UDA_Inglese_0.mov");
                     onStart(activity_form);
                 }
                 if (status == 8)
@@ -151,9 +174,9 @@ namespace Sezione_Aureawe
                 }
                 if (status == 11 || status == 12)
                 {
-
+                    /*
                     Application.Exit();
-                    Environment.Exit(0);
+                    Environment.Exit(0);*/
 
                 }
                 if (status == 15)
@@ -223,12 +246,12 @@ namespace Sezione_Aureawe
 
         private void Main_Load(object sender, EventArgs e)
         {
-            string mpvcommand = "--idle --input-ipc-server=\\\\.\\pipe\\mpv-pipe";
-            proc = new System.Diagnostics.Process();
-            proc.StartInfo.FileName = "C:\\Users\\wsetti\\Documents\\Video_LUDA\\mpv";
-            proc.StartInfo.Arguments = mpvcommand;
-            proc.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
-            proc.Start();
+            //string mpvcommand = "--idle --input-ipc-server=\\\\.\\pipe\\mpv-pipe";
+            //proc = new System.Diagnostics.Process();
+            //proc.StartInfo.FileName = "C:\\Users\\wsetti\\Documents\\Video_LUDA\\mpv";
+            //proc.StartInfo.Arguments = mpvcommand;
+            //proc.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            //proc.Start();
             Size size = this.Size;
             initial1.setPos(size.Width, size.Height);
             interaction1.setPos(size.Width, size.Height);

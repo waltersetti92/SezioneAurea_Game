@@ -1,24 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.IO;
-using System.Net;
-using System.Net.Http;
-using System.Threading;
-using System.Collections;
 using System.Timers;
-using System.Windows;
-using System.Diagnostics;
-using System.Text.Json;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using Timer = System.Timers.Timer;
+
 namespace Sezione_Aureawe
 {
     class Business_Logic
@@ -29,6 +11,7 @@ namespace Sezione_Aureawe
         public string save_status;
         private static System.Timers.Timer aTimer;
         public int counter_timer;
+        bool firststart = true;
         public Business_Logic(Main form)
         {
             mn = form;
@@ -40,7 +23,7 @@ namespace Sezione_Aureawe
         }
         public async void New_Status_UDA(object source, ElapsedEventArgs e)
         {
-            string get_status_uda = "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/get/?i=3";  // url per ottenere lo stato dell'UDA  
+            string get_status_uda = "api/uda/get/?i=3";  // url per ottenere lo stato dell'UDA  
 
             try
             {
@@ -53,11 +36,17 @@ namespace Sezione_Aureawe
                 {
                     save_status = uda_status;
                     mn.Status_Changed(uda_status);
-                    mn.activity_form = uda_status;                
-                    string put_server = Url_Put(uda_status); // creo la stringa per il put al server che notifica il cambio di stato dell'UDA
+                    mn.activity_form = uda_status;
+                    string put_server;
+                    if (firststart)
+                    {
+                        put_server = Url_Put("5"); // creo la stringa per il put al server che notifica il cambio di stato dell'UDA
+                        firststart = false;
+                    } else {
+                        put_server = Url_Put(uda_status);
+                    }
                     await uda_server_communication.Server_Request(put_server); // qui mando al server il comando  
                     counter_timer++;
-         
                 }
                 else //verifico che lo stato corrente sia diverso dallo stato salvato
                 {
@@ -85,13 +74,11 @@ namespace Sezione_Aureawe
             if (ik >= 0 && ik < 20)
             {
                 if(ik==11 || ik==8)
-                return "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3" + "&k="+ik1.ToString();
+                return "/api/uda/put/?i=3" + "&k="+ik1.ToString();
                 else if(ik==6)
-                return "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3" + "&k=" + ik1.ToString() + "&data=" + mn.data_start;
-                //else if (ik==14)
-                //    return "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3" + "&k=" + ik.ToString() + "&data =/ &data ={\"answer\": \"Scegli l'immagine che si lega alla sezione aurea\", \"input_type\":[\"1\",\"2\"]}";
+                return "/api/uda/put/?i=3" + "&k=" + ik1.ToString() + "&data=" + mn.data_start;
                 else
-                return "https://www.sagosoft.it/_API_/cpim/luda/www/luda_20210111_1500//api/uda/put/?i=3" + "&k=" + ik.ToString();
+                return "/api/uda/put/?i=3" + "&k=" + ik.ToString();
             }
 
             else

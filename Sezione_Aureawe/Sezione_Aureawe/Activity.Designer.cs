@@ -96,7 +96,6 @@
             this.btn_DUE.TabIndex = 26;
             this.btn_DUE.Text = "DUE";
             this.btn_DUE.UseVisualStyleBackColor = true;
-            this.btn_DUE.Click += new System.EventHandler(this.btn_DUE_Click);
             // 
             // timerLabel
             // 
