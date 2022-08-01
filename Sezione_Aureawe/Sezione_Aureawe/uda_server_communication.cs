@@ -22,6 +22,8 @@ namespace Sezione_Aureawe
     class uda_server_communication
     {
         public static int[] explorers;
+        public static int turno;
+        public static int indizio;
         public static string server_url = "https://luda.nixo.xyz/";
         public uda_server_communication()
         {
@@ -37,6 +39,8 @@ namespace Sezione_Aureawe
                     var result = await reader.ReadToEndAsync();
                     JObject json_parsed = JObject.Parse(result);
                     explorers = json_parsed["explorers"].Values<int>().ToArray();
+                    turno = (int)json_parsed["turno"].ToObject<int>();
+                    indizio = (int)json_parsed["indizio"].ToObject<int>();
                     string current_status = (string)json_parsed["status"];
                         return current_status;
                 }

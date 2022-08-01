@@ -315,7 +315,6 @@ namespace Sezione_Aureawe
                         lbl_fin1.Visible = true;
                         this.Update();
                         break;
-
                     }
                 }
             }
@@ -325,12 +324,12 @@ namespace Sezione_Aureawe
         public void indizio()
         {
             resetOperations();
-            if (String.Equals(parentForm.data_start, "4"))
-            {
-                Image_Indizio("indizio1");
+            /*if (String.Equals(parentForm.data_start, "4"))
+            {*/
+                Image_Indizio(uda_server_communication.indizio + "_" + uda_server_communication.turno);
                 Thread.Sleep(2000);
-                parentForm.video_reproduction("C:\\Users\\wsetti\\Documents\\Video_LUDA\\UDA_Inglese_0.mov");
-            }
+               // parentForm.video_reproduction("C:\\Users\\wsetti\\Documents\\Video_LUDA\\UDA_Inglese_0.mov");
+            /*}*/
         }
         public async void start_after_resume()
         {
