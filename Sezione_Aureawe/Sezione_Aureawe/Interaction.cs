@@ -93,7 +93,9 @@ namespace Sezione_Aureawe
         public void First_Sequence()
         {
 
-           // star2.WaitOnLoad = true;
+            // star2.WaitOnLoad = true;
+            pB_Indizio.Visible = false;
+            lbl_fin1.Visible = false;
             star2.Visible = true;          
             this.Update();
             parentForm.playbackResourceAudio("Suono1_True");
@@ -347,28 +349,7 @@ namespace Sezione_Aureawe
                 if (parentForm.step == 1 && (status1==7 || status1==10))
                 {
                     First_Sequence();
-                    //while (true)
-                    //{
-                    //    k = parentForm.Status_Changed(parentForm.activity_form);
-                    //    int status = int.Parse(k);
-                    //    if (status == 7 || status == 10)
-                    //    {
-                    //        parentForm.activity(parentForm.activity_form);
-                    //        break;
-                    //    }
-                    //    if (status==11|| status == 12)
-                    //    {
-                    //        Application.Exit();
-                    //        Environment.Exit(0);
-                    //    }
-                    //   if (status==13)
-                    //    {
-                    //        this.Hide();
-                    //        parentForm.Abort_UDA();
-                    //        break;
-                    //    }
-                    //}
-
+                  
                 }
                 else if (parentForm.step == 2 && (status1 == 7 || status1 == 10))
                 {

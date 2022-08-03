@@ -21,6 +21,7 @@ namespace Sezione_Aureawe
         private const string background_image = "galaxy.jpg";
         private UserControl currUC = null;
         public int step;
+        public int trial_1;
         public string new_status;
         public string get_data_uda;
         public string activity_form;
@@ -35,6 +36,7 @@ namespace Sezione_Aureawe
         public string pause_uda;
         public static System.Diagnostics.Process proc;
         public int turno = 0;
+    
         public string wait_data()
         {
             int[] can_answer;
@@ -58,10 +60,11 @@ namespace Sezione_Aureawe
         public Main()
         {
             step = 1;
+            trial_1 = 0;
             pause_uda = "";
             started_uda = "api/uda/put/?i=3&k=7" + "&data=" + data_start;
             //started_uda =  url_luda + "api/uda/put/?i=3&k=7";
-            get_data_uda = "api/uda/get/?i=3";  // url per ottenere lo stato dell'UDA             
+            get_data_uda = "api/uda/get/?i=3";              
             idle_status = "api/uda/put/?i=3&k=0";
             Business_Logic BL = new Business_Logic(this);
             AppDomain.CurrentDomain.ProcessExit += new EventHandler(OnProcessExit);
@@ -197,6 +200,7 @@ namespace Sezione_Aureawe
         {
             await uda_server_communication.Server_Request(idle_status);
             activity1.trial = 0;
+            trial_1 = 0;
             step = 1;
             if (currUC != null) currUC.Visible = false;
             initial1.Show();
@@ -231,8 +235,10 @@ namespace Sezione_Aureawe
             Thread.Sleep(1500);
             interaction1.Visible = false;
             activity1.Visible = true;
-            activity1.trial++;
-            activity1.setOperationsIcons(activity1.trial);
+           // activity1.trial++;
+            trial_1++;
+          //  activity1.setOperationsIcons(activity1.trial);
+            activity1.setOperationsIcons(trial_1);
             currUC = activity1;
         }
 

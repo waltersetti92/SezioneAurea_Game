@@ -25,9 +25,12 @@ namespace Sezione_Aureawe
         public string get_status_uda;
         public int wait;
         public string data_started1;
+
+
         public async void PutStarted()
         {
             await uda_server_communication.Server_Request("api/uda/put/?i=3&k=7&data=" + parentForm.data_start);
+
         }
         public Activity()
         {
@@ -36,6 +39,7 @@ namespace Sezione_Aureawe
             resetOperations();
             wait = 0;
             get_status_uda = "api/uda/get/?i=3";
+
         }
         private void resetOperations()
         {
@@ -261,7 +265,7 @@ namespace Sezione_Aureawe
 
                             timer1.Stop();
                             timerLabel.Visible = false;
-                            if (trial == 1 || trial == 4 || trial == 5)
+                            if (parentForm.trial_1 == 1 || parentForm.trial_1 == 4 || parentForm.trial_1 == 5)
                             {
                                 if (String.Equals(response, "1"))
                                 {
@@ -269,6 +273,7 @@ namespace Sezione_Aureawe
                                     Thread.Sleep(4000);
                                     PutStarted();
                                     parentForm.step++;
+                                
                                     this.Hide();
                                     timeleft = 10;
                                     parentForm.onStart(parentForm.onstart_form);
@@ -279,13 +284,14 @@ namespace Sezione_Aureawe
                                     Thread.Sleep(4000);
                                     PutStarted();
                                     parentForm.step++;
+                                    
                                     this.Hide();
                                     timeleft = 10;
                                     parentForm.onStart(parentForm.onstart_form);
                                 }
 
                             }
-                            else if (trial == 2 || trial == 3)
+                            else if (parentForm.trial_1 == 2 || parentForm.trial_1 == 3)
                             {
                                 if (String.Equals(response, "2"))
                                 {
@@ -293,6 +299,7 @@ namespace Sezione_Aureawe
                                     Thread.Sleep(4000);
                                     PutStarted();
                                     parentForm.step++;
+                         
                                     this.Hide();
                                     timeleft = 10;
                                     parentForm.onStart(parentForm.onstart_form);
@@ -303,6 +310,7 @@ namespace Sezione_Aureawe
                                     Thread.Sleep(4000);
                                     PutStarted();
                                     parentForm.step++;
+                              
                                     this.Hide();
                                     timeleft = 10;
                                     parentForm.onStart(parentForm.onstart_form);
@@ -317,13 +325,13 @@ namespace Sezione_Aureawe
                 if (timeleft == 0)
                 {
                     Out_of_time();
-                    if (trial == 1 || trial == 4 || trial == 5)
+                    if (parentForm.trial_1 == 1 || parentForm.trial_1 == 4 || parentForm.trial_1 == 5)
                     {
                         Feedback.Text = "HAI FINITO IL TEMPO! L'IMMAGINE GIUSTA ERA LA UNO";
                         this.Update();
                         PutStarted();
                     }
-                    else if (trial == 2 || trial == 3)
+                    else if (parentForm.trial_1 == 2 || parentForm.trial_1 == 3)
                     {
                         Feedback.Text = "HAI FINITO IL TEMPO! L'IMMAGINE GIUSTA ERA LA DUE";
                         this.Update();
@@ -348,6 +356,7 @@ namespace Sezione_Aureawe
                         if (status == 7 || status == 10)
                         {
                             parentForm.step++;
+                      
                             this.Hide();
                             timeleft = 10;
                             parentForm.onStart(parentForm.onstart_form);
