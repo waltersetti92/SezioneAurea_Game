@@ -31,7 +31,7 @@ namespace Sezione_Aureawe
             completed = "api/uda/put/?i=3&k=16";
    
         }
-        private void resetOperations()
+       public void resetOperations()
         {
             star1.Visible = false;
             star2.Visible = false;
@@ -355,107 +355,25 @@ namespace Sezione_Aureawe
                 {
                    
                     Sequence_1();
-                    //while (true)
-                    //{
-                    //    k = parentForm.Status_Changed(parentForm.activity_form);
-                    //    int status = int.Parse(k);
-                    //    if (status == 7 || status == 10)
-                    //    {
-                    //        parentForm.activity(parentForm.activity_form);
-                    //        break;
-                    //    }
-                    //    if (status == 11 || status == 12)
-                    //    {
-                    //        Application.Exit();
-                    //        Environment.Exit(0);
-                    //    }
-                    //    if (status == 13)
-                    //    {
-                    //        this.Hide();
-                    //        parentForm.Abort_UDA();
-                    //        break;
-                    //    }
-                    //}
 
 
                 }
                 else if (parentForm.step == 3 && (status1 == 7 || status1 == 10))
                 {
                     Sequence_2();
-                    //while (true)
-                    //{
-                    //    k = parentForm.Status_Changed(parentForm.activity_form);
-                    //    int status = int.Parse(k);
-                    //    if (status == 7 || status == 10)
-                    //    {
-                    //        parentForm.activity(parentForm.activity_form);
-                    //        break;
-                    //    }
-                    //    if (status == 11 || status == 12)
-                    //    {
-                    //        Application.Exit();
-                    //        Environment.Exit(0);
-                    //    }
-                    //    if (status == 13)
-                    //    {
-                    //        this.Hide();
-                    //        parentForm.Abort_UDA();
-                    //        break;
-                    //    }
-                      
-                    //}
+
                 }
                 else if (parentForm.step == 4 && (status1 == 7 || status1 == 10))
                 {
                     Sequence_3();
-                   // while (true)
-                    //{
-                    //    k = parentForm.Status_Changed(parentForm.activity_form);
-                    //    int status = int.Parse(k);
-                    //    if (status == 7 || status == 10)
-                    //    {
-                    //        parentForm.activity(parentForm.activity_form);
-                    //        break;
-                    //    }
-                    //    if (status == 11 || status == 12)
-                    //    {
-                    //        Application.Exit();
-                    //        Environment.Exit(0);
-                    //    }
-                    //    if (status == 13)
-                    //    {
-                    //        this.Hide();
-                    //        parentForm.Abort_UDA();
-                    //        break;
-                    //    }
-                    //}
+                   
 
                 }
                 else if (parentForm.step == 5 && (status1 == 7 || status1 == 10))
                 {
                     Sequence_4();
 
-                    //while (true)
-                    //{
-                    //    k = parentForm.Status_Changed(parentForm.activity_form);
-                    //    int status = int.Parse(k);
-                    //    if (status == 7 || status == 10)
-                    //    {
-                    //        parentForm.activity(parentForm.activity_form);
-                    //        break;
-                    //    }
-                    //    if (status == 11 || status == 12)
-                    //    {
-                    //        Application.Exit();
-                    //        Environment.Exit(0);
-                    //    }
-                    //    if (status == 13)
-                    //    {
-                    //        this.Hide();
-                    //        parentForm.Abort_UDA();
-                    //        break;
-                    //    }
-                    //}
+                
                 }
                 else if (parentForm.step == 6 && (status1 == 7 || status1 == 10))
                 {

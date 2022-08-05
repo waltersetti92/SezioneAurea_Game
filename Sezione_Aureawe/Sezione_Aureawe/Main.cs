@@ -158,11 +158,17 @@ namespace Sezione_Aureawe
                 int status = int.Parse(k);
                 if (status == 0)
                 {
+                    interaction1.Visible = false;
+                    initial1.Visible = true;
                     k = "5";
+
                 }
                 if (status == 6)
                 {
-                   // video_reproduction("C:\\Users\\wsetti\\Documents\\Video_LUDA\\UDA_Inglese_0.mov");
+                    // video_reproduction("C:\\Users\\wsetti\\Documents\\Video_LUDA\\UDA_Inglese_0.mov");
+                    interaction1.Visible = false;
+                    interaction1.resetOperations(); 
+
                     onStart(activity_form);
                 }
                 if (status == 8)

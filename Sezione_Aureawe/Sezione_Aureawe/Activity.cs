@@ -249,6 +249,10 @@ namespace Sezione_Aureawe
                         if (status == 14)
                         {
                             JToken data = await uda_server_communication.Server_Request_datasent(get_status_uda);
+                            if (!(data is JArray))
+                            {
+                                continue;
+                            }
                             var explorers = data.ToObject<JArray>();
                             foreach (var explorer in data)
                             {
