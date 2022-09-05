@@ -166,7 +166,7 @@ namespace Sezione_Aureawe
                 if (status == 6)
                 {
                     // video_reproduction("C:\\Users\\wsetti\\Documents\\Video_LUDA\\UDA_Inglese_0.mov");
-                    interaction1.Visible = false;
+                   interaction1.Visible = false;
                     interaction1.resetOperations(); 
 
                     onStart(activity_form);
@@ -183,7 +183,7 @@ namespace Sezione_Aureawe
                 }
                 if (status == 11 || status == 12)
                 {
-                    System.Diagnostics.Process.GetCurrentProcess().Kill();
+                    //System.Diagnostics.Process.GetCurrentProcess().Kill();
 
                 }
                 if (status == 15)

@@ -75,6 +75,7 @@ namespace Sezione_Aureawe
             btn_UNO.Enabled = false;
             btn_UNO.BackColor = Color.Green;
             Feedback.Text = "RISPOSTA CORRETTA";
+            parentForm.contatore_iniziale = 0;
             this.Update();
         }
         public void Wrong_Answer()
@@ -88,6 +89,7 @@ namespace Sezione_Aureawe
             btn_UNO.Enabled = false;
             btn_UNO.BackColor = Color.Red;
             Feedback.Text = "RISPOSTA SBAGLIATA";
+            parentForm.contatore_iniziale = 0;
             this.Update();
         }
         public void Out_of_time()
@@ -152,8 +154,7 @@ namespace Sezione_Aureawe
                 {
                     if (status == 11 || status == 12)
                     {
-                        Application.Exit();
-                        Environment.Exit(0);
+                        System.Diagnostics.Process.GetCurrentProcess().Kill();
                     }
                     if (status == 13)
                     {
@@ -229,6 +230,7 @@ namespace Sezione_Aureawe
         {
             if (timeleft > 0)
             {
+                timerLabel.Visible = true;
                 while (true)
                 {
                     k = parentForm.Status_Changed(parentForm.activity_form);
@@ -246,15 +248,17 @@ namespace Sezione_Aureawe
                             parentForm.Abort_UDA();
                             break;
                         }
-                        if  (status == 10 && wait == 1)
+                        if  (status == 10 && wait == 1 || status==7 && wait==1)
                         {
-                            Putwaitdata();
+                            //Putwaitdata();
+                            await uda_server_communication.Server_Request(parentForm.wait_data());
                         }
-                        timeleft--;                    
                         timerLabel.Text = timeleft.ToString();
                         Thread.Sleep(1000);
+                        timeleft--;                                                                  
                         if (status == 14)
                         {
+                            parentForm.contatore_iniziale = 1;
                             JToken data = await uda_server_communication.Server_Request_datasent(get_status_uda);
                             if (!(data is JArray))
                             {
@@ -273,9 +277,9 @@ namespace Sezione_Aureawe
                                 break;
                             }
                             if (response == null) { break; }
-
-                            timer1.Stop();
                             timerLabel.Visible = false;
+                            timer1.Stop();
+                            
                             if (parentForm.trial_1 == 1 || parentForm.trial_1 == 4 || parentForm.trial_1 == 5)
                             {
                                 if (String.Equals(response, "1"))
@@ -355,8 +359,7 @@ namespace Sezione_Aureawe
                         int status = int.Parse(k);
                         if (status == 11 || status == 12)
                         {
-                            Application.Exit();
-                            Environment.Exit(0);
+                            System.Diagnostics.Process.GetCurrentProcess().Kill();
                         }
                         if (status == 13)
                         {

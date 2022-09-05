@@ -43,52 +43,63 @@ namespace Sezione_Aureawe
         public async void New_Status_UDA(object source, ElapsedEventArgs e)
         {
             string get_status_uda = "api/uda/get/?i=3";  // url per ottenere lo stato dell'UDA  
-
-            try
+            if (!string.Equals(get_status_uda, "8") || !string.Equals(get_status_uda, "9"))
             {
-                string uda_status = await uda_server_communication.Server_Request(get_status_uda); //stato dell'UDA ottenuto con la classe UDA_server_communication
+                try
+                {
+                    string uda_status = await uda_server_communication.Server_Request(get_status_uda); //stato dell'UDA ottenuto con la classe UDA_server_communication
+                    GC.Collect();
                     if (string.Equals(uda_status, "6"))
-                {
-                    mn.data_start = await uda_server_communication.Server_Request_started(get_status_uda);
-                }
-                if (counter_timer == 0) // salvo lo stato dell'UDA al tempo t=0 e la prima volta che cambia
-                {
-                    save_status = uda_status;
-                    mn.Status_Changed(uda_status);
-                    mn.activity_form = uda_status;
-                    string put_server;
-                    if (firststart || Equals(uda_status,"0"))
                     {
-                        mn.step = 1;
-                        mn.trial_1 = 0;
-                        put_server = Url_Put("5"); // creo la stringa per il put al server che notifica il cambio di stato dell'UDA
-                        firststart = false;
-                        
-                    } else {
-                        put_server = Url_Put(uda_status);
+                        mn.data_start = await uda_server_communication.Server_Request_started(get_status_uda);
                     }
-                    await uda_server_communication.Server_Request(put_server); // qui mando al server il comando  
-                    counter_timer++;
-                }
-                else //verifico che lo stato corrente sia diverso dallo stato salvato
-                {
-                    if (!string.Equals(uda_status, save_status))
+                    if (counter_timer == 0) // salvo lo stato dell'UDA al tempo t=0 e la prima volta che cambia
                     {
-                        counter_timer = 0;
-                        int status = int.Parse(uda_status);
+                        save_status = uda_status;
                         mn.Status_Changed(uda_status);
-                        mn.activity_form = uda_status;         
-                        string put_server = Url_Put(uda_status);
-                        await uda_server_communication.Server_Request(put_server);
+                        mn.activity_form = uda_status;
+                        string put_server;
+                        if (firststart || Equals(uda_status, "0"))
+                        {
+                            mn.step = 1;
+                            mn.trial_1 = 0;
+                            put_server = Url_Put("5"); // creo la stringa per il put al server che notifica il cambio di stato dell'UDA
+                            firststart = false;
+
+                        }
+                        else
+                        {
+                            put_server = Url_Put(uda_status);
+                        }
+                        await uda_server_communication.Server_Request(put_server); // qui mando al server il comando  
+                        counter_timer++;
+                    }
+                    else //verifico che lo stato corrente sia diverso dallo stato salvato
+                    {
+                        if (!string.Equals(uda_status, save_status))
+                        {
+                            counter_timer = 0;
+                            int status = int.Parse(uda_status);
+                            mn.Status_Changed(uda_status);
+                            mn.activity_form = uda_status;
+                            string put_server = Url_Put(uda_status);
+                            await uda_server_communication.Server_Request(put_server);
+                        }
                     }
                 }
+                catch (Exception ex)
+                {
+                    throw new ApplicationException("Error", ex);
+                    aTimer.Stop();
+                }
             }
-            catch (Exception ex)
-            {
-                throw new ApplicationException("Error", ex);
-                aTimer.Stop();
+            else {
+                GC.Collect();
             }
+
+
         }
+        
         public string Url_Put(string k)
         {
             int ik = Int32.Parse(k);
@@ -113,13 +124,14 @@ namespace Sezione_Aureawe
                     }
                     mn.turno += 1;
                     Dictionary<String, object> request = new Dictionary<String, object>();
-                    request.Add("question", "Inserisci il numero comune ai due cerchi");
-                    request.Add("input_type", 0);
+                    request.Add("question", "Scegli l'immagine che si lega alla sezione aurea");
+                    request.Add("input_type", new string[] { "1", "2" });
                     request.Add("can_answer", can_answer);
 
                     string data = JsonConvert.SerializeObject(request);
                     return "api/uda/put/?i=3&k=14&data=" + data;
                 }
+               
                 else if (ik == 10 && mn.contatore_iniziale == 0)
                     return "/api/uda/put/?i=3" + "&k=7" + "&data=" + mn.data_start;
                 else

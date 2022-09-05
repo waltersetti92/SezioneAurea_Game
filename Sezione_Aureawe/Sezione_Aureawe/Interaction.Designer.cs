@@ -234,10 +234,10 @@
             // 
             // pB_Indizio
             // 
-            this.pB_Indizio.Location = new System.Drawing.Point(754, 351);
+            this.pB_Indizio.Location = new System.Drawing.Point(397, 26);
             this.pB_Indizio.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pB_Indizio.Name = "pB_Indizio";
-            this.pB_Indizio.Size = new System.Drawing.Size(366, 205);
+            this.pB_Indizio.Size = new System.Drawing.Size(778, 530);
             this.pB_Indizio.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pB_Indizio.TabIndex = 17;
             this.pB_Indizio.TabStop = false;

@@ -44,7 +44,9 @@ namespace Sezione_Aureawe
                     turno = (int)json_parsed["turno"].ToObject<int>();
                     indizio = (int)json_parsed["indizio"].ToObject<int>();
                     string current_status = (string)json_parsed["status"];
-                        return current_status;
+                    GC.Collect();
+                    GC.WaitForPendingFinalizers();
+                    return current_status;
                 }
             }
             catch (Exception ex)
@@ -62,7 +64,10 @@ namespace Sezione_Aureawe
                 {
                     var result = await reader.ReadToEndAsync();
                     JObject json_parsed = JObject.Parse(result);
+                    GC.Collect();
+                    GC.WaitForPendingFinalizers();
                     return json_parsed["data"];
+  
                 }
             }
             catch (Exception ex)
@@ -81,6 +86,8 @@ namespace Sezione_Aureawe
                     var result = await reader.ReadToEndAsync();
                     JObject json_parsed = JObject.Parse(result);
                     string current_status = (string)json_parsed["data"];
+                    GC.Collect();
+                    GC.WaitForPendingFinalizers();
                     return current_status;
                 }
             }
