@@ -20,6 +20,7 @@ namespace Sezione_Aureawe
             SetStyle(ControlStyles.Opaque, true);
             labLuda.BackColor = Color.Transparent;
             this.BackColor = Color.Transparent;
+
         }
         public void setPos(int w, int h)
         {
