@@ -208,7 +208,7 @@ namespace Sezione_Aureawe
         private void Activity_Load(object sender, EventArgs e)
         {
             timer1.Stop();
-            timer1.Enabled = true;
+            //timer1.Enabled = true;
 
 
         }

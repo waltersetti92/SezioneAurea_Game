@@ -1,5 +1,24 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.IO;
+using System.Net;
+using System.Net.Http;
+using System.Threading;
+using System.Collections;
 using System.Timers;
+using System.Windows;
+using System.Diagnostics;
+using System.Text.Json;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Timer = System.Timers.Timer;
 
 namespace Sezione_Aureawe
 {
@@ -79,8 +98,8 @@ namespace Sezione_Aureawe
                 if(ik==11 || ik==8)
                 return "/api/uda/put/?i=3" + "&k="+ik1.ToString();
                 else if(ik==6)
-                return "/api/uda/put/?i=3" + "&k=" + ik1.ToString() + "&data=" + mn.data_start;
-                else
+                return "/api/uda/put/?i=3" + "&k=" + ik1.ToString() + "&data=" + mn.data_start;              
+            else
                 return "/api/uda/put/?i=3" + "&k=" + ik.ToString();
             }
 
