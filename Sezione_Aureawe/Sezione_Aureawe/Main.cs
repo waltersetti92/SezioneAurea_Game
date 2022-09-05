@@ -36,7 +36,7 @@ namespace Sezione_Aureawe
         public string pause_uda;
         public static System.Diagnostics.Process proc;
         public int turno = 0;
-    
+        public int contatore_iniziale = 0;
         public string wait_data()
         {
             int[] can_answer;
@@ -225,6 +225,7 @@ namespace Sezione_Aureawe
         {
             if (currUC != null) currUC.Visible = false;
             initial1.Show();
+            contatore_iniziale = 0;
             currUC = initial1;
         }
         public void onStart(string k)
@@ -234,6 +235,7 @@ namespace Sezione_Aureawe
             interaction1.pause_val = ShouldPause;
             currUC = interaction1;
             Thread.Sleep(1000);
+            contatore_iniziale = 0;
             interaction1.Start_Sequences();
         }
         public void activity(string k)

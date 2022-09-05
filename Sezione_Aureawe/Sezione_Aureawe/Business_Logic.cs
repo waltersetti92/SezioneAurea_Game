@@ -98,8 +98,31 @@ namespace Sezione_Aureawe
                 if(ik==11 || ik==8)
                 return "/api/uda/put/?i=3" + "&k="+ik1.ToString();
                 else if(ik==6)
-                return "/api/uda/put/?i=3" + "&k=" + ik1.ToString() + "&data=" + mn.data_start;              
-            else
+                return "/api/uda/put/?i=3" + "&k=" + ik1.ToString() + "&data=" + mn.data_start;
+                else if (ik == 10 && mn.contatore_iniziale == 1)
+                {
+                    int[] can_answer;
+                    if (uda_server_communication.explorers.Length == 0)
+                    {
+                        can_answer = new int[0];
+                    }
+                    else
+                    {
+                        can_answer = new int[] { uda_server_communication.explorers[
+                    mn.turno % uda_server_communication.explorers.Length] };
+                    }
+                    mn.turno += 1;
+                    Dictionary<String, object> request = new Dictionary<String, object>();
+                    request.Add("question", "Inserisci il numero comune ai due cerchi");
+                    request.Add("input_type", 0);
+                    request.Add("can_answer", can_answer);
+
+                    string data = JsonConvert.SerializeObject(request);
+                    return "api/uda/put/?i=3&k=14&data=" + data;
+                }
+                else if (ik == 10 && mn.contatore_iniziale == 0)
+                    return "/api/uda/put/?i=3" + "&k=7" + "&data=" + mn.data_start;
+                else
                 return "/api/uda/put/?i=3" + "&k=" + ik.ToString();
             }
 

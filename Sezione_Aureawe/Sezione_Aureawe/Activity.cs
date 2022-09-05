@@ -216,7 +216,15 @@ namespace Sezione_Aureawe
         private void btn_UNO_Click(object sender, EventArgs e)
         {
         }
+        public async void Putwaitdata()
+        {
+            await uda_server_communication.Server_Request("api/uda/put/?i=1&k=14&data=" + parentForm.data_start);
 
+        }
+        public void updateCountdown()
+        {
+            
+        }
         private async void timer1_Tick(object sender, EventArgs e)
         {
             if (timeleft > 0)
@@ -225,13 +233,12 @@ namespace Sezione_Aureawe
                 {
                     k = parentForm.Status_Changed(parentForm.activity_form);
                     int status = int.Parse(k);
-
+                    string response = null;
                     if (status != 9 && status != 8)
                     {
                         if (status == 11 || status == 12)
                         {
-                            Application.Exit();
-                            Environment.Exit(0);
+                            System.Diagnostics.Process.GetCurrentProcess().Kill();
                         }
                         if (status == 13)
                         {
@@ -239,13 +246,13 @@ namespace Sezione_Aureawe
                             parentForm.Abort_UDA();
                             break;
                         }
-                        if (((status == 7 && wait == 1)) || (status == 10 && wait == 1))
+                        if  (status == 10 && wait == 1)
                         {
-                            await uda_server_communication.Server_Request(parentForm.wait_data());
+                            Putwaitdata();
                         }
-                        timeleft = timeleft - 1;
+                        timeleft--;                    
                         timerLabel.Text = timeleft.ToString();
-                        string response = null;
+                        Thread.Sleep(1000);
                         if (status == 14)
                         {
                             JToken data = await uda_server_communication.Server_Request_datasent(get_status_uda);
