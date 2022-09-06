@@ -323,13 +323,10 @@ namespace Sezione_Aureawe
         }
         public void indizio()
         {
+            parentForm.video_reproduction(parentForm.final_video);
             resetOperations();
-            /*if (String.Equals(parentForm.data_start, "4"))
-            {*/
                 Image_Indizio(uda_server_communication.indizio + "_" + uda_server_communication.turno);
                 Thread.Sleep(2000);
-               // parentForm.video_reproduction("C:\\Users\\wsetti\\Documents\\Video_LUDA\\UDA_Inglese_0.mov");
-            /*}*/
         }
         public async void start_after_resume()
         {

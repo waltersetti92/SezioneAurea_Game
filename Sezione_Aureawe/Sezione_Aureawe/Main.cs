@@ -175,7 +175,6 @@ namespace Sezione_Aureawe
                     video_reproduction(initial_video);
                     interaction1.Visible = false;
                     interaction1.resetOperations(); 
-
                     onStart(activity_form);
                 }
                 if (status == 8)
