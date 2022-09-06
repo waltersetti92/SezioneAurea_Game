@@ -91,7 +91,12 @@ namespace Sezione_Aureawe
         }
         public void video_reproduction(string video1)
         {
-           
+            string mpvcommand = "--idle --input-ipc-server=\\\\.\\pipe\\mpv-pipe";
+            proc = new System.Diagnostics.Process();
+            proc.StartInfo.FileName = initial_video;
+            proc.StartInfo.Arguments = mpvcommand;
+            proc.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            proc.Start();
             var Nicolo = new NamedPipeClientStream("mpv-pipe");
             Nicolo.Connect();
             StreamReader reader = new StreamReader(Nicolo);
