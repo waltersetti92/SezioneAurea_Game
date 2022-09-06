@@ -37,6 +37,8 @@ namespace Sezione_Aureawe
         public static System.Diagnostics.Process proc;
         public int turno = 0;
         public int contatore_iniziale = 0;
+        public string initial_video = resourcesPath + "\\" + "Video_SA_1.mov";
+        public string final_video = resourcesPath + "\\" + "Video_SA_2.mov";
         public string wait_data()
         {
             int[] can_answer;
