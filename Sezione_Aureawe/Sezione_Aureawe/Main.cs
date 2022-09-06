@@ -167,8 +167,8 @@ namespace Sezione_Aureawe
                 }
                 if (status == 6)
                 {
-                    // video_reproduction("C:\\Users\\wsetti\\Documents\\Video_LUDA\\UDA_Inglese_0.mov");
-                   interaction1.Visible = false;
+                    video_reproduction(initial_video);
+                    interaction1.Visible = false;
                     interaction1.resetOperations(); 
 
                     onStart(activity_form);
