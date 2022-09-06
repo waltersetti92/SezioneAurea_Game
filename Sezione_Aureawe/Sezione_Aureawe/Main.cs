@@ -185,7 +185,7 @@ namespace Sezione_Aureawe
                 }
                 if (status == 11 || status == 12)
                 {
-                    //System.Diagnostics.Process.GetCurrentProcess().Kill();
+                  System.Diagnostics.Process.GetCurrentProcess().Kill();
 
                 }
                 if (status == 15)
