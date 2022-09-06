@@ -91,14 +91,14 @@ namespace Sezione_Aureawe
         }
         public void video_reproduction(string video1)
         {
-            string video = "C:\\Users\\wsetti\\Documents\\Video_LUDA\\UDA_Inglese_0.mov";
+           
             var Nicolo = new NamedPipeClientStream("mpv-pipe");
             Nicolo.Connect();
             StreamReader reader = new StreamReader(Nicolo);
             StreamWriter writer = new StreamWriter(Nicolo);
             writer.WriteLine("set pause yes");
             // System.Diagnostics.Debug.WriteLine(reader.ReadLine());
-            writer.WriteLine($"loadfile {video}");
+            writer.WriteLine($"loadfile {video1}");
             // System.Diagnostics.Debug.WriteLine(reader.ReadLine());
             writer.WriteLine("set seek 0 absolute");
             //System.Diagnostics.Debug.WriteLine(reader.ReadLine());
