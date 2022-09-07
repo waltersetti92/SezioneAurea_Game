@@ -38,8 +38,8 @@ namespace Sezione_Aureawe
         public int turno = 0;
         public int contatore_iniziale = 0;
         public string MPV = resourcesPath + "\\" + "mpv.com";
-        public string initial_video = resourcesPath + "\\" + "Video_SA_1.mov";
-        public string final_video = resourcesPath + "\\" + "Video_SA_2.mov";
+        public string initial_video = "C:/Users/wsetti/source/repos/Video_GAMES/Sezione_Aurea" + "Video_SA_1.mov";
+        public string final_video = "C:/Users/wsetti/source/repos/Video_GAMES/Sezione_Aurea" + "Video_SA_2.mov";
         public string wait_data()
         {
             int[] can_answer;
@@ -245,9 +245,7 @@ namespace Sezione_Aureawe
             Thread.Sleep(1500);
             interaction1.Visible = false;
             activity1.Visible = true;
-           // activity1.trial++;
             trial_1++;
-          //  activity1.setOperationsIcons(activity1.trial);
             activity1.setOperationsIcons(trial_1);
             currUC = activity1;
         }
