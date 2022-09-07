@@ -47,9 +47,7 @@ namespace Sezione_Aureawe
             pezzo5.Visible = false;
             lbl_fin2.Visible = false;
             star1.Visible = false;
-            this.Update();
             star2.Visible = false;
-            this.Update();
             //Listen.Enabled = true;
         }
 
@@ -90,26 +88,42 @@ namespace Sezione_Aureawe
                 Thread.Sleep(400);
             }
         }
+
+        public void star_invisible()
+        {
+            star1.Image = null;
+            this.Update();
+            star2.Image = null;
+            this.Update();
+            star3.Visible = false;
+            star4.Visible = false;
+            star5.Visible = false;
+        }
         public void First_Sequence()
         {
-
-            // star2.WaitOnLoad = true;
             pB_Indizio.Visible = false;
-            lbl_fin1.Visible = false;
-            star2.Visible = true;          
+            lbl_fin1.Visible = false; 
+            star2.WaitOnLoad = true;
+            star2.ImageLocation=  Main.resourcesPath + "\\" + "stella.png";
+            star2.Visible = true;           
             this.Update();
             parentForm.playbackResourceAudio("Suono1_True");
             Thread.Sleep(3000);
+            star_invisible();
             loop_w();
-            star2.Visible = false;
+            star_invisible();
+            //star2.Visible = false;
             this.Update();
-            // star1.WaitOnLoad = true;
+            // 
             if (go_on == 1)
             {
-                star1.Visible = true;
+                star1.WaitOnLoad = true;
+                star1.ImageLocation = Main.resourcesPath + "\\" + "stella.png";
+                star1.Visible = true;                
                 this.Update();
                 parentForm.playbackResourceAudio("Suono2_True");
                 Thread.Sleep(3000);
+                star_invisible();
                 loop_w();
                 k = parentForm.Status_Changed(parentForm.activity_form);
                 int status = int.Parse(k);
@@ -133,7 +147,7 @@ namespace Sezione_Aureawe
         private void Sequence_1()
         {
             First_Sequence();
-            star1.Visible = false;
+            //star1.Visible = false;
             this.Update();
             if (go_on == 1)
             {
@@ -141,6 +155,7 @@ namespace Sezione_Aureawe
                 this.Update();
                 parentForm.playbackResourceAudio("Suono3_True");
                 Thread.Sleep(3000);
+                star_invisible();
                 loop_w();
                 k = parentForm.Status_Changed(parentForm.activity_form);
                 int status = int.Parse(k);
@@ -153,7 +168,7 @@ namespace Sezione_Aureawe
         private void Sequence_2()
         {
             Sequence_1();
-            star3.Visible = false;
+           
             this.Update();
             if (go_on == 1)
             {
@@ -161,6 +176,7 @@ namespace Sezione_Aureawe
                 this.Update();
                 parentForm.playbackResourceAudio("Suono4_True");
                 Thread.Sleep(3000);
+                star_invisible();
                 loop_w();
                 k = parentForm.Status_Changed(parentForm.activity_form);
                 int status = int.Parse(k);
@@ -172,7 +188,7 @@ namespace Sezione_Aureawe
         private void Sequence_3()
         {
             Sequence_2();
-            star4.Visible = false;
+            //star4.Visible = false;
             this.Update();
             if (go_on == 1)
             {
@@ -180,6 +196,7 @@ namespace Sezione_Aureawe
                 this.Update();
                 parentForm.playbackResourceAudio("Suono5_True");
                 Thread.Sleep(3000);
+                star_invisible();
                 loop_w();
                 k = parentForm.Status_Changed(parentForm.activity_form);
                 int status = int.Parse(k);
@@ -191,7 +208,7 @@ namespace Sezione_Aureawe
         private void Sequence_4()
         {
             Sequence_3();
-            star5.Visible = false;
+            //star5.Visible = false;
             this.Update();
             if (go_on == 1)
             {
@@ -199,6 +216,7 @@ namespace Sezione_Aureawe
                 this.Update();
                 parentForm.playbackResourceAudio("Suono6_True");
                 Thread.Sleep(3000);
+                star_invisible();
                 loop_w();
                 k = parentForm.Status_Changed(parentForm.activity_form);
                 int status = int.Parse(k);

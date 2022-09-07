@@ -61,7 +61,7 @@
             // star1
             // 
             this.star1.BackColor = System.Drawing.Color.Transparent;
-            this.star1.Image = global::Sezione_Aureawe.Properties.Resources.stella;
+            this.star1.Enabled = false;
             this.star1.Location = new System.Drawing.Point(351, 542);
             this.star1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.star1.Name = "star1";
@@ -69,11 +69,11 @@
             this.star1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.star1.TabIndex = 0;
             this.star1.TabStop = false;
+            this.star1.WaitOnLoad = true;
             // 
             // star2
             // 
             this.star2.BackColor = System.Drawing.Color.Transparent;
-            this.star2.Image = global::Sezione_Aureawe.Properties.Resources.stella;
             this.star2.Location = new System.Drawing.Point(280, 886);
             this.star2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.star2.Name = "star2";
@@ -81,6 +81,7 @@
             this.star2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.star2.TabIndex = 1;
             this.star2.TabStop = false;
+            this.star2.WaitOnLoad = true;
             this.star2.Click += new System.EventHandler(this.star2_Click);
             // 
             // pezzo0
@@ -94,6 +95,7 @@
             this.pezzo0.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pezzo0.TabIndex = 2;
             this.pezzo0.TabStop = false;
+            this.pezzo0.WaitOnLoad = true;
             // 
             // star3
             // 
