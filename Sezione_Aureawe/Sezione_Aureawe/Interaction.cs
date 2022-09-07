@@ -87,6 +87,7 @@ namespace Sezione_Aureawe
                     parentForm.Abort_UDA();
                     break;
                 }
+                Thread.Sleep(400);
             }
         }
         public void First_Sequence()
@@ -317,6 +318,7 @@ namespace Sezione_Aureawe
                         break;
                     }
                 }
+                Thread.Sleep(400);
             }
             
 
@@ -392,9 +394,10 @@ namespace Sezione_Aureawe
                             parentForm.Abort_UDA();
                             break;
                         }
+                        Thread.Sleep(400);
                     }                  
                 }
-
+                
                 break;
             }
 

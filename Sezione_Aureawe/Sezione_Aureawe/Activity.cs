@@ -145,6 +145,7 @@ namespace Sezione_Aureawe
                         break;
                     }
                 }
+                Thread.Sleep(400);
             }
             while (true)
             {
@@ -174,6 +175,7 @@ namespace Sezione_Aureawe
                         break;
                     }
                 }
+                Thread.Sleep(400);
             }
 
             Thread.Sleep(1000);
@@ -335,6 +337,7 @@ namespace Sezione_Aureawe
                         }
                         break;
                     }
+                    Thread.Sleep(400);
                 }
 
                 if (timeleft == 0)
@@ -377,6 +380,7 @@ namespace Sezione_Aureawe
                             // await uda_server_communication.Server_Request(put_started);
                             break;
                         }
+                        Thread.Sleep(400);
                     }
                 }
             }
