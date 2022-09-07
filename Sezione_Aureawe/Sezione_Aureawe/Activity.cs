@@ -128,8 +128,7 @@ namespace Sezione_Aureawe
                 {
                     if (status == 11 || status == 12)
                     {
-                        Application.Exit();
-                        Environment.Exit(0);
+                        System.Diagnostics.Process.GetCurrentProcess().Kill();
                     }
                     if (status == 13)
                     {
@@ -180,9 +179,7 @@ namespace Sezione_Aureawe
                 }
                 Thread.Sleep(400);
             }
-
             Thread.Sleep(1000);
-
         }
         public void setOperationsIcons(int i)
         {
@@ -214,9 +211,7 @@ namespace Sezione_Aureawe
         private void Activity_Load(object sender, EventArgs e)
         {
             timer1.Stop();
-            //timer1.Enabled = true;
-
-
+      
         }
 
         private void btn_UNO_Click(object sender, EventArgs e)
@@ -257,9 +252,10 @@ namespace Sezione_Aureawe
                         {
                             await uda_server_communication.Server_Request(parentForm.wait_data());
                         }
+                        timeleft--;
                         timerLabel.Text = timeleft.ToString();
-                        Thread.Sleep(1000);
-                        timeleft--;                                                                  
+                        this.Update();
+                        Thread.Sleep(1000);                                                                                    
                         if (status == 14)
                         {
                             parentForm.contatore_iniziale = 1;
@@ -379,7 +375,6 @@ namespace Sezione_Aureawe
                             this.Hide();
                             timeleft = 10;
                             parentForm.onStart(parentForm.onstart_form);
-                            // await uda_server_communication.Server_Request(put_started);
                             break;
                         }
                         parentForm.contatore_iniziale = 0;
