@@ -39,7 +39,7 @@ namespace Sezione_Aureawe
         public int contatore_iniziale = 0;
         public string MPV = resourcesPath + "\\" + "mpv.com";
         public string initial_video = "C:/Users/wsetti/source/repos/Video_GAMES/Sezione_Aurea" + "Video_SA_1.mov";
-        public string final_video = "C:/Users/wsetti/source/repos/Video_GAMES/Sezione_Aurea" + "Video_SA_2.mov";
+        public string final_video = "C:/Users/wsetti/source/repos/Video_GAMES/Sezione_Aurea" + "SA_2.mp4";
         public string wait_data()
         {
             int[] can_answer;
