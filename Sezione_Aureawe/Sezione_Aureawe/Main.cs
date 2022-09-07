@@ -38,8 +38,8 @@ namespace Sezione_Aureawe
         public int turno = 0;
         public int contatore_iniziale = 0;
         public string MPV = resourcesPath + "\\" + "mpv.com";
-        public string initial_video = "C:/Users/wsetti/source/repos/Video_GAMES/Sezione_Aurea" + "Video_SA_1.mov";
-        public string final_video = "C:/Users/wsetti/source/repos/Video_GAMES/Sezione_Aurea" + "SA_2.mp4";
+        public string initial_video = "C:\\Users\\wsetti\\OneDrive - Fondazione Istituto Italiano Tecnologia\\Documents\\Video_GAMES\\Sezione_Aurea\\iniziale.mov";
+        public string final_video = "C:\\Users\\wsetti\\OneDrive - Fondazione Istituto Italiano Tecnologiae\\Documents\\Video_GAMES\\Sezione_Aurea\\finale.mp4";
         public string wait_data()
         {
             int[] can_answer;
