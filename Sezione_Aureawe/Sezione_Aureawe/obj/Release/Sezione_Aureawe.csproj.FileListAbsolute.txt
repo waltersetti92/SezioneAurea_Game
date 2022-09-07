@@ -21,7 +21,6 @@ C:\Users\wsetti\source\repos\SezioneAurea_Game_aagl_finale\Sezione_Aureawe\Sezio
 C:\Users\wsetti\source\repos\SezioneAurea_Game_aagl_finale\Sezione_Aureawe\Sezione_Aureawe\bin\Release\System.Text.Json.xml
 C:\Users\wsetti\source\repos\SezioneAurea_Game_aagl_finale\Sezione_Aureawe\Sezione_Aureawe\bin\Release\System.Threading.Tasks.Extensions.xml
 C:\Users\wsetti\source\repos\SezioneAurea_Game_aagl_finale\Sezione_Aureawe\Sezione_Aureawe\bin\Release\System.ValueTuple.xml
-C:\Users\wsetti\source\repos\SezioneAurea_Game_aagl_finale\Sezione_Aureawe\Sezione_Aureawe\obj\Release\Sezione_Aureawe.csproj.AssemblyReference.cache
 C:\Users\wsetti\source\repos\SezioneAurea_Game_aagl_finale\Sezione_Aureawe\Sezione_Aureawe\obj\Release\Sezione_Aureawe.csproj.SuggestedBindingRedirects.cache
 C:\Users\wsetti\source\repos\SezioneAurea_Game_aagl_finale\Sezione_Aureawe\Sezione_Aureawe\obj\Release\Sezione_Aureawe.Activity.resources
 C:\Users\wsetti\source\repos\SezioneAurea_Game_aagl_finale\Sezione_Aureawe\Sezione_Aureawe\obj\Release\Sezione_Aureawe.Initial.resources
@@ -67,3 +66,4 @@ C:\Users\wsetti\source\repos\SezioneAurea_Game_aagl_finale1\Sezione_Aureawe\Sezi
 C:\Users\wsetti\source\repos\SezioneAurea_Game_aagl_finale1\Sezione_Aureawe\Sezione_Aureawe\obj\Release\Sezione_Aureawe.csproj.CopyComplete
 C:\Users\wsetti\source\repos\SezioneAurea_Game_aagl_finale1\Sezione_Aureawe\Sezione_Aureawe\obj\Release\Sezione_Aureawe.exe
 C:\Users\wsetti\source\repos\SezioneAurea_Game_aagl_finale1\Sezione_Aureawe\Sezione_Aureawe\obj\Release\Sezione_Aureawe.pdb
+C:\Users\wsetti\source\repos\SezioneAurea_Game_aagl_finale\Sezione_Aureawe\Sezione_Aureawe\obj\Release\Sezione_Aureawe.csproj.AssemblyReference.cache

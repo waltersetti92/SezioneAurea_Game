@@ -77,6 +77,7 @@ namespace Sezione_Aureawe
             Feedback.Text = "RISPOSTA CORRETTA";
             parentForm.contatore_iniziale = 0;
             this.Update();
+            PutStarted();
         }
         public void Wrong_Answer()
         {
@@ -91,6 +92,7 @@ namespace Sezione_Aureawe
             Feedback.Text = "RISPOSTA SBAGLIATA";
             parentForm.contatore_iniziale = 0;
             this.Update();
+            PutStarted();
         }
         public void Out_of_time()
         {
@@ -104,6 +106,7 @@ namespace Sezione_Aureawe
             btn_UNO.BackColor = Color.Red;
             this.Feedback.Location = new Point(171, 518);
             Feedback.Visible = true;
+            PutStarted();
         }
         public void Appear_Button()
         {
@@ -252,7 +255,6 @@ namespace Sezione_Aureawe
                         }
                         if  (status == 10 && wait == 1 || status==7 && wait==1)
                         {
-                            //Putwaitdata();
                             await uda_server_communication.Server_Request(parentForm.wait_data());
                         }
                         timerLabel.Text = timeleft.ToString();
@@ -380,6 +382,7 @@ namespace Sezione_Aureawe
                             // await uda_server_communication.Server_Request(put_started);
                             break;
                         }
+                        parentForm.contatore_iniziale = 0;
                         Thread.Sleep(400);
                     }
                 }
