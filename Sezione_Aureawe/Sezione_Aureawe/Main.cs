@@ -37,6 +37,7 @@ namespace Sezione_Aureawe
         public static System.Diagnostics.Process proc;
         public int turno = 0;
         public int contatore_iniziale = 0;
+        public string MPV = resourcesPath + "\\" + "mpv.com";
         public string initial_video = resourcesPath + "\\" + "Video_SA_1.mov";
         public string final_video = resourcesPath + "\\" + "Video_SA_2.mov";
         public string wait_data()
@@ -93,7 +94,7 @@ namespace Sezione_Aureawe
         {
             string mpvcommand = "--idle --input-ipc-server=\\\\.\\pipe\\mpv-pipe";
             proc = new System.Diagnostics.Process();
-            proc.StartInfo.FileName = initial_video;
+            proc.StartInfo.FileName = MPV;
             proc.StartInfo.Arguments = mpvcommand;
             proc.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
             proc.Start();
@@ -108,11 +109,8 @@ namespace Sezione_Aureawe
             writer.WriteLine("set seek 0 absolute");
             //System.Diagnostics.Debug.WriteLine(reader.ReadLine());
             writer.WriteLine("set fullscreen yes");
-            //System.Diagnostics.Debug.WriteLine(reader.ReadLine());
             writer.WriteLine("set ontop yes");
-            //System.Diagnostics.Debug.WriteLine(reader.ReadLine());
             writer.WriteLine("set pause no");
-            //System.Diagnostics.Debug.WriteLine(reader.ReadLine());
             writer.Flush();
             // while ()
             Dictionary<string, object> getPos = new Dictionary<string, object>();
@@ -264,12 +262,6 @@ namespace Sezione_Aureawe
 
         private void Main_Load(object sender, EventArgs e)
         {
-            //string mpvcommand = "--idle --input-ipc-server=\\\\.\\pipe\\mpv-pipe";
-            //proc = new System.Diagnostics.Process();
-            //proc.StartInfo.FileName = "C:\\Users\\wsetti\\Documents\\Video_LUDA\\mpv";
-            //proc.StartInfo.Arguments = mpvcommand;
-            //proc.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
-            //proc.Start();
             Size size = this.Size;
             initial1.setPos(size.Width, size.Height);
             interaction1.setPos(size.Width, size.Height);
