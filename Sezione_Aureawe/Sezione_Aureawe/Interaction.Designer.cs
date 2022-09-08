@@ -100,7 +100,6 @@
             // star3
             // 
             this.star3.BackColor = System.Drawing.Color.Transparent;
-            this.star3.Image = global::Sezione_Aureawe.Properties.Resources.stella;
             this.star3.Location = new System.Drawing.Point(604, 202);
             this.star3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.star3.Name = "star3";
@@ -125,7 +124,6 @@
             // star4
             // 
             this.star4.BackColor = System.Drawing.Color.Transparent;
-            this.star4.Image = global::Sezione_Aureawe.Properties.Resources.stella;
             this.star4.Location = new System.Drawing.Point(1096, 202);
             this.star4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.star4.Name = "star4";
@@ -150,7 +148,6 @@
             // star5
             // 
             this.star5.BackColor = System.Drawing.Color.Transparent;
-            this.star5.Image = global::Sezione_Aureawe.Properties.Resources.stella;
             this.star5.Location = new System.Drawing.Point(1238, 551);
             this.star5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.star5.Name = "star5";
@@ -175,7 +172,6 @@
             // star6
             // 
             this.star6.BackColor = System.Drawing.Color.Transparent;
-            this.star6.Image = global::Sezione_Aureawe.Properties.Resources.stella;
             this.star6.Location = new System.Drawing.Point(986, 760);
             this.star6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.star6.Name = "star6";
@@ -236,7 +232,7 @@
             // 
             // pB_Indizio
             // 
-            this.pB_Indizio.Location = new System.Drawing.Point(397, 26);
+            this.pB_Indizio.Location = new System.Drawing.Point(358, 155);
             this.pB_Indizio.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pB_Indizio.Name = "pB_Indizio";
             this.pB_Indizio.Size = new System.Drawing.Size(778, 530);
@@ -249,7 +245,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
-            this.BackgroundImage = global::Sezione_Aureawe.Properties.Resources.Transparency_background;
+            this.BackgroundImage = global::Sezione_Aureawe.Properties.Resources.galaxy;
             this.Controls.Add(this.pB_Indizio);
             this.Controls.Add(this.star3);
             this.Controls.Add(this.star5);

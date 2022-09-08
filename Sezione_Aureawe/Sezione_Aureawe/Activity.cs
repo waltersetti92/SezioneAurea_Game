@@ -287,8 +287,7 @@ namespace Sezione_Aureawe
                                     Correct_Answer();
                                     Thread.Sleep(4000);
                                     PutStarted();
-                                    parentForm.step++;
-                                
+                                    parentForm.step++;                                
                                     this.Hide();
                                     timeleft = 10;
                                     parentForm.onStart(parentForm.onstart_form);
@@ -298,8 +297,7 @@ namespace Sezione_Aureawe
                                     Wrong_Answer();
                                     Thread.Sleep(4000);
                                     PutStarted();
-                                    parentForm.step++;
-                                    
+                                    parentForm.step++;                                    
                                     this.Hide();
                                     timeleft = 10;
                                     parentForm.onStart(parentForm.onstart_form);

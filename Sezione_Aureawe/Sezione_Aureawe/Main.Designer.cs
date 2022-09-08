@@ -36,46 +36,53 @@
             // activity1
             // 
             this.activity1.BackColor = System.Drawing.SystemColors.Info;
-            this.activity1.Location = new System.Drawing.Point(-27, 33);
+            this.activity1.Location = new System.Drawing.Point(570, 139);
+            this.activity1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.activity1.Name = "activity1";
             this.activity1.parentForm = null;
-            this.activity1.Size = new System.Drawing.Size(734, 343);
+            this.activity1.Size = new System.Drawing.Size(1101, 528);
             this.activity1.TabIndex = 2;
             // 
             // interaction1
             // 
             this.interaction1.BackColor = System.Drawing.SystemColors.Control;
-            this.interaction1.BackgroundImage = global::Sezione_Aureawe.Properties.Resources.Transparency_background;
-            this.interaction1.Location = new System.Drawing.Point(-117, 33);
+            this.interaction1.BackgroundImage = global::Sezione_Aureawe.Properties.Resources.galaxy;
+            this.interaction1.Location = new System.Drawing.Point(-176, 51);
+            this.interaction1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.interaction1.Name = "interaction1";
             this.interaction1.parentForm = null;
-            this.interaction1.Size = new System.Drawing.Size(767, 365);
+            this.interaction1.Size = new System.Drawing.Size(1150, 562);
             this.interaction1.TabIndex = 1;
             // 
             // initial1
             // 
+            this.initial1.AutoSize = true;
+            this.initial1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.initial1.BackColor = System.Drawing.Color.Transparent;
-            this.initial1.Location = new System.Drawing.Point(22, 12);
+            this.initial1.Location = new System.Drawing.Point(33, 18);
+            this.initial1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.initial1.Name = "initial1";
             this.initial1.parentForm = null;
-            this.initial1.Size = new System.Drawing.Size(904, 537);
+            this.initial1.Size = new System.Drawing.Size(1823, 777);
             this.initial1.TabIndex = 0;
             this.initial1.Load += new System.EventHandler(this.initial1_Load);
             // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(1078, 674);
+            this.ClientSize = new System.Drawing.Size(1617, 1037);
             this.Controls.Add(this.activity1);
             this.Controls.Add(this.interaction1);
             this.Controls.Add(this.initial1);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Main";
             this.Text = "Golden_Section";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Main_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

@@ -172,7 +172,8 @@ namespace Sezione_Aureawe
                 {
                     video_reproduction(initial_video);
                     interaction1.Visible = false;
-                    interaction1.resetOperations(); 
+                    interaction1.resetOperations();
+                    initial1.Visible = false;
                     onStart(activity_form);
                 }
                 if (status == 8)
@@ -232,11 +233,13 @@ namespace Sezione_Aureawe
         }
         public void onStart(string k)
         {
-            initial1.Visible = false;
+            //initial1.Visible = false;
+            interaction1.star_invisible();
+            Thread.Sleep(400);
             interaction1.Visible = true;
             interaction1.pause_val = ShouldPause;
             currUC = interaction1;
-            Thread.Sleep(1000);
+            //Thread.Sleep(400);
             contatore_iniziale = 0;
             interaction1.Start_Sequences();
         }

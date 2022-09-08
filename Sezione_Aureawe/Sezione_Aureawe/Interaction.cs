@@ -8,6 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
+using System.Media;
+using System.IO;
+using System.IO.Pipes;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
 
 namespace Sezione_Aureawe
 {
@@ -20,16 +26,22 @@ namespace Sezione_Aureawe
         public int go_on;
         public string started_uda;
         public string data_st;
+        public static readonly string appPath = Path.GetDirectoryName(Application.ExecutablePath);
+        public static readonly string resourcesPath = Path.GetDirectoryName(Application.ExecutablePath) + "\\resources";
+        private const string background_image = "galaxy.jpg";
         public Interaction()
         {
 
             go_on = 0;
            
             InitializeComponent();
+            //star_invisible();
             resetOperations();
             Start_Sequences();
             completed = "api/uda/put/?i=3&k=16";
-   
+            BackgroundImageLayout = ImageLayout.Stretch;
+            BackgroundImage = Image.FromFile(resourcesPath + "\\" + background_image);
+
         }
        public void resetOperations()
         {
@@ -48,7 +60,7 @@ namespace Sezione_Aureawe
             lbl_fin2.Visible = false;
             star1.Visible = false;
             star2.Visible = false;
-            //Listen.Enabled = true;
+            this.Update();
         }
 
         public void setPos(int w, int h)
@@ -92,12 +104,12 @@ namespace Sezione_Aureawe
         public void star_invisible()
         {
             star1.Image = null;
-            this.Update();
             star2.Image = null;
+            star3.Image = null;
+            star4.Image = null;
+            star5.Image = null;
+            star6.Image = null;
             this.Update();
-            star3.Visible = false;
-            star4.Visible = false;
-            star5.Visible = false;
         }
         public void First_Sequence()
         {
@@ -135,7 +147,7 @@ namespace Sezione_Aureawe
 
         private void Interaction_Load(object sender, EventArgs e)
         {
-            resetOperations();
+            //star_invisible();
             pB_Indizio.Visible = false;
             lbl_fin1.Visible = false;
         }
@@ -151,6 +163,8 @@ namespace Sezione_Aureawe
             this.Update();
             if (go_on == 1)
             {
+                star3.WaitOnLoad = true;
+                star3.ImageLocation = Main.resourcesPath + "\\" + "stella.png";
                 star3.Visible = true;
                 this.Update();
                 parentForm.playbackResourceAudio("Suono3_True");
@@ -172,6 +186,8 @@ namespace Sezione_Aureawe
             this.Update();
             if (go_on == 1)
             {
+                star4.WaitOnLoad = true;
+                star4.ImageLocation = Main.resourcesPath + "\\" + "stella.png";
                 star4.Visible = true;
                 this.Update();
                 parentForm.playbackResourceAudio("Suono4_True");
@@ -192,6 +208,8 @@ namespace Sezione_Aureawe
             this.Update();
             if (go_on == 1)
             {
+                star5.WaitOnLoad = true;
+                star5.ImageLocation = Main.resourcesPath + "\\" + "stella.png";
                 star5.Visible = true;
                 this.Update();
                 parentForm.playbackResourceAudio("Suono5_True");
@@ -212,6 +230,8 @@ namespace Sezione_Aureawe
             this.Update();
             if (go_on == 1)
             {
+                star6.WaitOnLoad = true;
+                star6.ImageLocation = Main.resourcesPath + "\\" + "stella.png";
                 star6.Visible = true;
                 this.Update();
                 parentForm.playbackResourceAudio("Suono6_True");
