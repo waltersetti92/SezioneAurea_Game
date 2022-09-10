@@ -87,7 +87,6 @@
             // pezzo0
             // 
             this.pezzo0.BackColor = System.Drawing.Color.Transparent;
-            this.pezzo0.Image = global::Sezione_Aureawe.Properties.Resources.Pezzo_0;
             this.pezzo0.Location = new System.Drawing.Point(212, 614);
             this.pezzo0.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pezzo0.Name = "pezzo0";
@@ -96,6 +95,7 @@
             this.pezzo0.TabIndex = 2;
             this.pezzo0.TabStop = false;
             this.pezzo0.WaitOnLoad = true;
+            this.pezzo0.Click += new System.EventHandler(this.pezzo0_Click);
             // 
             // star3
             // 
@@ -112,7 +112,6 @@
             // pezzo1
             // 
             this.pezzo1.BackColor = System.Drawing.Color.Transparent;
-            this.pezzo1.Image = global::Sezione_Aureawe.Properties.Resources.Pezzo_1;
             this.pezzo1.Location = new System.Drawing.Point(351, 269);
             this.pezzo1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pezzo1.Name = "pezzo1";
@@ -160,7 +159,6 @@
             // pezzo3
             // 
             this.pezzo3.BackColor = System.Drawing.Color.Transparent;
-            this.pezzo3.Image = global::Sezione_Aureawe.Properties.Resources.Pezzo_3;
             this.pezzo3.Location = new System.Drawing.Point(1096, 269);
             this.pezzo3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pezzo3.Name = "pezzo3";
@@ -183,7 +181,6 @@
             // pezzo4
             // 
             this.pezzo4.BackColor = System.Drawing.Color.Transparent;
-            this.pezzo4.Image = global::Sezione_Aureawe.Properties.Resources.Pezzo_4;
             this.pezzo4.Location = new System.Drawing.Point(1096, 595);
             this.pezzo4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pezzo4.Name = "pezzo4";
@@ -195,7 +192,6 @@
             // pezzo5
             // 
             this.pezzo5.BackColor = System.Drawing.Color.Transparent;
-            this.pezzo5.Image = global::Sezione_Aureawe.Properties.Resources.Pezzo_5;
             this.pezzo5.Location = new System.Drawing.Point(782, 551);
             this.pezzo5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pezzo5.Name = "pezzo5";
@@ -232,7 +228,7 @@
             // 
             // pB_Indizio
             // 
-            this.pB_Indizio.Location = new System.Drawing.Point(358, 155);
+            this.pB_Indizio.Location = new System.Drawing.Point(424, 147);
             this.pB_Indizio.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pB_Indizio.Name = "pB_Indizio";
             this.pB_Indizio.Size = new System.Drawing.Size(778, 530);

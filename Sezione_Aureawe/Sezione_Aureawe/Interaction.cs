@@ -40,7 +40,7 @@ namespace Sezione_Aureawe
             Start_Sequences();
             completed = "api/uda/put/?i=3&k=16";
             BackgroundImageLayout = ImageLayout.Stretch;
-            BackgroundImage = Image.FromFile(resourcesPath + "\\" + background_image);
+           // BackgroundImage = Image.FromFile(resourcesPath + "\\" + background_image);
 
         }
        public void resetOperations()
@@ -109,6 +109,12 @@ namespace Sezione_Aureawe
             star4.Image = null;
             star5.Image = null;
             star6.Image = null;
+            pezzo0.Image = null;
+            pezzo1.Image = null;
+            pezzo2.Image = null;
+            pezzo3.Image = null;
+            pezzo4.Image = null;
+            pezzo5.Image = null;
             this.Update();
         }
         public void First_Sequence()
@@ -148,8 +154,8 @@ namespace Sezione_Aureawe
         private void Interaction_Load(object sender, EventArgs e)
         {
             //star_invisible();
-            pB_Indizio.Visible = false;
-            lbl_fin1.Visible = false;
+            pB_Indizio.Image = null;
+            lbl_fin1.Text = null;
         }
 
         private void star2_Click(object sender, EventArgs e)
@@ -248,6 +254,8 @@ namespace Sezione_Aureawe
 
         private async void final_sequence()
         {
+            star2.WaitOnLoad = true;
+            star2.ImageLocation = Main.resourcesPath + "\\" + "stella.png";
             star2.Visible = true;
             this.Update();
             parentForm.playbackResourceAudio("Suono1_True");
@@ -255,8 +263,12 @@ namespace Sezione_Aureawe
             if (go_on == 1)
             {
                 Thread.Sleep(3000);
+                pezzo0.WaitOnLoad = true;
+                pezzo0.ImageLocation = Main.resourcesPath + "\\" + "Pezzo_0.png";
                 pezzo0.Visible = true;
                 this.Update();
+                star1.WaitOnLoad = true;
+                star1.ImageLocation = Main.resourcesPath + "\\" + "stella.png";
                 star1.Visible = true;
                 this.Update();
                 parentForm.playbackResourceAudio("Suono2_True");
@@ -265,7 +277,12 @@ namespace Sezione_Aureawe
             if (go_on == 1)
             {
                 Thread.Sleep(3000);
+                pezzo1.WaitOnLoad = true;
+                pezzo1.ImageLocation = Main.resourcesPath + "\\" + "Pezzo_1.png";
                 pezzo1.Visible = true;
+                this.Update();
+                star3.WaitOnLoad = true;
+                star3.ImageLocation = Main.resourcesPath + "\\" + "stella.png";
                 star3.Visible = true;
                 this.Update();
                 parentForm.playbackResourceAudio("Suono3_True");
@@ -274,7 +291,12 @@ namespace Sezione_Aureawe
             if (go_on == 1)
             {
                 Thread.Sleep(3000);
+                pezzo2.WaitOnLoad = true;
+                pezzo2.ImageLocation = Main.resourcesPath + "\\" + "Pezzo_2.png";
                 pezzo2.Visible = true;
+                this.Update();
+                star4.WaitOnLoad = true;
+               star4.ImageLocation = Main.resourcesPath + "\\" + "stella.png";
                 star4.Visible = true;
                 this.Update();
                 parentForm.playbackResourceAudio("Suono4_True");
@@ -284,7 +306,12 @@ namespace Sezione_Aureawe
             if (go_on == 1)
             {
                 Thread.Sleep(3000);
+                pezzo3.WaitOnLoad = true;
+                pezzo3.ImageLocation = Main.resourcesPath + "\\" + "Pezzo_3.png";
                 pezzo3.Visible = true;
+                this.Update();
+                star5.WaitOnLoad = true;
+                star5.ImageLocation = Main.resourcesPath + "\\" + "stella.png";
                 star5.Visible = true;
                 this.Update();
                 parentForm.playbackResourceAudio("Suono5_True");
@@ -294,7 +321,12 @@ namespace Sezione_Aureawe
             if (go_on == 1)
             {
                 Thread.Sleep(3000);
+                pezzo4.WaitOnLoad = true;
+                pezzo4.ImageLocation = Main.resourcesPath + "\\" + "Pezzo_4.png";
                 pezzo4.Visible = true;
+                this.Update();
+                star6.WaitOnLoad = true;
+                star6.ImageLocation = Main.resourcesPath + "\\" + "stella.png";
                 star6.Visible = true;
                 this.Update();
                 parentForm.playbackResourceAudio("Suono6_True");
@@ -304,6 +336,8 @@ namespace Sezione_Aureawe
             if (go_on == 1)
             {
                 Thread.Sleep(3000);
+                pezzo5.WaitOnLoad = true;
+                pezzo5.ImageLocation = Main.resourcesPath + "\\" + "Pezzo_5.png";
                 pezzo5.Visible = true;
                 this.Update();
                 parentForm.playbackResourceAudio("Suono7_True");
@@ -322,6 +356,7 @@ namespace Sezione_Aureawe
            
             await uda_server_communication.Server_Request(completed);
             Thread.Sleep(6000);
+            parentForm.video_reproduction(parentForm.final_video);
             indizio();
 
         }
@@ -345,13 +380,13 @@ namespace Sezione_Aureawe
                     }
                     else if (status==10|| status == 7 || status==16)
                     {
-
+                        
                         pB_Indizio.WaitOnLoad = true;
                         pB_Indizio.ImageLocation = Main.resourcesPath + "\\" + a + ".png";
                         pB_Indizio.Visible = true;
                         this.Update();
                         lbl_fin1.Text = "ECCO L'INDIZIO!";
-                        lbl_fin1.Visible = true;
+                        //lbl_fin1.Visible = true;
                         this.Update();
                         break;
                     }
@@ -363,10 +398,12 @@ namespace Sezione_Aureawe
         }
         public void indizio()
         {
-            parentForm.video_reproduction(parentForm.final_video);
-            resetOperations();
-                Image_Indizio(uda_server_communication.indizio + "_" + uda_server_communication.turno);
-                Thread.Sleep(2000);
+            lbl_fin2.Text = "";
+            this.Update();
+            star_invisible();
+            Thread.Sleep(400);
+            Image_Indizio(uda_server_communication.indizio + "_" + uda_server_communication.turno);
+             Thread.Sleep(2000);
         }
         public async void start_after_resume()
         {
@@ -470,6 +507,11 @@ namespace Sezione_Aureawe
         }
 
         private void star7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pezzo0_Click(object sender, EventArgs e)
         {
 
         }

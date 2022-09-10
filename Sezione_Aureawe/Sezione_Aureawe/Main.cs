@@ -39,7 +39,8 @@ namespace Sezione_Aureawe
         public int contatore_iniziale = 0;
         public string MPV = resourcesPath + "\\" + "mpv.com";
         public string initial_video = Path.GetDirectoryName(Application.ExecutablePath) + "\\..\\..\\..\\..\\..\\Video_GAMES\\Sezione_Aurea\\iniziale.mov";
-        public string final_video = Path.GetDirectoryName(Application.ExecutablePath) + "\\..\\..\\..\\..\\..\\Video_GAMES\\Sezione_Aurea\\finale.mp4";
+        public string final_video = Path.GetDirectoryName(Application.ExecutablePath) + "\\..\\..\\..\\..\\..\\Video_GAMES\\Sezione_Aurea\\finale.mov";
+        public int recap_video = 0;
         public string wait_data()
         {
             int[] can_answer;
@@ -62,7 +63,7 @@ namespace Sezione_Aureawe
         }
         public Main()
         {
-            step = 1;
+            step = 6;
             trial_1 = 0;
             pause_uda = "";
             started_uda = "api/uda/put/?i=3&k=7" + "&data=" + data_start;
@@ -92,12 +93,7 @@ namespace Sezione_Aureawe
         }
         public void video_reproduction(string video1)
         {
-            string mpvcommand = "--idle --input-ipc-server=\\\\.\\pipe\\mpv-pipe";
-            proc = new System.Diagnostics.Process();
-            proc.StartInfo.FileName = MPV;
-            proc.StartInfo.Arguments = mpvcommand;
-            proc.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
-            proc.Start();
+            
             var Nicolo = new NamedPipeClientStream("mpv-pipe");
             Nicolo.Connect();
             StreamReader reader = new StreamReader(Nicolo);
@@ -112,12 +108,10 @@ namespace Sezione_Aureawe
             writer.WriteLine("set ontop yes");
             writer.WriteLine("set pause no");
             writer.Flush();
-            // while ()
-            Dictionary<string, object> getPos = new Dictionary<string, object>();
+                // while ()
+                Dictionary<string, object> getPos = new Dictionary<string, object>();
             getPos.Add("command", new List<string> { "get_property", "percent-pos" });
             getPos.Add("request_id", 88);
-
-
             writer.WriteLine(JsonConvert.SerializeObject(getPos));
             System.Diagnostics.Debug.WriteLine(JsonConvert.SerializeObject(getPos));
             // System.Diagnostics.Debug.WriteLine(reader.ReadLine());
@@ -129,31 +123,33 @@ namespace Sezione_Aureawe
                 writer.WriteLine(JsonConvert.SerializeObject(getPos));
                 System.Diagnostics.Debug.WriteLine(JsonConvert.SerializeObject(getPos));
                 writer.Flush();
-                string response = reader.ReadLine();
-                JObject json_parsed = JObject.Parse(response);
 
-                if (!started)
-                {
-                    var id = json_parsed["request_id"];
-                    if (id != null && (int)id == 88)
+                    string response = reader.ReadLine();
+                    JObject json_parsed = JObject.Parse(response);
+                    if (!started)
                     {
-                        started = true;
+                        var id = json_parsed["request_id"];
+                        if (id != null && (int)id == 88)
+                        {
+                            started = true;
+                        }
+                                         
                     }
-                }
-                if (started)
-                {
-                    var id = json_parsed["request_id"];
-                    var error = json_parsed["error"];
+                    if (started)
+                    {
+                        var id = json_parsed["request_id"];
+                        var error = json_parsed["error"];
 
-                    if (id != null && (int)id == 88 && error != null && (string)error == "property unavailable")
-                    {
-                        //     System.Diagnostics.Debug.WriteLine(response);
-                        wait_video = false;
-                        // and property not available
+                        if (id != null && (int)id == 88 && error != null && (string)error == "property unavailable")
+                        {
+                            wait_video = false;
+                        }
                     }
+               
                 }
-            }
+
             System.Diagnostics.Debug.WriteLine(reader.ReadLine());
+                 
         }
 
         public string Status_Changed(string k)
@@ -170,10 +166,7 @@ namespace Sezione_Aureawe
                 }
                 if (status == 6)
                 {
-                    video_reproduction(initial_video);
-                    interaction1.Visible = false;
-                    interaction1.resetOperations();
-                    initial1.Visible = false;
+                    initial1.Visible = false;                
                     onStart(activity_form);
                 }
                 if (status == 8)
@@ -241,6 +234,8 @@ namespace Sezione_Aureawe
             currUC = interaction1;
             //Thread.Sleep(400);
             contatore_iniziale = 0;
+                video_reproduction(initial_video);
+                interaction1.resetOperations();
             interaction1.Start_Sequences();
         }
         public void activity(string k)
@@ -263,6 +258,12 @@ namespace Sezione_Aureawe
 
         private void Main_Load(object sender, EventArgs e)
         {
+            string mpvcommand = "--idle --input-ipc-server=\\\\.\\pipe\\mpv-pipe";
+            proc = new System.Diagnostics.Process();
+            proc.StartInfo.FileName = MPV;
+            proc.StartInfo.Arguments = mpvcommand;
+            proc.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            proc.Start();
             Size size = this.Size;
             initial1.setPos(size.Width, size.Height);
             interaction1.setPos(size.Width, size.Height);
