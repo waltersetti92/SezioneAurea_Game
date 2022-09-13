@@ -61,7 +61,7 @@ namespace Sezione_Aureawe
                         string put_server;
                         if (firststart || Equals(uda_status, "0"))
                         {
-                            mn.step = 6; //step =1
+                            mn.step = 1; //step =1
                             mn.trial_1 = 0;
                             put_server = Url_Put("5"); // creo la stringa per il put al server che notifica il cambio di stato dell'UDA
                             firststart = false;

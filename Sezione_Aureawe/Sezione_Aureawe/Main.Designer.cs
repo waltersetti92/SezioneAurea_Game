@@ -36,7 +36,7 @@
             // activity1
             // 
             this.activity1.BackColor = System.Drawing.SystemColors.Info;
-            this.activity1.Location = new System.Drawing.Point(570, 139);
+            this.activity1.Location = new System.Drawing.Point(204, 229);
             this.activity1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.activity1.Name = "activity1";
             this.activity1.parentForm = null;
@@ -47,12 +47,14 @@
             // 
             this.interaction1.BackColor = System.Drawing.SystemColors.Control;
             this.interaction1.BackgroundImage = global::Sezione_Aureawe.Properties.Resources.galaxy;
-            this.interaction1.Location = new System.Drawing.Point(-176, 51);
+            this.interaction1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.interaction1.Location = new System.Drawing.Point(-73, -41);
             this.interaction1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.interaction1.Name = "interaction1";
             this.interaction1.parentForm = null;
             this.interaction1.Size = new System.Drawing.Size(1150, 562);
             this.interaction1.TabIndex = 1;
+            this.interaction1.Load += new System.EventHandler(this.interaction1_Load);
             // 
             // initial1
             // 

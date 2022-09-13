@@ -43,7 +43,65 @@ namespace Sezione_Aureawe
            // BackgroundImage = Image.FromFile(resourcesPath + "\\" + background_image);
 
         }
-       public void resetOperations()
+        public void video_reproduction_final(string video1)
+        {
+            var Nicolo = new NamedPipeClientStream("mpv-pipe");
+            Nicolo.Connect();
+            StreamReader reader1 = new StreamReader(Nicolo);
+            StreamWriter writer1 = new StreamWriter(Nicolo);
+            writer1.WriteLine("set pause yes");
+            // System.Diagnostics.Debug.WriteLine(reader.ReadLine());
+            writer1.WriteLine($"loadfile {video1}");
+            // System.Diagnostics.Debug.WriteLine(reader.ReadLine());
+            writer1.WriteLine("set seek 0 absolute");
+            //System.Diagnostics.Debug.WriteLine(reader.ReadLine());
+            writer1.WriteLine("set fullscreen yes");
+            writer1.WriteLine("set ontop yes");
+            writer1.WriteLine("set pause no");
+            writer1.Flush();
+            Dictionary<string, object> getPos = new Dictionary<string, object>();
+            getPos.Add("command", new List<string> { "get_property", "time-pos" });
+            getPos.Add("request_id", 89);
+            //writer1.WriteLine(JsonConvert.SerializeObject(getPos));
+            //System.Diagnostics.Debug.WriteLine(JsonConvert.SerializeObject(getPos));
+            //System.Diagnostics.Debug.WriteLine(reader.ReadLine());
+            writer1.Flush();
+            bool started = false;
+            bool wait_video = true;
+            while (wait_video)
+            {
+                writer1.WriteLine(JsonConvert.SerializeObject(getPos));
+                System.Diagnostics.Debug.WriteLine(JsonConvert.SerializeObject(getPos));
+                writer1.Flush();
+                string response = reader1.ReadLine();
+                JObject json_parsed = JObject.Parse(response);
+                System.Diagnostics.Debug.WriteLine(json_parsed);
+
+                if (!started)
+                {
+                    var id = json_parsed["request_id"];
+                    if (id != null && (int)id == 89)
+                    {
+                        started = true;
+                    }
+                }
+                if (started)
+                {
+                    var id = json_parsed["request_id"];
+                    var error = json_parsed["error"];
+
+                    if (id != null && (int)id == 89 && error != null && (string)error == "property unavailable")
+                    {
+                        wait_video = false;
+                    }
+                }
+
+            }
+
+            System.Diagnostics.Debug.WriteLine(reader1.ReadLine());
+
+        }
+        public void resetOperations()
         {
             star1.Visible = false;
             star2.Visible = false;
@@ -115,6 +173,8 @@ namespace Sezione_Aureawe
             pezzo3.Image = null;
             pezzo4.Image = null;
             pezzo5.Image = null;
+            pB_Indizio.Image = null;
+            lbl_fin1.Text = null;
             this.Update();
         }
         public void First_Sequence()
@@ -153,9 +213,10 @@ namespace Sezione_Aureawe
 
         private void Interaction_Load(object sender, EventArgs e)
         {
-            //star_invisible();
-            pB_Indizio.Image = null;
-            lbl_fin1.Text = null;
+            star_invisible();
+            //pB_Indizio.Visible = false;
+            //lbl_fin1.Visible = false;
+     
         }
 
         private void star2_Click(object sender, EventArgs e)
@@ -352,13 +413,12 @@ namespace Sezione_Aureawe
                 this.Update();
                 lbl_fin2.Visible = true;
                 this.Update();
-            }
-           
+            }           
             await uda_server_communication.Server_Request(completed);
             Thread.Sleep(6000);
+            //video_reproduction_final(parentForm.final_video);
             parentForm.video_reproduction(parentForm.final_video);
             indizio();
-
         }
         public async void Image_Indizio(string a)
         {

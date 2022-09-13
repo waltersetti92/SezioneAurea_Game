@@ -9,8 +9,7 @@ using System.Text;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-
-
+using System.Diagnostics;
 
 namespace Sezione_Aureawe
 {
@@ -63,7 +62,7 @@ namespace Sezione_Aureawe
         }
         public Main()
         {
-            step = 6;
+            step = 1;
             trial_1 = 0;
             pause_uda = "";
             started_uda = "api/uda/put/?i=3&k=7" + "&data=" + data_start;
@@ -85,71 +84,15 @@ namespace Sezione_Aureawe
         }
         static void OnProcessExit(object sender, EventArgs e)
         {
-            //System.Diagnostics.Debug.WriteLine("ciao");
-            var Nicolo = new NamedPipeClientStream("mpv-pipe");
-            Nicolo.Connect();
-            StreamWriter writer = new StreamWriter(Nicolo);
-            writer.WriteLine("quit");
         }
         public void video_reproduction(string video1)
         {
-            
-            var Nicolo = new NamedPipeClientStream("mpv-pipe");
-            Nicolo.Connect();
-            StreamReader reader = new StreamReader(Nicolo);
-            StreamWriter writer = new StreamWriter(Nicolo);
-            writer.WriteLine("set pause yes");
-            // System.Diagnostics.Debug.WriteLine(reader.ReadLine());
-            writer.WriteLine($"loadfile {video1}");
-            // System.Diagnostics.Debug.WriteLine(reader.ReadLine());
-            writer.WriteLine("set seek 0 absolute");
-            //System.Diagnostics.Debug.WriteLine(reader.ReadLine());
-            writer.WriteLine("set fullscreen yes");
-            writer.WriteLine("set ontop yes");
-            writer.WriteLine("set pause no");
-            writer.Flush();
-                // while ()
-                Dictionary<string, object> getPos = new Dictionary<string, object>();
-            getPos.Add("command", new List<string> { "get_property", "percent-pos" });
-            getPos.Add("request_id", 88);
-            writer.WriteLine(JsonConvert.SerializeObject(getPos));
-            System.Diagnostics.Debug.WriteLine(JsonConvert.SerializeObject(getPos));
-            // System.Diagnostics.Debug.WriteLine(reader.ReadLine());
-            writer.Flush();
-            bool started = false;
-            bool wait_video = true;
-            while (wait_video)
-            {
-                writer.WriteLine(JsonConvert.SerializeObject(getPos));
-                System.Diagnostics.Debug.WriteLine(JsonConvert.SerializeObject(getPos));
-                writer.Flush();
-
-                    string response = reader.ReadLine();
-                    JObject json_parsed = JObject.Parse(response);
-                    if (!started)
-                    {
-                        var id = json_parsed["request_id"];
-                        if (id != null && (int)id == 88)
-                        {
-                            started = true;
-                        }
-                                         
-                    }
-                    if (started)
-                    {
-                        var id = json_parsed["request_id"];
-                        var error = json_parsed["error"];
-
-                        if (id != null && (int)id == 88 && error != null && (string)error == "property unavailable")
-                        {
-                            wait_video = false;
-                        }
-                    }
-               
-                }
-
-            System.Diagnostics.Debug.WriteLine(reader.ReadLine());
-                 
+            string mpvcommand = "--fullscreen --ontop " + video1;
+            ProcessStartInfo proc = new ProcessStartInfo(MPV);
+            proc.WindowStyle = ProcessWindowStyle.Hidden;
+            proc.Arguments = mpvcommand;
+            Process cmd  = Process.Start(proc);
+            cmd.WaitForExit();
         }
 
         public string Status_Changed(string k)
@@ -166,7 +109,8 @@ namespace Sezione_Aureawe
                 }
                 if (status == 6)
                 {
-                    initial1.Visible = false;                
+                    initial1.Visible = false;
+                    video_reproduction(initial_video);
                     onStart(activity_form);
                 }
                 if (status == 8)
@@ -226,7 +170,6 @@ namespace Sezione_Aureawe
         }
         public void onStart(string k)
         {
-            //initial1.Visible = false;
             interaction1.star_invisible();
             Thread.Sleep(400);
             interaction1.Visible = true;
@@ -234,8 +177,8 @@ namespace Sezione_Aureawe
             currUC = interaction1;
             //Thread.Sleep(400);
             contatore_iniziale = 0;
-                video_reproduction(initial_video);
-                interaction1.resetOperations();
+         
+            interaction1.resetOperations();
             interaction1.Start_Sequences();
         }
         public void activity(string k)
@@ -256,14 +199,16 @@ namespace Sezione_Aureawe
             player.Play();
         }
 
+        static private void StopMPV ()
+        {
+            //System.Diagnostics.Debug.WriteLine("ciao");
+            var Nicolo = new NamedPipeClientStream("mpv-pipe");
+            Nicolo.Connect();
+            StreamWriter writer = new StreamWriter(Nicolo);
+            writer.WriteLine("quit");
+        }
         private void Main_Load(object sender, EventArgs e)
         {
-            string mpvcommand = "--idle --input-ipc-server=\\\\.\\pipe\\mpv-pipe";
-            proc = new System.Diagnostics.Process();
-            proc.StartInfo.FileName = MPV;
-            proc.StartInfo.Arguments = mpvcommand;
-            proc.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
-            proc.Start();
             Size size = this.Size;
             initial1.setPos(size.Width, size.Height);
             interaction1.setPos(size.Width, size.Height);
@@ -274,6 +219,11 @@ namespace Sezione_Aureawe
 
         }
         private void initial1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void interaction1_Load(object sender, EventArgs e)
         {
 
         }
