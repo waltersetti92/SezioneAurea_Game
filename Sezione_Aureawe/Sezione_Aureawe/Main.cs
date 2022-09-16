@@ -58,17 +58,17 @@ namespace Sezione_Aureawe
             request.Add("can_answer", can_answer);
 
             string data = JsonConvert.SerializeObject(request);
-            return "api/uda/put/?i=3&k=14&data=" + data;
+            return "api/uda/put/?i=1&k=14&data=" + data;
         }
         public Main()
         {
             step = 1;
             trial_1 = 0;
             pause_uda = "";
-            started_uda = "api/uda/put/?i=3&k=7" + "&data=" + data_start;
-            //started_uda =  url_luda + "api/uda/put/?i=3&k=7";
-            get_data_uda = "api/uda/get/?i=3";              
-            idle_status = "api/uda/put/?i=3&k=0";
+            started_uda = "api/uda/put/?i=1&k=7" + "&data=" + data_start;
+            //started_uda =  url_luda + "api/uda/put/?i=1&k=7";
+            get_data_uda = "api/uda/get/?i=1";              
+            idle_status = "api/uda/put/?i=1&k=0";
             Business_Logic BL = new Business_Logic(this);
             AppDomain.CurrentDomain.ProcessExit += new EventHandler(OnProcessExit);
             InitializeComponent();

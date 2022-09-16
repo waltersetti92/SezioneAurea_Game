@@ -38,7 +38,7 @@ namespace Sezione_Aureawe
             //star_invisible();
             resetOperations();
             Start_Sequences();
-            completed = "api/uda/put/?i=3&k=16";
+            completed = "api/uda/put/?i=1&k=16";
             BackgroundImageLayout = ImageLayout.Stretch;
            // BackgroundImage = Image.FromFile(resourcesPath + "\\" + background_image);
 
