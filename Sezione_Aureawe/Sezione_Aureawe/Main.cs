@@ -79,8 +79,8 @@ namespace Sezione_Aureawe
             interaction1.Visible = false;
             activity1.Visible = false;
             home();
-            BackgroundImageLayout = ImageLayout.Stretch;
-            BackgroundImage = Image.FromFile(resourcesPath + "\\" + background_image);
+           // BackgroundImageLayout = ImageLayout.Stretch;
+            //BackgroundImage = Image.FromFile(resourcesPath + "\\" + background_image);
         }
         static void OnProcessExit(object sender, EventArgs e)
         {

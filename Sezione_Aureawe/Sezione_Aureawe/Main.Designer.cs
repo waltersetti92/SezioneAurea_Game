@@ -65,7 +65,7 @@
             this.initial1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.initial1.Name = "initial1";
             this.initial1.parentForm = null;
-            this.initial1.Size = new System.Drawing.Size(1823, 777);
+            this.initial1.Size = new System.Drawing.Size(1823, 746);
             this.initial1.TabIndex = 0;
             this.initial1.Load += new System.EventHandler(this.initial1_Load);
             // 
@@ -73,11 +73,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(146)))), ((int)(((byte)(207)))));
             this.ClientSize = new System.Drawing.Size(1617, 1037);
             this.Controls.Add(this.activity1);
             this.Controls.Add(this.interaction1);
             this.Controls.Add(this.initial1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Main";
             this.Text = "Golden_Section";

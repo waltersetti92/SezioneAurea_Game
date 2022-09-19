@@ -241,7 +241,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
-            this.BackgroundImage = global::Sezione_Aureawe.Properties.Resources.galaxy;
             this.Controls.Add(this.pB_Indizio);
             this.Controls.Add(this.star3);
             this.Controls.Add(this.star5);

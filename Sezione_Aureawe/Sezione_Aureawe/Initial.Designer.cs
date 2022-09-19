@@ -50,7 +50,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Sezione_Aureawe.Properties.Resources.group1;
-            this.pictureBox1.Location = new System.Drawing.Point(612, 470);
+            this.pictureBox1.Location = new System.Drawing.Point(690, 439);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(548, 302);
@@ -64,12 +64,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BackColor = System.Drawing.Color.Transparent;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(146)))), ((int)(((byte)(207)))));
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.labLuda);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Initial";
-            this.Size = new System.Drawing.Size(1823, 777);
+            this.Size = new System.Drawing.Size(1823, 746);
             this.Load += new System.EventHandler(this.Initial_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
