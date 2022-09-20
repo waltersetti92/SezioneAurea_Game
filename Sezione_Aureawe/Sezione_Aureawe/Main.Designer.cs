@@ -45,8 +45,7 @@
             // 
             // interaction1
             // 
-            this.interaction1.BackColor = System.Drawing.SystemColors.Control;
-            this.interaction1.BackgroundImage = global::Sezione_Aureawe.Properties.Resources.galaxy;
+            this.interaction1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(146)))), ((int)(((byte)(207)))));
             this.interaction1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.interaction1.Location = new System.Drawing.Point(-73, -41);
             this.interaction1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);

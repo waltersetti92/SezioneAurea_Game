@@ -45,9 +45,10 @@
             // 
             this.pbOne.BackColor = System.Drawing.Color.Transparent;
             this.pbOne.Image = global::Sezione_Aureawe.Properties.Resources.group1;
-            this.pbOne.Location = new System.Drawing.Point(435, 174);
+            this.pbOne.Location = new System.Drawing.Point(483, 128);
+            this.pbOne.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pbOne.Name = "pbOne";
-            this.pbOne.Size = new System.Drawing.Size(214, 179);
+            this.pbOne.Size = new System.Drawing.Size(519, 415);
             this.pbOne.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbOne.TabIndex = 22;
             this.pbOne.TabStop = false;
@@ -55,9 +56,10 @@
             // pbTwo
             // 
             this.pbTwo.BackColor = System.Drawing.Color.Transparent;
-            this.pbTwo.Location = new System.Drawing.Point(702, 174);
+            this.pbTwo.Location = new System.Drawing.Point(1088, 128);
+            this.pbTwo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pbTwo.Name = "pbTwo";
-            this.pbTwo.Size = new System.Drawing.Size(219, 179);
+            this.pbTwo.Size = new System.Drawing.Size(519, 415);
             this.pbTwo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbTwo.TabIndex = 23;
             this.pbTwo.TabStop = false;
@@ -67,20 +69,23 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Snap ITC", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Blue;
-            this.label1.Location = new System.Drawing.Point(429, 375);
+            this.label1.Location = new System.Drawing.Point(213, 593);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(503, 35);
+            this.label1.Size = new System.Drawing.Size(1522, 53);
             this.label1.TabIndex = 24;
-            this.label1.Text = "QUALE IMMAGINE SCEGLI?";
+            this.label1.Text = "SCEGLI L\'IMMAGINE CHE SI LEGA ALLA SEZIONE AUREA";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // btn_UNO
             // 
             this.btn_UNO.BackColor = System.Drawing.Color.LightGray;
             this.btn_UNO.Font = new System.Drawing.Font("Snap ITC", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_UNO.ForeColor = System.Drawing.Color.Blue;
-            this.btn_UNO.Location = new System.Drawing.Point(521, 435);
+            this.btn_UNO.Location = new System.Drawing.Point(782, 669);
+            this.btn_UNO.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_UNO.Name = "btn_UNO";
-            this.btn_UNO.Size = new System.Drawing.Size(76, 40);
+            this.btn_UNO.Size = new System.Drawing.Size(114, 62);
             this.btn_UNO.TabIndex = 25;
             this.btn_UNO.Text = "UNO";
             this.btn_UNO.UseVisualStyleBackColor = false;
@@ -90,9 +95,10 @@
             // 
             this.btn_DUE.Font = new System.Drawing.Font("Snap ITC", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_DUE.ForeColor = System.Drawing.Color.Blue;
-            this.btn_DUE.Location = new System.Drawing.Point(770, 435);
+            this.btn_DUE.Location = new System.Drawing.Point(1155, 669);
+            this.btn_DUE.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_DUE.Name = "btn_DUE";
-            this.btn_DUE.Size = new System.Drawing.Size(76, 40);
+            this.btn_DUE.Size = new System.Drawing.Size(114, 62);
             this.btn_DUE.TabIndex = 26;
             this.btn_DUE.Text = "DUE";
             this.btn_DUE.UseVisualStyleBackColor = true;
@@ -101,9 +107,10 @@
             // 
             this.timerLabel.AutoSize = true;
             this.timerLabel.Font = new System.Drawing.Font("SimSun", 24.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.timerLabel.Location = new System.Drawing.Point(302, 413);
+            this.timerLabel.Location = new System.Drawing.Point(453, 635);
+            this.timerLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.timerLabel.Name = "timerLabel";
-            this.timerLabel.Size = new System.Drawing.Size(0, 33);
+            this.timerLabel.Size = new System.Drawing.Size(0, 50);
             this.timerLabel.TabIndex = 27;
             // 
             // timer1
@@ -115,15 +122,16 @@
             // 
             this.Feedback.AutoSize = true;
             this.Feedback.Font = new System.Drawing.Font("Snap ITC", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Feedback.Location = new System.Drawing.Point(171, 521);
+            this.Feedback.Location = new System.Drawing.Point(229, 669);
+            this.Feedback.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Feedback.Name = "Feedback";
-            this.Feedback.Size = new System.Drawing.Size(112, 35);
+            this.Feedback.Size = new System.Drawing.Size(170, 53);
             this.Feedback.TabIndex = 28;
             this.Feedback.Text = "label2";
             // 
             // Activity
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.Feedback);
             this.Controls.Add(this.timerLabel);
@@ -132,8 +140,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pbTwo);
             this.Controls.Add(this.pbOne);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Activity";
-            this.Size = new System.Drawing.Size(985, 760);
+            this.Size = new System.Drawing.Size(1478, 1169);
             this.Load += new System.EventHandler(this.Activity_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbOne)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTwo)).EndInit();

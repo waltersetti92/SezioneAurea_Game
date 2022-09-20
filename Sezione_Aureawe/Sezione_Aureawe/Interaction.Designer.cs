@@ -235,6 +235,7 @@
             this.pB_Indizio.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pB_Indizio.TabIndex = 17;
             this.pB_Indizio.TabStop = false;
+            this.pB_Indizio.Click += new System.EventHandler(this.pB_Indizio_Click);
             // 
             // Interaction
             // 

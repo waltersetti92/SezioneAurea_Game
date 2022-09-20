@@ -39,7 +39,7 @@ namespace Sezione_Aureawe
             resetOperations();
             Start_Sequences();
             completed = "api/uda/put/?i=1&k=16";
-            BackgroundImageLayout = ImageLayout.Stretch;
+           // BackgroundImageLayout = ImageLayout.Stretch;
            // BackgroundImage = Image.FromFile(resourcesPath + "\\" + background_image);
 
         }
@@ -213,10 +213,9 @@ namespace Sezione_Aureawe
 
         private void Interaction_Load(object sender, EventArgs e)
         {
-            star_invisible();
-            //pB_Indizio.Visible = false;
-            //lbl_fin1.Visible = false;
-     
+            pB_Indizio.Visible = false;
+            star_invisible();           
+            lbl_fin1.Visible = false;    
         }
 
         private void star2_Click(object sender, EventArgs e)
@@ -572,6 +571,11 @@ namespace Sezione_Aureawe
         }
 
         private void pezzo0_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pB_Indizio_Click(object sender, EventArgs e)
         {
 
         }

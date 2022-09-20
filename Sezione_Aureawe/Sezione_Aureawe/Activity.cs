@@ -67,13 +67,13 @@ namespace Sezione_Aureawe
         public void Correct_Answer()
         {
             parentForm.playbackResourceAudio("success");
-            Feedback.ForeColor = Color.Green;
+            Feedback.ForeColor = Color.Yellow;
             Feedback.Visible = true;
             this.Feedback.Location = new Point(485, 518);
             btn_DUE.Enabled = false;
-            btn_DUE.BackColor = Color.Green;
+            btn_DUE.BackColor = Color.Yellow;
             btn_UNO.Enabled = false;
-            btn_UNO.BackColor = Color.Green;
+            btn_UNO.BackColor = Color.Yellow;
             Feedback.Text = "RISPOSTA CORRETTA";
             parentForm.contatore_iniziale = 0;
             this.Update();
@@ -82,13 +82,13 @@ namespace Sezione_Aureawe
         public void Wrong_Answer()
         {
             parentForm.playbackResourceAudio("failure");
-            Feedback.ForeColor = Color.Red;
+            Feedback.ForeColor = Color.DarkRed;
             Feedback.Visible = true;
             this.Feedback.Location = new Point(485, 518);
             btn_DUE.Enabled = false;
-            btn_DUE.BackColor = Color.Red;
+            btn_DUE.BackColor = Color.DarkRed;
             btn_UNO.Enabled = false;
-            btn_UNO.BackColor = Color.Red;
+            btn_UNO.BackColor = Color.DarkRed;
             Feedback.Text = "RISPOSTA SBAGLIATA";
             parentForm.contatore_iniziale = 0;
             this.Update();
@@ -101,9 +101,9 @@ namespace Sezione_Aureawe
             timer1.Stop();
             timerLabel.Text = "";
             parentForm.playbackResourceAudio("failure");
-            Feedback.ForeColor = Color.Red;
-            btn_DUE.BackColor = Color.Red;
-            btn_UNO.BackColor = Color.Red;
+            Feedback.ForeColor = Color.DarkRed;
+            btn_DUE.BackColor = Color.DarkRed;
+            btn_UNO.BackColor = Color.DarkRed;
             this.Feedback.Location = new Point(171, 518);
             Feedback.Visible = true;
             PutStarted();
@@ -226,6 +226,7 @@ namespace Sezione_Aureawe
         {
             
         }
+
         private async void timer1_Tick(object sender, EventArgs e)
         {
             if (timeleft > 0)
@@ -250,6 +251,7 @@ namespace Sezione_Aureawe
                         }
                         if  (status == 10 && wait == 1 || status==7 && wait==1)
                         {
+                            //Putwaitdata();
                             await uda_server_communication.Server_Request(parentForm.wait_data());
                         }
                         timeleft--;
@@ -380,6 +382,11 @@ namespace Sezione_Aureawe
                     }
                 }
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

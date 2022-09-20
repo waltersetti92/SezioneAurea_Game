@@ -34,27 +34,30 @@ namespace Sezione_Aureawe
         public string data_start;
         public string pause_uda;
         public static System.Diagnostics.Process proc;
-        public int turno = 0;
+        public int turno = -1;
         public int contatore_iniziale = 0;
+        public int contatore_abort = 0;
         public string MPV = resourcesPath + "\\" + "mpv.com";
         public string initial_video = Path.GetDirectoryName(Application.ExecutablePath) + "\\..\\..\\..\\..\\..\\Video_GAMES\\Sezione_Aurea\\iniziale.mov";
         public string final_video = Path.GetDirectoryName(Application.ExecutablePath) + "\\..\\..\\..\\..\\..\\Video_GAMES\\Sezione_Aurea\\finale.mov";
         public int recap_video = 0;
+        private Business_Logic BL;
         public string wait_data()
         {
+            turno += 1;
             int[] can_answer;
             if (uda_server_communication.explorers.Length == 0)
             {
                 can_answer = new int[0];
-            } else
+            }
+            else
             {
                 can_answer = new int[] { uda_server_communication.explorers[
                     turno % uda_server_communication.explorers.Length] };
             }
-            turno += 1;
             Dictionary<String, object> request = new Dictionary<String, object>();
-            request.Add("question", "Scegli l'immagine che si lega alla sezione aurea");
-            request.Add("input_type", new string[] { "1", "2" });
+            request.Add("question", "Inserisci il numero comune ai due cerchi");
+            request.Add("input_type", 0);
             request.Add("can_answer", can_answer);
 
             string data = JsonConvert.SerializeObject(request);
@@ -66,10 +69,9 @@ namespace Sezione_Aureawe
             trial_1 = 0;
             pause_uda = "";
             started_uda = "api/uda/put/?i=1&k=7" + "&data=" + data_start;
-            //started_uda =  url_luda + "api/uda/put/?i=1&k=7";
             get_data_uda = "api/uda/get/?i=1";              
             idle_status = "api/uda/put/?i=1&k=0";
-            Business_Logic BL = new Business_Logic(this);
+            BL = new Business_Logic(this);
             AppDomain.CurrentDomain.ProcessExit += new EventHandler(OnProcessExit);
             InitializeComponent();
             initial1.parentForm = this;
@@ -79,8 +81,6 @@ namespace Sezione_Aureawe
             interaction1.Visible = false;
             activity1.Visible = false;
             home();
-           // BackgroundImageLayout = ImageLayout.Stretch;
-            //BackgroundImage = Image.FromFile(resourcesPath + "\\" + background_image);
         }
         static void OnProcessExit(object sender, EventArgs e)
         {
@@ -123,11 +123,14 @@ namespace Sezione_Aureawe
 
 
                 }
-                if (status == 11 || status == 12)
+                if ((status == 11 || status == 12) && contatore_abort == 0)
                 {
-                  System.Diagnostics.Process.GetCurrentProcess().Kill();
-
+                    BL.Url_Put("5");
+                    Thread.Sleep(500);
                 }
+                if ((status == 11 || status == 12) && contatore_abort == 1)
+                    System.Diagnostics.Process.GetCurrentProcess().Kill();
+
                 if (status == 15)
                 {
 
@@ -173,6 +176,7 @@ namespace Sezione_Aureawe
             interaction1.star_invisible();
             Thread.Sleep(400);
             interaction1.Visible = true;
+            interaction1.Show();
             interaction1.pause_val = ShouldPause;
             currUC = interaction1;
             //Thread.Sleep(400);
