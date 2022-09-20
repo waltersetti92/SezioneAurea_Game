@@ -71,9 +71,9 @@ namespace Sezione_Aureawe
             Feedback.Visible = true;
             this.Feedback.Location = new Point(485, 518);
             btn_DUE.Enabled = false;
-            btn_DUE.BackColor = Color.Yellow;
+            btn_DUE.BackColor = Color.Green;
             btn_UNO.Enabled = false;
-            btn_UNO.BackColor = Color.Yellow;
+            btn_UNO.BackColor = Color.Green;
             Feedback.Text = "RISPOSTA CORRETTA";
             parentForm.contatore_iniziale = 0;
             this.Update();

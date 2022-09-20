@@ -56,8 +56,8 @@ namespace Sezione_Aureawe
                     turno % uda_server_communication.explorers.Length] };
             }
             Dictionary<String, object> request = new Dictionary<String, object>();
-            request.Add("question", "Inserisci il numero comune ai due cerchi");
-            request.Add("input_type", 0);
+            request.Add("question", "Scegli l'immagine che si lega alla sezione aurea");
+            request.Add("input_type", new string[] { "1", "2" });
             request.Add("can_answer", can_answer);
 
             string data = JsonConvert.SerializeObject(request);
