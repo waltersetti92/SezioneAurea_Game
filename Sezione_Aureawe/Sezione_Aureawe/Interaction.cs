@@ -517,17 +517,8 @@ namespace Sezione_Aureawe
                             final_sequence();
                             break;
                         }
-                        if (status == 11 || status == 12)
-                        {
-                            Application.Exit();
-                            Environment.Exit(0);
-                        }
-                        if (status == 13)
-                        {
-                            this.Hide();
-                            parentForm.Abort_UDA();
-                            break;
-                        }
+                        
+                       
                         Thread.Sleep(400);
                     }                  
                 }

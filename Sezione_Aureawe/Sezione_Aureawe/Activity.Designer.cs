@@ -45,7 +45,7 @@
             // 
             this.pbOne.BackColor = System.Drawing.Color.Transparent;
             this.pbOne.Image = global::Sezione_Aureawe.Properties.Resources.group1;
-            this.pbOne.Location = new System.Drawing.Point(483, 128);
+            this.pbOne.Location = new System.Drawing.Point(484, 26);
             this.pbOne.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pbOne.Name = "pbOne";
             this.pbOne.Size = new System.Drawing.Size(519, 415);
@@ -56,7 +56,7 @@
             // pbTwo
             // 
             this.pbTwo.BackColor = System.Drawing.Color.Transparent;
-            this.pbTwo.Location = new System.Drawing.Point(1088, 128);
+            this.pbTwo.Location = new System.Drawing.Point(1080, 26);
             this.pbTwo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pbTwo.Name = "pbTwo";
             this.pbTwo.Size = new System.Drawing.Size(519, 415);
@@ -69,7 +69,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Snap ITC", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Blue;
-            this.label1.Location = new System.Drawing.Point(213, 593);
+            this.label1.Location = new System.Drawing.Point(214, 517);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(1522, 53);
@@ -122,7 +122,7 @@
             // 
             this.Feedback.AutoSize = true;
             this.Feedback.Font = new System.Drawing.Font("Snap ITC", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Feedback.Location = new System.Drawing.Point(233, 711);
+            this.Feedback.Location = new System.Drawing.Point(249, 766);
             this.Feedback.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Feedback.Name = "Feedback";
             this.Feedback.Size = new System.Drawing.Size(170, 53);
@@ -142,7 +142,7 @@
             this.Controls.Add(this.pbOne);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Activity";
-            this.Size = new System.Drawing.Size(1478, 1169);
+            this.Size = new System.Drawing.Size(1736, 1870);
             this.Load += new System.EventHandler(this.Activity_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbOne)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTwo)).EndInit();

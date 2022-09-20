@@ -62,12 +62,13 @@ namespace Sezione_Aureawe
             Location = new Point(offset, offset);
             Width = w - 1 * offset;
             Height = h - 1 * offset;
+            Feedback.Location = new Point(242, 242);
 
         }
         public void Correct_Answer()
         {
             parentForm.playbackResourceAudio("success");
-            Feedback.ForeColor = Color.Yellow;
+            Feedback.ForeColor = Color.Green;
             Feedback.Visible = true;
             this.Feedback.Location = new Point(485, 518);
             btn_DUE.Enabled = false;
@@ -179,6 +180,7 @@ namespace Sezione_Aureawe
                 }
                 Thread.Sleep(400);
             }
+            await uda_server_communication.Server_Request(parentForm.wait_data());
             Thread.Sleep(1000);
         }
         public void setOperationsIcons(int i)
@@ -249,10 +251,9 @@ namespace Sezione_Aureawe
                             parentForm.Abort_UDA();
                             break;
                         }
-                        if  (status == 10 && wait == 1 || status==7 && wait==1)
+                        if  (status == 10 && wait == 1)
                         {
-                            //Putwaitdata();
-                            await uda_server_communication.Server_Request(parentForm.wait_data());
+                           Putwaitdata();
                         }
                         timeleft--;
                         timerLabel.Text = timeleft.ToString();
