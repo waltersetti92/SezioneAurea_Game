@@ -179,11 +179,12 @@ namespace Sezione_Aureawe
                     }
                 }
                 Thread.Sleep(400);
+
             }
-            await uda_server_communication.Server_Request(parentForm.wait_data());
-            Thread.Sleep(1000);
+           
+          //  Thread.Sleep(200);
         }
-        public void setOperationsIcons(int i)
+        public async void setOperationsIcons(int i)
         {
             resetOperations();
 
@@ -207,6 +208,24 @@ namespace Sezione_Aureawe
             {
                 Images_Sounds("seahorse", "semaforo", "Suono7_True", "Suono7_False");
             }
+            while (true){
+                k = parentForm.Status_Changed(parentForm.activity_form);
+                int status = int.Parse(k);
+                if (status != 9 && status != 8)
+                {
+                    if (status == 11 || status == 12)
+                    {
+                        System.Diagnostics.Process.GetCurrentProcess().Kill();
+                    }
+                    else if (status == 10 || status == 7)
+                    {
+                        await uda_server_communication.Server_Request(parentForm.wait_data());
+                        break;
+                    }
+                }
+                Thread.Sleep(400);
+            }
+        
             Appear_Button();
         }
 
