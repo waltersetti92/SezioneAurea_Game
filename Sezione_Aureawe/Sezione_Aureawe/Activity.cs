@@ -78,8 +78,28 @@ namespace Sezione_Aureawe
             Feedback.Text = "RISPOSTA CORRETTA";
             parentForm.contatore_iniziale = 0;
             this.Update();
-            PutStarted();
-
+            Thread.Sleep(2000);
+           // PutStarted();
+            while (true)
+            {
+                k = parentForm.Status_Changed(parentForm.activity_form);
+                int status = int.Parse(k);
+                if (status != 9 && status != 8)
+                {
+                    if (status == 11 || status == 12)
+                    {
+                        System.Diagnostics.Process.GetCurrentProcess().Kill();
+                    }
+                    if (status == 10)
+                    {
+                        PutStarted();
+                        break;
+                    }
+                    PutStarted();
+                    break;
+                }
+                Thread.Sleep(400);
+            }
 
 
 
@@ -97,7 +117,28 @@ namespace Sezione_Aureawe
             Feedback.Text = "RISPOSTA SBAGLIATA";
             parentForm.contatore_iniziale = 0;
             this.Update();
-            PutStarted();
+           // 
+            Thread.Sleep(2000);
+            while (true)
+            {
+                k = parentForm.Status_Changed(parentForm.activity_form);
+                int status = int.Parse(k);
+                if (status != 9 && status != 8)
+                {
+                    if (status == 11 || status == 12)
+                    {
+                        System.Diagnostics.Process.GetCurrentProcess().Kill();
+                    }
+                    if (status == 10)
+                    {
+                        PutStarted();
+                        break;
+                    }
+                    PutStarted();
+                    break;
+                }
+                Thread.Sleep(400);
+            }
         }
         public void Out_of_time()
         {
@@ -112,6 +153,25 @@ namespace Sezione_Aureawe
             this.Feedback.Location = new Point(171, 518);
             Feedback.Visible = true;
             PutStarted();
+            Thread.Sleep(2000);
+            while (true)
+            {
+                k = parentForm.Status_Changed(parentForm.activity_form);
+                int status = int.Parse(k);
+                if (status != 9 && status != 8)
+                {
+                    if (status == 11 || status == 12)
+                    {
+                        System.Diagnostics.Process.GetCurrentProcess().Kill();
+                    }
+                    if (status == 10)
+                    {
+                        break;
+                    }
+                    break;
+                }
+                Thread.Sleep(400);
+            }
         }
         public void Appear_Button()
         {
@@ -311,18 +371,19 @@ namespace Sezione_Aureawe
                                 if (String.Equals(response, "1"))
                                 {
                                     Correct_Answer();
-                                    Thread.Sleep(4000);
-                                    PutStarted();
+                                    Thread.Sleep(2000);
+                                    //PutStarted();
                                     parentForm.step++;
                                     this.Hide();
-                                    timeleft = 10;
+                                    timeleft = 10;                                     
                                     parentForm.onStart(parentForm.onstart_form);
+                                 
                                 }
                                 else
                                 {
                                     Wrong_Answer();
-                                    Thread.Sleep(4000);
-                                    PutStarted();
+                                    Thread.Sleep(2000);
+                                    //PutStarted();
                                     parentForm.step++;                                    
                                     this.Hide();
                                     timeleft = 10;
@@ -335,10 +396,9 @@ namespace Sezione_Aureawe
                                 if (String.Equals(response, "2"))
                                 {
                                     Correct_Answer();
-                                    Thread.Sleep(4000);
-                                    PutStarted();
-                                    parentForm.step++;
-                         
+                                    Thread.Sleep(2000);
+                                    //PutStarted();
+                                    parentForm.step++;                        
                                     this.Hide();
                                     timeleft = 10;
                                     parentForm.onStart(parentForm.onstart_form);
@@ -346,8 +406,8 @@ namespace Sezione_Aureawe
                                 else
                                 {
                                     Wrong_Answer();
-                                    Thread.Sleep(4000);
-                                    PutStarted();
+                                    Thread.Sleep(2000);
+                                    //PutStarted();
                                     parentForm.step++;
                               
                                     this.Hide();
