@@ -225,6 +225,7 @@
             this.lbl_fin2.Size = new System.Drawing.Size(1538, 75);
             this.lbl_fin2.TabIndex = 16;
             this.lbl_fin2.Text = "HAI RICOSTRUITO LA SEZIONE AUREA!!!";
+            this.lbl_fin2.Click += new System.EventHandler(this.lbl_fin2_Click);
             // 
             // pB_Indizio
             // 

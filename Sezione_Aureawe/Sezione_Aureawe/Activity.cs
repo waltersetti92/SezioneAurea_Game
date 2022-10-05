@@ -78,7 +78,7 @@ namespace Sezione_Aureawe
             Feedback.Text = "RISPOSTA CORRETTA";
             parentForm.contatore_iniziale = 0;
             this.Update();
-            Thread.Sleep(2000);
+            Thread.Sleep(4500);
            // PutStarted();
             while (true)
             {
@@ -118,7 +118,7 @@ namespace Sezione_Aureawe
             parentForm.contatore_iniziale = 0;
             this.Update();
            // 
-            Thread.Sleep(2000);
+            Thread.Sleep(4500);
             while (true)
             {
                 k = parentForm.Status_Changed(parentForm.activity_form);
@@ -152,8 +152,17 @@ namespace Sezione_Aureawe
             btn_UNO.BackColor = Color.DarkRed;
             this.Feedback.Location = new Point(171, 518);
             Feedback.Visible = true;
-            PutStarted();
-            Thread.Sleep(2000);
+            if (parentForm.trial_1 == 1 || parentForm.trial_1 == 4 || parentForm.trial_1 == 5)
+            {
+                Feedback.Text = "HAI FINITO IL TEMPO! L'IMMAGINE GIUSTA ERA LA UNO";
+                this.Update();
+            }
+            else if (parentForm.trial_1 == 2 || parentForm.trial_1 == 3)
+            {
+                Feedback.Text = "HAI FINITO IL TEMPO! L'IMMAGINE GIUSTA ERA LA DUE";
+                this.Update();
+            }
+            Thread.Sleep(4500);
             while (true)
             {
                 k = parentForm.Status_Changed(parentForm.activity_form);
@@ -166,8 +175,10 @@ namespace Sezione_Aureawe
                     }
                     if (status == 10)
                     {
+                        PutStarted();
                         break;
                     }
+                    PutStarted();
                     break;
                 }
                 Thread.Sleep(400);
@@ -371,7 +382,7 @@ namespace Sezione_Aureawe
                                 if (String.Equals(response, "1"))
                                 {
                                     Correct_Answer();
-                                    Thread.Sleep(2000);
+                                    Thread.Sleep(800);
                                     //PutStarted();
                                     parentForm.step++;
                                     this.Hide();
@@ -382,7 +393,7 @@ namespace Sezione_Aureawe
                                 else
                                 {
                                     Wrong_Answer();
-                                    Thread.Sleep(2000);
+                                    Thread.Sleep(800);
                                     //PutStarted();
                                     parentForm.step++;                                    
                                     this.Hide();
@@ -396,7 +407,7 @@ namespace Sezione_Aureawe
                                 if (String.Equals(response, "2"))
                                 {
                                     Correct_Answer();
-                                    Thread.Sleep(2000);
+                                    Thread.Sleep(800);
                                     //PutStarted();
                                     parentForm.step++;                        
                                     this.Hide();
@@ -406,7 +417,7 @@ namespace Sezione_Aureawe
                                 else
                                 {
                                     Wrong_Answer();
-                                    Thread.Sleep(2000);
+                                    Thread.Sleep(800);
                                     //PutStarted();
                                     parentForm.step++;
                               
@@ -425,45 +436,13 @@ namespace Sezione_Aureawe
                 if (timeleft == 0)
                 {
                     Out_of_time();
-                    if (parentForm.trial_1 == 1 || parentForm.trial_1 == 4 || parentForm.trial_1 == 5)
-                    {
-                        Feedback.Text = "HAI FINITO IL TEMPO! L'IMMAGINE GIUSTA ERA LA UNO";
-                        this.Update();
-                        PutStarted();
-                    }
-                    else if (parentForm.trial_1 == 2 || parentForm.trial_1 == 3)
-                    {
-                        Feedback.Text = "HAI FINITO IL TEMPO! L'IMMAGINE GIUSTA ERA LA DUE";
-                        this.Update();
-                        PutStarted();
-                    }
-                    Thread.Sleep(4000);
-                    while (true)
-                    {
-                        k = parentForm.Status_Changed(parentForm.activity_form);
-                        int status = int.Parse(k);
-                        if (status == 11 || status == 12)
-                        {
-                            System.Diagnostics.Process.GetCurrentProcess().Kill();
-                        }
-                        if (status == 13)
-                        {
-                            this.Hide();
-                            parentForm.Abort_UDA();
-                            break;
-                        }
-                        if (status == 7 || status == 10)
-                        {
-                            parentForm.step++;
-                      
-                            this.Hide();
-                            timeleft = 10;
-                            parentForm.onStart(parentForm.onstart_form);
-                            break;
-                        }
-                        parentForm.contatore_iniziale = 0;
-                        Thread.Sleep(400);
-                    }
+                    Thread.Sleep(1500);
+                    PutStarted();
+                    parentForm.step++;
+                    this.Hide();
+                    timeleft = 10;
+                    parentForm.onStart(parentForm.onstart_form);
+                    parentForm.contatore_iniziale = 0;                 
                 }
             }
         }

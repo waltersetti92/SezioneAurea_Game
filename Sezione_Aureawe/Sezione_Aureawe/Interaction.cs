@@ -412,6 +412,7 @@ namespace Sezione_Aureawe
                 this.Update();
                 lbl_fin2.Visible = true;
                 this.Update();
+                Thread.Sleep(400);
             }           
             await uda_server_communication.Server_Request(completed);
             Thread.Sleep(6000);
@@ -457,7 +458,7 @@ namespace Sezione_Aureawe
         }
         public void indizio()
         {
-            lbl_fin2.Text = "";
+            lbl_fin2.Visible =false;
             this.Update();
             star_invisible();
             Thread.Sleep(400);
@@ -567,6 +568,11 @@ namespace Sezione_Aureawe
         }
 
         private void pB_Indizio_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_fin2_Click(object sender, EventArgs e)
         {
 
         }
