@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Media;
 using System.IO;
 using System.Threading;
 using System.IO.Pipes;
-using System.Text;
+using System.Windows.Media;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System.Diagnostics;
+using System.Drawing.Text;
 
 namespace Sezione_Aureawe
 {
@@ -17,7 +16,7 @@ namespace Sezione_Aureawe
     {
         public static readonly string appPath = Path.GetDirectoryName(Application.ExecutablePath);
         public static readonly string resourcesPath = Path.GetDirectoryName(Application.ExecutablePath) + "\\resources";
-        private const string background_image = "galaxy.jpg";
+        private const string background_image = "matematica.png";
         private UserControl currUC = null;
         public int step;
         public int trial_1;
@@ -28,7 +27,7 @@ namespace Sezione_Aureawe
         public string started_uda;
         public string idle_status;
         public int interaction_sequences = 0;
-        public SoundPlayer player = null;
+        public MediaPlayer player = null;
         public ManualResetEvent resetEvent = new ManualResetEvent(true);
         public bool ShouldPause = true;
         public string data_start;
@@ -38,6 +37,10 @@ namespace Sezione_Aureawe
         public int contatore_iniziale = 0;
         public int contatore_abort = 0;
         public string MPV = resourcesPath + "\\" + "mpv.com";
+      //  public string initial_video = resourcesPath + "\\iniziale.mov";
+       // public string final_video = resourcesPath + "\\finale.mov";
+        int volume;
+        public int videoVolume;
         public string initial_video = Path.GetDirectoryName(Application.ExecutablePath) + "\\..\\..\\..\\..\\..\\Video_GAMES\\Sezione_Aurea\\iniziale.mov";
         public string final_video = Path.GetDirectoryName(Application.ExecutablePath) + "\\..\\..\\..\\..\\..\\Video_GAMES\\Sezione_Aurea\\finale.mov";
         public int recap_video = 0;
@@ -65,12 +68,24 @@ namespace Sezione_Aureawe
         }
         public Main()
         {
+            player = new MediaPlayer();
+
             step = 1;
             trial_1 = 0;
             pause_uda = "";
             started_uda = "api/uda/put/?i=1&k=7" + "&data=" + data_start;
             get_data_uda = "api/uda/get/?i=1";              
             idle_status = "api/uda/put/?i=1&k=0";
+            try
+            {
+                volume = int.Parse(Environment.GetEnvironmentVariable("LUDA_WALTER_VOLUME"));
+                videoVolume = int.Parse(Environment.GetEnvironmentVariable("LUDA_WALTER_VOLUME_VIDEO"));
+            }
+            catch (ArgumentNullException)
+            {
+                volume = 100;
+                videoVolume = 100;
+            }
             BL = new Business_Logic(this);
             AppDomain.CurrentDomain.ProcessExit += new EventHandler(OnProcessExit);
             InitializeComponent();
@@ -81,13 +96,15 @@ namespace Sezione_Aureawe
             interaction1.Visible = false;
             activity1.Visible = false;
             home();
+           BackgroundImageLayout = ImageLayout.Stretch;
+            BackgroundImage = Image.FromFile(resourcesPath + "\\" + background_image);
         }
         static void OnProcessExit(object sender, EventArgs e)
         {
         }
         public void video_reproduction(string video1)
         {
-            string mpvcommand = "--fullscreen --ontop " + video1;
+            string mpvcommand = $"--volume={videoVolume} --fullscreen --ontop " + video1;
             ProcessStartInfo proc = new ProcessStartInfo(MPV);
             proc.WindowStyle = ProcessWindowStyle.Hidden;
             proc.Arguments = mpvcommand;
@@ -189,6 +206,10 @@ namespace Sezione_Aureawe
         {
             Thread.Sleep(1500);
             interaction1.Visible = false;
+            BackgroundImageLayout = ImageLayout.Stretch;
+            this.Update();
+            BackgroundImage = Image.FromFile(resourcesPath + "\\" + background_image);
+            this.Update();
             activity1.Visible = true;
             trial_1++;
             activity1.setOperationsIcons(trial_1);
@@ -197,9 +218,9 @@ namespace Sezione_Aureawe
 
         public void playbackResourceAudio(string audioname)
         {
-
             string s = resourcesPath + "\\" + audioname + ".wav";
-            player = new SoundPlayer(s);
+            player.Open(new Uri(s));
+            player.Volume = (double)volume / 100;
             player.Play();
         }
 
@@ -214,9 +235,18 @@ namespace Sezione_Aureawe
         private void Main_Load(object sender, EventArgs e)
         {
             Size size = this.Size;
+           // frame1.Width = size.Width;
+            //frame1.Height = size.Height;
             initial1.setPos(size.Width, size.Height);
             interaction1.setPos(size.Width, size.Height);
             activity1.setPos(size.Width, size.Height);
+           // PrivateFontCollection pfc = new PrivateFontCollection();
+            //pfc.AddFontFile(resourcesPath+"\\Quicksand-Regular.ttf");
+
+            /* foreach (Control c in this.Controls)
+             {
+                 c.Font = new Font(pfc.Families[0], 15, FontStyle.Regular);
+             }*/
         }
         public void closeMessage()
         {
@@ -228,6 +258,11 @@ namespace Sezione_Aureawe
         }
 
         private void interaction1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frame1_Click(object sender, EventArgs e)
         {
 
         }

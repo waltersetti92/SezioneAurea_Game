@@ -43,6 +43,7 @@
             this.lbl_fin1 = new System.Windows.Forms.Label();
             this.lbl_fin2 = new System.Windows.Forms.Label();
             this.pB_Indizio = new System.Windows.Forms.PictureBox();
+            this.pictureloghi = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.star1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.star2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pezzo0)).BeginInit();
@@ -56,6 +57,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pezzo4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pezzo5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pB_Indizio)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureloghi)).BeginInit();
             this.SuspendLayout();
             // 
             // star1
@@ -204,12 +206,12 @@
             // 
             this.lbl_fin1.AutoSize = true;
             this.lbl_fin1.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_fin1.Font = new System.Drawing.Font("Snap ITC", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_fin1.Font = new System.Drawing.Font("Quicksand", 31F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_fin1.ForeColor = System.Drawing.Color.Gold;
             this.lbl_fin1.Location = new System.Drawing.Point(1120, 909);
             this.lbl_fin1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_fin1.Name = "lbl_fin1";
-            this.lbl_fin1.Size = new System.Drawing.Size(494, 53);
+            this.lbl_fin1.Size = new System.Drawing.Size(576, 92);
             this.lbl_fin1.TabIndex = 15;
             this.lbl_fin1.Text = "OTTIMO LAVORO! ";
             // 
@@ -217,32 +219,45 @@
             // 
             this.lbl_fin2.AutoSize = true;
             this.lbl_fin2.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_fin2.Font = new System.Drawing.Font("Snap ITC", 29F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_fin2.Font = new System.Drawing.Font("Quicksand", 31F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_fin2.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_fin2.Location = new System.Drawing.Point(58, 122);
+            this.lbl_fin2.Location = new System.Drawing.Point(-571, 125);
             this.lbl_fin2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_fin2.Name = "lbl_fin2";
-            this.lbl_fin2.Size = new System.Drawing.Size(1538, 75);
+            this.lbl_fin2.Size = new System.Drawing.Size(1200, 92);
             this.lbl_fin2.TabIndex = 16;
             this.lbl_fin2.Text = "HAI RICOSTRUITO LA SEZIONE AUREA!!!";
             this.lbl_fin2.Click += new System.EventHandler(this.lbl_fin2_Click);
             // 
             // pB_Indizio
             // 
-            this.pB_Indizio.Location = new System.Drawing.Point(424, 147);
+            this.pB_Indizio.BackColor = System.Drawing.Color.Transparent;
+            this.pB_Indizio.Location = new System.Drawing.Point(604, 222);
             this.pB_Indizio.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pB_Indizio.Name = "pB_Indizio";
-            this.pB_Indizio.Size = new System.Drawing.Size(778, 530);
-            this.pB_Indizio.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pB_Indizio.Size = new System.Drawing.Size(549, 393);
+            this.pB_Indizio.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pB_Indizio.TabIndex = 17;
             this.pB_Indizio.TabStop = false;
             this.pB_Indizio.Click += new System.EventHandler(this.pB_Indizio_Click);
+            // 
+            // pictureloghi
+            // 
+            this.pictureloghi.Image = global::Sezione_Aureawe.Properties.Resources.loghi;
+            this.pictureloghi.Location = new System.Drawing.Point(565, 440);
+            this.pictureloghi.Name = "pictureloghi";
+            this.pictureloghi.Size = new System.Drawing.Size(524, 153);
+            this.pictureloghi.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureloghi.TabIndex = 18;
+            this.pictureloghi.TabStop = false;
             // 
             // Interaction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.BackgroundImage = global::Sezione_Aureawe.Properties.Resources.matematica;
+            this.Controls.Add(this.pictureloghi);
             this.Controls.Add(this.pB_Indizio);
             this.Controls.Add(this.star3);
             this.Controls.Add(this.star5);
@@ -275,6 +290,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pezzo4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pezzo5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pB_Indizio)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureloghi)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -297,5 +313,6 @@
         private System.Windows.Forms.Label lbl_fin1;
         private System.Windows.Forms.Label lbl_fin2;
         private System.Windows.Forms.PictureBox pB_Indizio;
+        private System.Windows.Forms.PictureBox pictureloghi;
     }
 }

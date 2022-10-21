@@ -28,7 +28,7 @@ namespace Sezione_Aureawe
         public string data_st;
         public static readonly string appPath = Path.GetDirectoryName(Application.ExecutablePath);
         public static readonly string resourcesPath = Path.GetDirectoryName(Application.ExecutablePath) + "\\resources";
-        private const string background_image = "galaxy.jpg";
+        private const string background_image = "matematica.png";
         public Interaction()
         {
 
@@ -39,8 +39,8 @@ namespace Sezione_Aureawe
             resetOperations();
             Start_Sequences();
             completed = "api/uda/put/?i=1&k=16";
-           // BackgroundImageLayout = ImageLayout.Stretch;
-           // BackgroundImage = Image.FromFile(resourcesPath + "\\" + background_image);
+         //  BackgroundImageLayout = ImageLayout.Stretch;
+         //  BackgroundImage = Image.FromFile(resourcesPath + "\\" + background_image);
 
         }
         public void video_reproduction_final(string video1)
@@ -128,6 +128,10 @@ namespace Sezione_Aureawe
             Location = new Point(offset, offset);
             Width = w - 1 * offset;
             Height = h - 1 * offset;
+            pictureloghi.Location = new Point(w / 2 - lbl_fin1.Width / 2 - offset - 30, 500);
+            pB_Indizio.Location= new Point(w / 2 - lbl_fin1.Width / 2 - offset -30, 150);
+            lbl_fin1.Location = new Point(w / 2 - lbl_fin1.Width / 2 - offset - 70, 40);
+            lbl_fin2.Location = new Point(w / 2 - lbl_fin2.Width / 2 - offset - 30, 10);
 
         }
         public void loop_w()
@@ -148,15 +152,9 @@ namespace Sezione_Aureawe
                 {
                     System.Diagnostics.Process.GetCurrentProcess().Kill();
                     break;
-                }
-                if (status == 13)
-                {
-                    this.Hide();
-                    parentForm.Abort_UDA();
-                    break;
-                }
-                Thread.Sleep(400);
+                }               
             }
+            Thread.Sleep(400);
         }
 
         public void star_invisible()
@@ -174,12 +172,14 @@ namespace Sezione_Aureawe
             pezzo4.Image = null;
             pezzo5.Image = null;
             pB_Indizio.Image = null;
+            pictureloghi.Image = null;
             lbl_fin1.Text = null;
             this.Update();
         }
         public void First_Sequence()
         {
             pB_Indizio.Visible = false;
+            pictureloghi.Visible = false;
             lbl_fin1.Visible = false; 
             star2.WaitOnLoad = true;
             star2.ImageLocation=  Main.resourcesPath + "\\" + "stella.png";
@@ -189,7 +189,6 @@ namespace Sezione_Aureawe
             Thread.Sleep(3000);
             star_invisible();
             loop_w();
-            star_invisible();
             //star2.Visible = false;
             this.Update();
             // 
@@ -214,6 +213,7 @@ namespace Sezione_Aureawe
         private void Interaction_Load(object sender, EventArgs e)
         {
             pB_Indizio.Visible = false;
+            pictureloghi.Visible = false;
             star_invisible();           
             lbl_fin1.Visible = false;    
         }
@@ -408,6 +408,7 @@ namespace Sezione_Aureawe
             {
                 Thread.Sleep(3000);
                 parentForm.playbackResourceAudio("success");
+                
                 lbl_fin1.Visible = true;
                 this.Update();
                 lbl_fin2.Visible = true;
@@ -445,6 +446,9 @@ namespace Sezione_Aureawe
                         pB_Indizio.ImageLocation = Main.resourcesPath + "\\" + a + ".png";
                         pB_Indizio.Visible = true;
                         this.Update();
+                        pictureloghi.WaitOnLoad = true;
+                        pictureloghi.ImageLocation = Main.resourcesPath + "\\"  + "loghi.png";
+                        pictureloghi.Visible = true;
                         lbl_fin1.Text = "ECCO L'INDIZIO!";
                         //lbl_fin1.Visible = true;
                         this.Update();
@@ -453,8 +457,7 @@ namespace Sezione_Aureawe
                 }
                 Thread.Sleep(400);
             }
-            
-
+           
         }
         public void indizio()
         {

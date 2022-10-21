@@ -47,7 +47,7 @@
             // 
             this.interaction1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(146)))), ((int)(((byte)(207)))));
             this.interaction1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.interaction1.Location = new System.Drawing.Point(-73, -41);
+            this.interaction1.Location = new System.Drawing.Point(72, 35);
             this.interaction1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.interaction1.Name = "interaction1";
             this.interaction1.parentForm = null;
@@ -64,7 +64,7 @@
             this.initial1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.initial1.Name = "initial1";
             this.initial1.parentForm = null;
-            this.initial1.Size = new System.Drawing.Size(1823, 746);
+            this.initial1.Size = new System.Drawing.Size(1761, 746);
             this.initial1.TabIndex = 0;
             this.initial1.Load += new System.EventHandler(this.initial1_Load);
             // 
@@ -73,6 +73,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(146)))), ((int)(((byte)(207)))));
+            this.BackgroundImage = global::Sezione_Aureawe.Properties.Resources.matematica;
             this.ClientSize = new System.Drawing.Size(1617, 1037);
             this.Controls.Add(this.activity1);
             this.Controls.Add(this.interaction1);

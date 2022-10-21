@@ -25,7 +25,9 @@ namespace Sezione_Aureawe
         public string get_status_uda;
         public int wait;
         public string data_started1;
-
+        public static readonly string appPath = Path.GetDirectoryName(Application.ExecutablePath);
+        public static readonly string resourcesPath = Path.GetDirectoryName(Application.ExecutablePath) + "\\resources";
+        private const string background_image = "matematica.png";
 
         public async void PutStarted()
         {
@@ -39,6 +41,10 @@ namespace Sezione_Aureawe
             resetOperations();
             wait = 0;
             get_status_uda = "api/uda/get/?i=1";
+            this.BackgroundImage = Properties.Resources.matematica;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            //BackgroundImageLayout = ImageLayout.Stretch;
+            // BackgroundImage = Image.FromFile(resourcesPath + "\\" + background_image);
 
         }
         private void resetOperations()
@@ -50,6 +56,7 @@ namespace Sezione_Aureawe
             pbTwo.Visible = false;
             timerLabel.Visible = false;
             Feedback.Visible = false;
+            this.Feedback.Font = new Font("Quicksand", 21, FontStyle.Bold); ;
             btn_UNO.Enabled = true;
             btn_DUE.Enabled = true;
             btn_UNO.BackColor = Color.LightGray;
@@ -62,7 +69,10 @@ namespace Sezione_Aureawe
             Location = new Point(offset, offset);
             Width = w - 1 * offset;
             Height = h - 1 * offset;
-            Feedback.Location = new Point(242, 242);
+            Feedback.Location = new Point(w / 2 - label1.Width / 2 - offset +50, 500);
+           // Feedback.Location = new Point(242, 242);           
+            label1.Location = new Point(w / 2 - label1.Width / 2 - offset + 50, 350);
+            timerLabel.Location = new Point(w / 2 - label1.Width / 2 - offset + 50, 400);
 
         }
         public void Correct_Answer()
@@ -70,7 +80,7 @@ namespace Sezione_Aureawe
             parentForm.playbackResourceAudio("success");
             Feedback.ForeColor = Color.Green;
             Feedback.Visible = true;
-            this.Feedback.Location = new Point(485, 518);
+           // this.Feedback.Location = new Point(485, 518);
             btn_DUE.Enabled = false;
             btn_DUE.BackColor = Color.Green;
             btn_UNO.Enabled = false;
@@ -109,7 +119,7 @@ namespace Sezione_Aureawe
             parentForm.playbackResourceAudio("failure");
             Feedback.ForeColor = Color.DarkRed;
             Feedback.Visible = true;
-            this.Feedback.Location = new Point(485, 518);
+           // this.Feedback.Location = new Point(485, 518);
             btn_DUE.Enabled = false;
             btn_DUE.BackColor = Color.DarkRed;
             btn_UNO.Enabled = false;
@@ -150,7 +160,7 @@ namespace Sezione_Aureawe
             Feedback.ForeColor = Color.DarkRed;
             btn_DUE.BackColor = Color.DarkRed;
             btn_UNO.BackColor = Color.DarkRed;
-            this.Feedback.Location = new Point(171, 518);
+            //this.Feedback.Location = new Point(171, 518);
             Feedback.Visible = true;
             if (parentForm.trial_1 == 1 || parentForm.trial_1 == 4 || parentForm.trial_1 == 5)
             {
